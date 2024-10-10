@@ -48,9 +48,9 @@ The `knex/` directory provides an analytics storage implementation on top of [kn
 
 Similarly to the `core/` module, use `pnpm install` for setup, `pnpm dev` for a file watcher, and `pnpm test` to run tests.
 
-##### pg/
+#### pg/
 
-The `pg/` directory provides an analytics storage implementation on top of the Postgres adapter, `pg`. This module is intended to be run in a server-side environment and relies on several packages typically provided by NodeJS.
+The `pg/` directory provides an analytics storage implementation on top of the Postgres adapter, [`pg`](https://www.npmjs.com/package/pg). This module is intended to be run in a server-side environment and relies on several packages typically provided by NodeJS.
 
 ```
 cd pg/
@@ -59,7 +59,7 @@ pnpm install
 
 Similiarly to other modules, `pnpm dev` starts a file watcher.
 
-Since the `pg/` package needs a database, a we include a [`docker-compose.test.yml`](./pg/docker-compose.test.yml) Compose file. This allows for quick iteration without needing to install Postgres locally.
+Since the `pg/` package needs a database, we include a [`docker-compose.test.yml`](./pg/docker-compose.test.yml) Compose file. This allows for quick iteration without needing to install Postgres locally.
 
 This can be used to start Postgres quickly for tests:
 
@@ -100,7 +100,7 @@ This will open a browser window and run your tests!
 
 ### Benchmarks
 
-There are several benchmarking suites that test relative performance of the different stores. These are all in the `benchmarks/` directory. See the [benchmarking docs](./benchmarks/README.md) to get up and running.
+There are several benchmarking suites that test relative performance of the different stores using [tinybench](https://github.com/tinylibs/tinybench). These are all in the `benchmarks/` directory. See the [benchmarking docs](./benchmarks/README.md) to get up and running.
 
 ### Compatibility
 
