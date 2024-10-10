@@ -1,0 +1,30 @@
+{
+  "name": "document-analytics-pg",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc-watch",
+    "build": "rm -rf dist/ && tsc",
+    "test": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest"
+  },
+  "dependencies": {
+    "date-fns": "^3.6.0",
+    "document-analytics-core": "0.1.0",
+    "document-analytics-knex": "0.1.0",
+    "knex": "^3.1.0",
+    "luxon": "^3.5.0",
+    "pg": "^8.13.0"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.4.2",
+    "@types/node": "^22.4.2",
+    "@types/pg": "^8.11.10",
+    "tsc-watch": "^6.2.0",
+    "vitest": "^2.0.5"
+  }
+}

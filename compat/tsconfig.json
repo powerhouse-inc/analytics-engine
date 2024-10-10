@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "target": "es2022",
+    "allowJs": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "strict": true,
+    "sourceMap": true,
+    "declaration": true,
+    "moduleResolution": "Bundler",
+    "module": "ESNext",
+    "noEmit": true,
+    "types": ["node"]
+  },
+  "include": ["./test/**/*"]
+}
