@@ -1,97 +1,110 @@
-### Overview
+## Overview
 
-#### Development Quickstart
+The Powerhouse `analytics-engine` contains a powerful, distributed, time-series analytics system, written in Typescript.
 
-##### Core development:
+### Usage Quickstart
+
+...
+
+### Development Quickstart
+
+The analytics engine is broken up into several modules. The module found in the `core/` directory is the primary interface for interacting with the engine, and also contains query and aggregation components. The `knex/`, `pg/`, and `browser/` directories contain modules for the backing storage engines.
+
+For all modules, we use the `pnpm` package manager, `tsc-watch` as a filewatcher, and `vitest` for running tests.
+
+All modules extend the [`tsconfig.json`](./tsconfig.json) found the root directory of the repo.
+
+#### core/
+
+Local development of the `core/` module is simple:
 
 ```
-cd core
+cd core/
 pnpm install
-pnpm link --global
+```
+
+To run a file watcher, use:
+
+```
 pnpm dev
 ```
 
-##### Knex implementation:
+This will start the `tsc-watch` utility:
 
 ```
-cd knex
-pnpm link --global
-pnpm dev
+12:36:03 PM - Starting compilation in watch mode...
+12:36:04 PM - Found 0 errors. Watching for file changes.
 ```
 
-##### Postgres implementation:
+Unit and a few integration tests are found in the `tests/` sub-directory. These can be run with:
 
 ```
-cd pg
-pnpm link --global
-pnpm link --global document-analytics-core
-pnpm link --global document-analytics-knex
-pnpm install
-pnpm dev
-```
-
-##### Memory implementation:
-
-```
-cd memory
-pnpm link --global
-pnpm link --global document-analytics-core
-pnpm link --global document-analytics-knex
-pnpm install
-pnpm dev
-```
-
-#### Testing
-
-Tests are separated into `/test` directories in the respective module.
-
-##### Core:
-
-```
-cd core
 pnpm test
 ```
 
-##### Postgres implementation:
+#### knex/
 
-The Postgres implementation requires a correctly configured, running Postgres instance. While we could move the entire test suite inside of a test container, this is a bit of a hassle for quick iteration. Instead, we can simply run postgres in a container and run the tests locally, with a local file watcher.
+The `knex/` directory provides an analytics storage implementation on top of [knex.js](https://knexjs.org/).
+
+Similarly to the `core/` module, use `pnpm install` for setup, `pnpm dev` for a file watcher, and `pnpm test` to run tests.
+
+##### pg/
+
+The `pg/` directory provides an analytics storage implementation on top of the Postgres adapter, `pg`. This module is intended to be run in a server-side environment and relies on several packages typically provided by NodeJS.
 
 ```
 cd pg/
+pnpm install
+```
+
+Similiarly to other modules, `pnpm dev` starts a file watcher.
+
+Since the `pg/` package needs a database, a we include a [`docker-compose.test.yml`](./pg/docker-compose.test.yml) Compose file. This allows for quick iteration without needing to install Postgres locally.
+
+This can be used to start Postgres quickly for tests:
+
+```
 docker compose -f docker-compose.test.yml up -d
+
 pnpm test
 
-... iterate on tests ...
+... iterate on tests
 
 docker compose -f docker-compose.test.yml down
 ```
 
-Sometimes, it's useful to see the data the integration tests insert into the database. In this case, run with `CLEAN_UP_DB=false`:
+#### /browser
+
+Finally, a store is provided for the browser in the `browser/` directory.
 
 ```
-CLEAN_UP_DB=false pnpm test
+cd browser/
+pnpm install
 ```
 
-This will leave data in the DB.
+Similarly to other modules, `pnpm dev` starts a file watcher.
 
-##### Memory implementation
-
-The in-memory implementation tests run in a browser using vitest and playwright. To get setup, run:
+Testing the browser implementation, however, requires a bit of setup. These tests run in a browser using `playwright`. To setup, run:
 
 ```
 pnpm exec playwright install
+```
+
+This may require answering a few questions, but installs necessary components to your system. Once this is done, you can now run tests with:
+
+```
 pnpm test
 ```
 
 This will open a browser window and run your tests!
 
-##### Benchmarks
+### Benchmarks
 
 There are several benchmarking suites that test relative performance of the different stores. These are all in the `benchmarks/` directory. See the [benchmarking docs](./benchmarks/README.md) to get up and running.
 
-##### Compatibility
+### Compatibility
 
-There are integration tests that compare responses from an analytics store with a Postgres store with responses from the in-memory store. These are found in the `compat/` directory. Before running, ensure you setup the postgres db.
+We also provide integration tests that compare responses from an analytics store with a Postgres store with responses from the browser store. These are found in the `compat/` directory. Before running, ensure you setup the postgres db.
 
 ```
 cd compat/
