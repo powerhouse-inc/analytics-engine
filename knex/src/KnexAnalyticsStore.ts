@@ -6,9 +6,8 @@ import {
   AnalyticsSeriesInput,
   AnalyticsSeriesQuery,
   AnalyticsDimension,
-  IAnalyticsProfiler,
   IAnalyticsStore,
-} from "document-analytics-core";
+} from "@powerhouse/analytics-engine-core";
 
 function toPascalCase(str: string) {
   return str

@@ -5,10 +5,10 @@
     "test": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest"
   },
   "dependencies": {
-    "document-analytics-core": "0.1.0",
-    "document-analytics-knex": "0.1.0",
-    "document-analytics-memory": "0.1.0",
-    "document-analytics-pg": "0.1.0",
+    "@powerhouse/analytics-engine-core": "0.1.0",
+    "@powerhouse/analytics-engine-knex": "0.1.0",
+    "@powerhouse/analytics-engine-memory": "0.1.0",
+    "@powerhouse/analytics-engine-pg": "0.1.0",
     "knex": "^3.1.0",
     "luxon": "^3.5.0",
     "pg": "^8.13.0"

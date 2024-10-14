@@ -1,7 +1,6 @@
 import fs from "fs";
-import { MemoryAnalyticsStore } from "document-analytics-memory";
+import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
 import { Bench, Task } from "tinybench";
-import { beforeEach } from "node:test";
 import { logs } from "./util.js";
 
 // first, load the data

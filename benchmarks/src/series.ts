@@ -1,15 +1,15 @@
 import fs from "fs";
 import { DateTime } from "luxon";
 import { Bench } from "tinybench";
-import { AnalyticsPath } from "document-analytics-core";
+import { AnalyticsPath } from "@powerhouse/analytics-engine-core";
 import { logs, queryLogger, resultsLogger } from "./util.js";
 import {
   KnexQueryExecutor,
   PostgresAnalyticsStore,
-} from "document-analytics-pg";
-import { MemoryAnalyticsStore } from "document-analytics-memory";
+} from "@powerhouse/analytics-engine-pg";
+import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
 
-// todo: export these from document-analytics-pg
+// todo: export these from @powerhouse/analytics-engine-pg
 const passthroughProfiler = () => ({
   prefix: "",
   push: (system: string) => {},

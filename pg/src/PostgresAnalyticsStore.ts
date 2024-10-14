@@ -1,9 +1,8 @@
 import knexFactory, { Knex } from "knex";
 import pkg from "pg";
 import { reviver } from "./AnalyticsSerializer.js";
-import { KnexAnalyticsStore } from "document-analytics-knex";
-import { IKnexQueryExecutor } from "document-analytics-knex";
-import { IAnalyticsProfiler } from "document-analytics-core";
+import { KnexAnalyticsStore, IKnexQueryExecutor } from "@powerhouse/analytics-engine-knex";
+import { IAnalyticsProfiler } from "@powerhouse/analytics-engine-core";
 
 const { types } = pkg;
 types.setTypeParser(types.builtins.DATE, (value: string) => value);

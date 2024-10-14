@@ -1,5 +1,5 @@
 {
-  "name": "document-analytics-core",
+  "name": "@powerhouse/analytics-engine-core",
   "version": "0.1.0",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

@@ -3,7 +3,7 @@ import {
   AnalyticsPathSegment,
   AnalyticsPeriod,
   AnalyticsSerializerTypes,
-} from "document-analytics-core";
+} from "@powerhouse/analytics-engine-core";
 
 export function reviver(k: any, v: any) {
   if (v instanceof Object && v._t === AnalyticsSerializerTypes.AnalyticsPath) {

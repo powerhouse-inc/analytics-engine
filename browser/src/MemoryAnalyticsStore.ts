@@ -6,7 +6,7 @@ import fs from "fs";
 import {
   KnexAnalyticsStore,
   IKnexQueryExecutor,
-} from "document-analytics-knex";
+} from "@powerhouse/analytics-engine-knex";
 
 // this is awful, but needed for wa-sqlite to load from file:/// because fetch
 // cannot load file:/// paths

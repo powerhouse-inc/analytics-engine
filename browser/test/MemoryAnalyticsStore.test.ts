@@ -1,5 +1,5 @@
 import { DateTime } from "luxon";
-import { AnalyticsDimension, AnalyticsPath } from "document-analytics-core";
+import { AnalyticsDimension, AnalyticsPath } from "@powerhouse/analytics-engine-core";
 import { MemoryAnalyticsStore } from "../src/MemoryAnalyticsStore.js";
 import { afterAll, beforeAll, it, expect } from "vitest";
 

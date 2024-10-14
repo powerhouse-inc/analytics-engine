@@ -5,10 +5,10 @@ The code in this directory measures performance characteristics of the in-memory
 ##### Development Prereqs
 
 ```
-pnpm link --global document-analytics-core
-pnpm link --global document-analytics-knex
-pnpm link --global document-analytics-memory
-pnpm link --global document-analytics-pg
+pnpm link --global @powerhouse/analytics-engine-core
+pnpm link --global @powerhouse/analytics-engine-knex
+pnpm link --global @powerhouse/analytics-engine-browser
+pnpm link --global @powerhouse/analytics-engine-pg
 pnpm install
 ```
 

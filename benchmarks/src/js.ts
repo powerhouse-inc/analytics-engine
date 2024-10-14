@@ -1,8 +1,8 @@
 import fs from "fs";
 import { DateTime } from "luxon";
-import { MemoryAnalyticsStore } from "document-analytics-memory";
+import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
 import { Bench } from "tinybench";
-import { AnalyticsPath } from "document-analytics-core";
+import { AnalyticsPath } from "@powerhouse/analytics-engine-core";
 import { queryLogger, resultsLogger } from "./util.js";
 
 // first, load the data

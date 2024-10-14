@@ -6,7 +6,7 @@ import {
   AnalyticsGranularity,
   AnalyticsQuery,
   GroupedPeriodResults,
-} from "document-analytics-core";
+} from "@powerhouse/analytics-engine-core";
 import {
   KnexQueryExecutor,
   PostgresAnalyticsStore,
