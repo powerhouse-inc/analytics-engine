@@ -1,0 +1,447 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta
+            name="description"
+            content="Documentation for the Powerhouse Analytics Engine."
+        >
+    <title>Powerhouse Analytics Engine</title>
+
+    <style media="screen">
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight .gh {
+  color: #999999;
+}
+.highlight .sr {
+  color: #f6aa11;
+}
+.highlight .go {
+  color: #888888;
+}
+.highlight .gp {
+  color: #555555;
+}
+.highlight .gs {
+}
+.highlight .gu {
+  color: #aaaaaa;
+}
+.highlight .nb {
+  color: #f6aa11;
+}
+.highlight .cm {
+  color: #75715e;
+}
+.highlight .cp {
+  color: #75715e;
+}
+.highlight .c1 {
+  color: #75715e;
+}
+.highlight .cs {
+  color: #75715e;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cpf {
+  color: #75715e;
+}
+.highlight .err {
+  color: #960050;
+}
+.highlight .gr {
+  color: #960050;
+}
+.highlight .gt {
+  color: #960050;
+}
+.highlight .gd {
+  color: #49483e;
+}
+.highlight .gi {
+  color: #49483e;
+}
+.highlight .ge {
+  color: #49483e;
+}
+.highlight .kc {
+  color: #66d9ef;
+}
+.highlight .kd {
+  color: #66d9ef;
+}
+.highlight .kr {
+  color: #66d9ef;
+}
+.highlight .no {
+  color: #66d9ef;
+}
+.highlight .kt {
+  color: #66d9ef;
+}
+.highlight .mf {
+  color: #ae81ff;
+}
+.highlight .mh {
+  color: #ae81ff;
+}
+.highlight .il {
+  color: #ae81ff;
+}
+.highlight .mi {
+  color: #ae81ff;
+}
+.highlight .mo {
+  color: #ae81ff;
+}
+.highlight .m, .highlight .mb, .highlight .mx {
+  color: #ae81ff;
+}
+.highlight .sc {
+  color: #ae81ff;
+}
+.highlight .se {
+  color: #ae81ff;
+}
+.highlight .ss {
+  color: #ae81ff;
+}
+.highlight .sd {
+  color: #e6db74;
+}
+.highlight .s2 {
+  color: #e6db74;
+}
+.highlight .sb {
+  color: #e6db74;
+}
+.highlight .sh {
+  color: #e6db74;
+}
+.highlight .si {
+  color: #e6db74;
+}
+.highlight .sx {
+  color: #e6db74;
+}
+.highlight .s1 {
+  color: #e6db74;
+}
+.highlight .s, .highlight .sa, .highlight .dl {
+  color: #e6db74;
+}
+.highlight .na {
+  color: #a6e22e;
+}
+.highlight .nc {
+  color: #a6e22e;
+}
+.highlight .nd {
+  color: #a6e22e;
+}
+.highlight .ne {
+  color: #a6e22e;
+}
+.highlight .nf, .highlight .fm {
+  color: #a6e22e;
+}
+.highlight .vc {
+  color: #ffffff;
+}
+.highlight .nn {
+  color: #ffffff;
+}
+.highlight .ni {
+  color: #ffffff;
+}
+.highlight .bp {
+  color: #ffffff;
+}
+.highlight .vg {
+  color: #ffffff;
+}
+.highlight .vi {
+  color: #ffffff;
+}
+.highlight .nv, .highlight .vm {
+  color: #ffffff;
+}
+.highlight .w {
+  color: #ffffff;
+}
+.highlight {
+  color: #ffffff;
+}
+.highlight .n, .highlight .py, .highlight .nx {
+  color: #ffffff;
+}
+.highlight .nl {
+  color: #f92672;
+}
+.highlight .ow {
+  color: #f92672;
+}
+.highlight .nt {
+  color: #f92672;
+}
+.highlight .k, .highlight .kv {
+  color: #f92672;
+}
+.highlight .kn {
+  color: #f92672;
+}
+.highlight .kp {
+  color: #f92672;
+}
+.highlight .o {
+  color: #f92672;
+}
+    </style>
+    <style media="print">
+      * {
+        -webkit-transition:none!important;
+        transition:none!important;
+      }
+      .highlight table td { padding: 5px; }
+.highlight table pre { margin: 0; }
+.highlight, .highlight .w {
+  color: #586e75;
+}
+.highlight .err {
+  color: #002b36;
+  background-color: #dc322f;
+}
+.highlight .c, .highlight .ch, .highlight .cd, .highlight .cm, .highlight .cpf, .highlight .c1, .highlight .cs {
+  color: #657b83;
+}
+.highlight .cp {
+  color: #b58900;
+}
+.highlight .nt {
+  color: #b58900;
+}
+.highlight .o, .highlight .ow {
+  color: #93a1a1;
+}
+.highlight .p, .highlight .pi {
+  color: #93a1a1;
+}
+.highlight .gi {
+  color: #859900;
+}
+.highlight .gd {
+  color: #dc322f;
+}
+.highlight .gh {
+  color: #268bd2;
+  background-color: #002b36;
+  font-weight: bold;
+}
+.highlight .k, .highlight .kn, .highlight .kp, .highlight .kr, .highlight .kv {
+  color: #6c71c4;
+}
+.highlight .kc {
+  color: #cb4b16;
+}
+.highlight .kt {
+  color: #cb4b16;
+}
+.highlight .kd {
+  color: #cb4b16;
+}
+.highlight .s, .highlight .sb, .highlight .sc, .highlight .dl, .highlight .sd, .highlight .s2, .highlight .sh, .highlight .sx, .highlight .s1 {
+  color: #859900;
+}
+.highlight .sa {
+  color: #6c71c4;
+}
+.highlight .sr {
+  color: #2aa198;
+}
+.highlight .si {
+  color: #d33682;
+}
+.highlight .se {
+  color: #d33682;
+}
+.highlight .nn {
+  color: #b58900;
+}
+.highlight .nc {
+  color: #b58900;
+}
+.highlight .no {
+  color: #b58900;
+}
+.highlight .na {
+  color: #268bd2;
+}
+.highlight .m, .highlight .mb, .highlight .mf, .highlight .mh, .highlight .mi, .highlight .il, .highlight .mo, .highlight .mx {
+  color: #859900;
+}
+.highlight .ss {
+  color: #859900;
+}
+    </style>
+    <link href="stylesheets/screen-9c19b03a.css" rel="stylesheet" media="screen" />
+    <link href="stylesheets/print-966d6edc.css" rel="stylesheet" media="print" />
+      <script src="javascripts/all-024da600.js"></script>
+
+    <script>
+      $(function() { setupCodeCopy(); });
+    </script>
+  </head>
+
+  <body class="index" data-languages="[&quot;typescript&quot;,&quot;graphql&quot;]">
+    <a href="#" id="nav-button">
+      <span>
+        NAV
+        <img src="images/navbar-cad8cdcb.png" alt="" />
+      </span>
+    </a>
+    <div class="toc-wrapper">
+      <img src="images/logo-d1004d8d.png" class="logo" alt="" />
+        <div class="lang-selector">
+              <a href="#" data-language-name="typescript">typescript</a>
+              <a href="#" data-language-name="graphql">graphql</a>
+        </div>
+        <div class="search">
+          <input type="text" class="search" id="input-search" placeholder="Search">
+        </div>
+        <ul class="search-results"></ul>
+      <ul id="toc" class="toc-list-h1">
+          <li>
+            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+          </li>
+          <li>
+            <a href="#quickstart" class="toc-h1 toc-link" data-title="Quickstart">Quickstart</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#insert-data" class="toc-h2 toc-link" data-title="Insert Data">Insert Data</a>
+                  </li>
+                  <li>
+                    <a href="#analyticsqueryengine" class="toc-h2 toc-link" data-title="AnalyticsQueryEngine">AnalyticsQueryEngine</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#memoryanalyticsstore" class="toc-h1 toc-link" data-title="MemoryAnalyticsStore">MemoryAnalyticsStore</a>
+          </li>
+          <li>
+            <a href="#postgresanalyticsstore" class="toc-h1 toc-link" data-title="PostgresAnalyticsStore">PostgresAnalyticsStore</a>
+          </li>
+          <li>
+            <a href="#compatibility" class="toc-h1 toc-link" data-title="Compatibility">Compatibility</a>
+          </li>
+      </ul>
+        <ul class="toc-footer">
+            <li>Part of the <a href='https://powerhouse.inc' target='_blank'>Powerhouse</a> toolkit.</li>
+            <li>Find us on <a href='https://x.com/PowerhouseDAO' target='_blank'>X</a>!</li>
+        </ul>
+    </div>
+    <div class="page-wrapper">
+      <div class="dark-box"></div>
+      <div class="content">
+        <h1 id='introduction'>Introduction</h1>
+<p>Welcome to the Powerhouse Analytics Engine API. This engine is a powerful, distributed, time-series analytics system, written in Typescript. It is designed to run anywhere: from browsers, to server environments, or even in embedded systems.</p>
+
+<p>This documentation serves as a guide for API usage, not library development. For documentation on how to contribute to this project, see our <a href="https://github.com/powerhouse-inc/analytics-engine/blob/main/README.md">README</a>.</p>
+<h1 id='quickstart'>Quickstart</h1>
+<p>While this analytics engine is highly flexible, it is also extremely simple to get started.</p>
+<h2 id='insert-data'>Insert Data</h2>
+<p>The <code>IAnalyticsStore</code> object is the primary entry point for inserting and deleting metrics data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the <a href="#memoryanalyticsstore"><code>MemoryAnalyticsStore</code></a>.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MemoryStorageEngine</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhouse/analytics-engine-memory</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryStorageEngine</span><span class="p">();</span>
+</code></pre></div>
+<p>Data can be added using the <code>addSeriesValue</code> method.</p>
+
+<blockquote>
+<p>Note that we use the <a href="https://moment.github.io/luxon/#/"><code>luxon</code> library</a> in our API for immutable, time-zone aware data types.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DateTime</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">luxon</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AnalyticsPath</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhouse/analytics-engine-core</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">AnalyticsPath</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="dl">"</span><span class="s2">example/insert</span><span class="dl">"</span><span class="p">);</span>
+<span class="k">await</span> <span class="nx">store</span><span class="p">.</span><span class="nx">addSeriesValue</span><span class="p">([</span>
+  <span class="p">{</span>
+    <span class="na">start</span><span class="p">:</span> <span class="nx">DateTime</span><span class="p">.</span><span class="nx">utc</span><span class="p">(</span><span class="mi">2021</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span>
+    <span class="nx">source</span><span class="p">,</span>
+    <span class="na">value</span><span class="p">:</span> <span class="mi">10000</span><span class="p">,</span>
+    <span class="na">unit</span><span class="p">:</span> <span class="dl">"</span><span class="s2">DAI</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">metric</span><span class="p">:</span> <span class="dl">"</span><span class="s2">budget</span><span class="dl">"</span><span class="p">,</span>
+    <span class="na">dimensions</span><span class="p">:</span> <span class="p">{</span>
+      <span class="na">budget</span><span class="p">:</span> <span class="nx">AnalyticsPath</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="dl">"</span><span class="s2">atlas/legacy/core-units/PE-001</span><span class="dl">"</span><span class="p">),</span>
+      <span class="na">category</span><span class="p">:</span> <span class="nx">AnalyticsPath</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span>
+        <span class="dl">"</span><span class="s2">atlas/headcount/CompensationAndBenefits/FrontEndEngineering</span><span class="dl">"</span>
+      <span class="p">),</span>
+      <span class="na">project</span><span class="p">:</span> <span class="nx">source</span><span class="p">,</span>
+    <span class="p">},</span>
+  <span class="p">},</span>
+<span class="p">]);</span>
+</code></pre></div><h2 id='analyticsqueryengine'>AnalyticsQueryEngine</h2>
+<p>The entry point into the analytics engine is the <code>AnalyticsQueryEngine</code>. This object exposes an interface for inserting, querying, and deleting metric data.</p>
+<h3 id='create'>Create</h3>
+<p>This object should be created on top of a storage engine. In this example, we create a simple in-memory storage engine which is compatible with all platforms.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AnalyticsQueryEngine</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhouse/analytics-core</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MemoryStorageEngine</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhouse/analytics-memory</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">engine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnalyticsQueryEngine</span><span class="p">(</span><span class="k">new</span> <span class="nx">MemoryStorageEngine</span><span class="p">());</span>
+</code></pre></div><h3 id='add-data'>Add Data</h3>
+<p>Metric data can be added</p>
+<h1 id='memoryanalyticsstore'>MemoryAnalyticsStore</h1>
+<p>Hi.</p>
+<h1 id='postgresanalyticsstore'>PostgresAnalyticsStore</h1>
+<p>Hi.</p>
+<h1 id='compatibility'>Compatibility</h1>
+<aside class="notice">
+This guide is intended for making high level decisions about which storage systems to use in which contexts. These stores have not been tested across thousands of browser or serverside runtime versions.
+</aside>
+
+<table><thead>
+<tr>
+<th>Store</th>
+<th>Browser</th>
+<th>Node</th>
+<th>Bun</th>
+</tr>
+</thead><tbody>
+<tr>
+<td><code>MemoryAnalyticsStore</code></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td><code>MemoryAnalyticsStore</code> with <code>idb</code></td>
+<td>X</td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td><code>KnexAnalyticsStore</code></td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+</tr>
+<tr>
+<td><code>PostgresAnalyticsStore</code></td>
+<td></td>
+<td>X</td>
+<td>X</td>
+</tr>
+</tbody></table>
+
+      </div>
+      <div class="dark-box">
+          <div class="lang-selector">
+                <a href="#" data-language-name="typescript">typescript</a>
+                <a href="#" data-language-name="graphql">graphql</a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

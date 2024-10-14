@@ -18,14 +18,14 @@ All modules extend the [`tsconfig.json`](./tsconfig.json) found the root directo
 
 Local development of the `core/` module is simple:
 
-```
+```bash
 cd core/
 pnpm install
 ```
 
 To run a file watcher, use:
 
-```
+```bash
 pnpm dev
 ```
 
@@ -38,7 +38,7 @@ This will start the `tsc-watch` utility:
 
 Unit and a few integration tests are found in the `tests/` sub-directory. These can be run with:
 
-```
+```bash
 pnpm test
 ```
 
@@ -52,7 +52,7 @@ Similarly to the `core/` module, use `pnpm install` for setup, `pnpm dev` for a 
 
 The `pg/` directory provides an analytics storage implementation on top of the Postgres adapter, [`pg`](https://www.npmjs.com/package/pg). This module is intended to be run in a server-side environment and relies on several packages typically provided by NodeJS.
 
-```
+```bash
 cd pg/
 pnpm install
 ```
@@ -63,12 +63,10 @@ Since the `pg/` package needs a database, we include a [`docker-compose.test.yml
 
 This can be used to start Postgres quickly for tests:
 
-```
+```bash
 docker compose -f docker-compose.test.yml up -d
 
 pnpm test
-
-... iterate on tests
 
 docker compose -f docker-compose.test.yml down
 ```
@@ -77,7 +75,7 @@ docker compose -f docker-compose.test.yml down
 
 Finally, a store is provided for the browser in the `browser/` directory.
 
-```
+```bash
 cd browser/
 pnpm install
 ```
@@ -86,13 +84,13 @@ Similarly to other modules, `pnpm dev` starts a file watcher.
 
 Testing the browser implementation, however, requires a bit of setup. These tests run in a browser using `playwright`. To setup, run:
 
-```
+```bash
 pnpm exec playwright install
 ```
 
 This may require answering a few questions, but installs necessary components to your system. Once this is done, you can now run tests with:
 
-```
+```bash
 pnpm test
 ```
 
@@ -106,7 +104,7 @@ There are several benchmarking suites that test relative performance of the diff
 
 We also provide integration tests that compare responses from an analytics store with a Postgres store with responses from the browser store. These are found in the `compat/` directory. Before running, ensure you setup the postgres db.
 
-```
+```bash
 cd compat/
 docker compose -f ../pg/docker-compose.test.yml up -d
 ```
@@ -115,6 +113,17 @@ Next, follow the [benchmarking docs](./benchmarks/README.md) to to dump ~200k re
 
 Finally, you're ready to compare the in-memory and pg stores side by side for compatibility:
 
-```
+```bash
 pnpm test
 ```
+
+### Docs
+
+Our API usage docs are found in the `/docs` folder. We use [slatedocs](https://github.com/slatedocs/slate). To build and serve these locally, with a watcher:
+
+```bash
+cd docs
+docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source slatedocs/slate serve
+```
+
+Then navigate to [`http://localhost:4567`](http://localhost:4567).
