@@ -5,7 +5,7 @@ import {
   KnexQueryExecutor,
   PostgresAnalyticsStore,
 } from "@powerhouse/analytics-engine-pg";
-import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-memory";
+import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
 import { afterAll, beforeAll, it, expect, describe } from "vitest";
 
 const connectionString = process.env.PG_CONNECTION_STRING;
