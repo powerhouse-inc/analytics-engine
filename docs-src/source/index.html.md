@@ -10,8 +10,8 @@ toc_footers:
   - Find us on <a href='https://x.com/PowerhouseDAO' target='_blank'>X</a>!
 
 includes:
-  - memory
   - pg
+  - memory
   - compatibility
 
 search: true
