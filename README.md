@@ -122,7 +122,7 @@ pnpm test
 Our API usage docs are found in the `/docs` folder. We use [slatedocs](https://github.com/slatedocs/slate). To build and serve these locally, with a watcher:
 
 ```bash
-cd docs
+cd docs-src
 docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source slatedocs/slate serve
 ```
 
