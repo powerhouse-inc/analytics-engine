@@ -8,6 +8,9 @@ importers:
 
   .:
     dependencies:
+      crc-32:
+        specifier: ^1.2.2
+        version: 1.2.2
       knex:
         specifier: ^3.1.0
         version: 3.1.0(pg@8.13.0)
@@ -48,6 +51,11 @@ packages:
   commander@10.0.1:
     resolution: {integrity: sha512-y4Mg2tXshplEbSGzx7amzPwKKOCGuoSRP/CjEdwwk0FOGlUbq6lKuoyDZTNZkmxHdJtp54hdfY/JUrdL7Xfdug==}
     engines: {node: '>=14'}
+
+  crc-32@1.2.2:
+    resolution: {integrity: sha512-ROmzCKrTnOwybPcJApAA6WBWij23HVfGVNKqqrZpuyZOHqK2CwHSvpGuyt/UNNvaIjEd8X5IFGp4Mh+Ie1IHJQ==}
+    engines: {node: '>=0.8'}
+    hasBin: true
 
   debug@4.3.4:
     resolution: {integrity: sha512-PRWFHuSU3eDtQJPvnNY7Jcket1j0t5OuOsFzPPzsekD52Zl8qUfFIPEiswXqIvHWGVHOgX+7G/vCNNhehwxfkQ==}
@@ -233,6 +241,8 @@ snapshots:
   colorette@2.0.19: {}
 
   commander@10.0.1: {}
+
+  crc-32@1.2.2: {}
 
   debug@4.3.4:
     dependencies:
