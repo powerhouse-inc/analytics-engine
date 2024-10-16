@@ -11,7 +11,6 @@ import fs from "fs";
 import knexFactory from "knex";
 import * as SQLite from "wa-sqlite";
 import SQLiteESMFactory from "wa-sqlite/dist/wa-sqlite-async.mjs";
-import { IDBBatchAtomicVFS } from "wa-sqlite/src/examples/IDBBatchAtomicVFS.js";
 import { SQLiteQueryExecutor } from "./SQLiteExecutor";
 
 // this is awful, but needed for wa-sqlite to load from file:/// because fetch
@@ -134,16 +133,6 @@ const initSql = `
 
 `;
 
-export enum MemoryStoreType {
-  Memory,
-  IDB,
-}
-
-export type MemoryStoreOptions = {
-  type: MemoryStoreType;
-  idbName: string;
-};
-
 export class MemoryAnalyticsStore extends KnexAnalyticsStore {
   private _sqliteExecutor: SQLiteQueryExecutor;
   private _profiler: IAnalyticsProfiler;
@@ -176,7 +165,7 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
     this._sqliteExecutor = sqliteExecutor;
   }
 
-  public async init(options?: MemoryStoreOptions) {
+  public async init() {
     // sqlite3
     let module: any;
     try {
@@ -187,11 +176,8 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
 
     this._sql = SQLite.Factory(module);
 
-    // create the file system
-    if (options?.type === MemoryStoreType.IDB) {
-      const vfs = new IDBBatchAtomicVFS(options.idbName, module);
-      this._sql.vfs_register(vfs, true);
-    }
+    // create filesystems
+    this.initFS(module, this._sql);
 
     // open db
     this._db = await this._sql.open_v2("analytics");
@@ -201,6 +187,10 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
 
     // create tables if they do not exist
     await this._sql.exec(this._db!, initSql);
+  }
+
+  protected initFS(module: any, sql: SQLiteAPI) {
+    // subclasses may implement
   }
 
   public async raw(sql: string) {

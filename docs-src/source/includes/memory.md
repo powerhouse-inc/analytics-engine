@@ -1,14 +1,14 @@
 # MemoryAnalyticsStore
 
-The `MemoryAnalyticsStore` is an `IAnalyticsStore` implementation that uses a an in-memory database as its storage mechanism. Under the hood, we load a WASM build of SQLite3. There is also an option to use an `IndexedDB` plugin for persistence.
+The `MemoryAnalyticsStore` is an `IAnalyticsStore` implementation that uses a an in-memory database as its storage mechanism. Under the hood, we load a WASM build of SQLite3.
 
 <aside class="notice">
-Please note that while the in-memory database may be used in server environments, the IndexedDB plugin is intended for browsers. See the <a href="#compatibility">Compatibility</a> section for details on which stores are intended for different environments.
+See the <a href="#compatibility">Compatibility</a> section for details on which stores are intended to be used in different execution environments.
 </aside>
 
 ## Construction
 
-The `MemoryAnalyticsStore` may be created with optional contructor arguments that may be helpful for debugging or metrics collection.
+The `MemoryAnalyticsStore` is simple to create.
 
 > Create with no arguments.
 
@@ -16,22 +16,17 @@ The `MemoryAnalyticsStore` may be created with optional contructor arguments tha
 const store = new MemoryAnalyticsStore();
 ```
 
-> Optionally, you may provide a function executed for every query. This is typically a logger.
+> The `MemoryAnalyticsStore` may also be created with optional contructor arguments that may be helpful for debugging or metrics collection.
 
 ```typescript
-const queryLogger = (index, query) => console.log(`[Q:${index}] ${query}`);
-const store = new MemoryAnalyticsStore(queryLogger);
+const store = new MemoryAnalyticsStore(
+  defaultQueryLogger("memory"),
+  defaultResultsLogger("memory"),
+  new PassthroughAnalyticsProfiler()
+);
 ```
 
-> You may also provide a function executed for every result. Since these are asynchronous operations, indices match between query and results functions.
-
-```typescript
-const queryLogger = (index, query) => console.log(`[Q:${index}] ${query}`);
-const resultsLogger = (index, results) =>
-  console.log(`[R:${index}] ${JSON.stringify(results)}`);
-
-const store = new MemoryAnalyticsStore(queryLogger, resultsLogger);
-```
+For more details on these optional constructor parameters, see the [Utilities](#utilities) section.
 
 ## Initialization
 
@@ -45,36 +40,4 @@ const store = new MemoryAnalyticsStore();
 
 // initialize it
 await store.init();
-```
-
-## Browser Persistence
-
-For implementation simplicity, the "memory" store also provides a plugin for browser persistence via `IndexedDB`. This can be switched on via the initialization options.
-
-```typescript
-await store.init({
-  type: MemoryStoreType.IDB,
-  idbName: "my-analytics",
-});
-```
-
-The `idbName` essentially namespaces the database. This allows users to create multiple stores, if needed, which will not conflict with each other. You can use your browser's developer tools to see these databases, usually through the "Storage" tab..
-
-<aside class="notice">
-While manipulating the data manually is not recommended, this allows you to easily delete and recreate databases if needed.
-</aside>
-
-![dev-tools](./images/indexeddb.png)
-
-The store interface is intended to be immutable, meaning that it does not provide a general method of wiping a DB. However, an IDB database may be deleted via the standard [IDB API](https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API).
-
-```typescript
-// creates the database
-await store.init({
-  type: MemoryStoreType.IDB,
-  idbName: "my-analytics",
-});
-
-// deletes the database
-window.indexedDB.deleteDatabase("my-analytics");
 ```

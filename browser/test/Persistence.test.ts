@@ -1,20 +1,17 @@
 import { DateTime } from "luxon";
-import { AnalyticsDimension, AnalyticsPath } from "@powerhouse/analytics-engine-core";
 import {
-  MemoryAnalyticsStore,
-  MemoryStoreOptions,
-  MemoryStoreType,
-} from "../src/MemoryAnalyticsStore.js";
+  AnalyticsDimension,
+  AnalyticsPath,
+} from "@powerhouse/analytics-engine-core";
+import { BrowserAnalyticsStore } from "../src/BrowserAnalyticsStore.js";
+
 import { afterAll, beforeAll, it, expect, describe } from "vitest";
 
 const TEST_SOURCE = AnalyticsPath.fromString(
   "test/analytics/AnalyticsStore.spec"
 );
 
-const options = {
-  type: MemoryStoreType.IDB,
-  idbName: "analytics.db",
-};
+const dbName = "analytics.db";
 
 const deleteIdbDb = (name: string) =>
   new Promise((res, rej) => {
@@ -32,10 +29,10 @@ afterAll(async () => {
 describe("IDB VFS", () => {
   it("should persist records on disk", async () => {
     // first, delete db
-    await deleteIdbDb(options.idbName);
+    await deleteIdbDb(dbName);
 
-    const store = new MemoryAnalyticsStore();
-    await store.init(options);
+    const store = new BrowserAnalyticsStore(dbName);
+    await store.init();
     await store.addSeriesValues([
       {
         start: DateTime.utc(),
@@ -95,8 +92,8 @@ describe("IDB VFS", () => {
       },
     });
 
-    const newStore = new MemoryAnalyticsStore();
-    await newStore.init(options);
+    const newStore = new BrowserAnalyticsStore(dbName);
+    await newStore.init();
 
     const results = await newStore.getMatchingSeries({
       start: null,
@@ -138,11 +135,8 @@ describe("IDB VFS", () => {
       // delete existing db
       await deleteIdbDb("analytics.db.huge");
 
-      const store = new MemoryAnalyticsStore();
-      await store.init({
-        type: MemoryStoreType.IDB,
-        idbName: "analytics.db.huge",
-      });
+      const store = new BrowserAnalyticsStore("analytics.db.huge");
+      await store.init();
 
       console.log("Executing SQL...", sql);
 

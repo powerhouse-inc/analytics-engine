@@ -12,6 +12,7 @@ toc_footers:
 includes:
   - pg
   - memory
+  - browser
   - compatibility
 
 search: true
