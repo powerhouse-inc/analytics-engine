@@ -36,7 +36,7 @@ While this analytics engine is highly flexible, it is also extremely simple to g
 
 ## Insert Data
 
-The `IAnalyticsStore` object is the primary entry point for inserting and deleting metrics data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the [`MemoryAnalyticsStore`](#memory).
+The `IAnalyticsStore` interface is the primary entry point for inserting and deleting metrics data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the [`MemoryAnalyticsStore`](#memory).
 
 ```typescript
 import { MemoryStorageEngine } from "@powerhouse/analytics-engine-memory";
@@ -73,9 +73,7 @@ await store.addSeriesValue([
 
 ## AnalyticsQueryEngine
 
-The entry point into the analytics engine is the `AnalyticsQueryEngine`. This object exposes an interface for inserting, querying, and deleting metric data.
-
-### Create
+The entry point for data reads is the `AnalyticsQueryEngine`. This object exposes an interface for inserting, querying, and deleting metrics data.
 
 This object should be created on top of a storage engine. In this example, we create a simple in-memory storage engine which is compatible with all platforms.
 
@@ -86,6 +84,10 @@ import { MemoryStorageEngine } from "@powerhouse/analytics-memory";
 const engine = new AnalyticsQueryEngine(new MemoryStorageEngine());
 ```
 
-### Add Data
+## Store Implementations
 
-Metric data can be added
+Multiple storage implementations are provided, each with comprehensive documentation. See the corresponding docs for:
+
+- [MemoryAnalyticsStore](#memory)
+- [BrowserAnalyticsStore](#browser)
+- [PostgresAnalyticsStore](#postgres)
