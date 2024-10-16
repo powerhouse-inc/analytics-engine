@@ -10,9 +10,9 @@ toc_footers:
   - Find us on <a href='https://x.com/PowerhouseDAO' target='_blank'>X</a>!
 
 includes:
-  - pg
   - memory
   - browser
+  - pg
   - compatibility
 
 search: true
@@ -36,7 +36,7 @@ While this analytics engine is highly flexible, it is also extremely simple to g
 
 ## Insert Data
 
-The `IAnalyticsStore` object is the primary entry point for inserting and deleting metrics data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the [`MemoryAnalyticsStore`](#memoryanalyticsstore).
+The `IAnalyticsStore` object is the primary entry point for inserting and deleting metrics data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the [`MemoryAnalyticsStore`](#memory).
 
 ```typescript
 import { MemoryStorageEngine } from "@powerhouse/analytics-engine-memory";

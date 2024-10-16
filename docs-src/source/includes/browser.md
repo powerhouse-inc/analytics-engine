@@ -1,6 +1,6 @@
-# BrowserAnalyticsStore
+# Browser
 
-The `BrowserAnalyticsStore` is an `IAnalyticsStore` implementation that sits on top of [`MemoryAnalyticsStore`](#memoryanalyticsstore) but adds an `IndexedDB` plugin for persistence.
+The `BrowserAnalyticsStore` is an `IAnalyticsStore` implementation that sits on top of [`MemoryAnalyticsStore`](#memory) but adds an `IndexedDB` plugin for persistence.
 
 <aside class="notice">
 See the <a href="#compatibility">Compatibility</a> section for details on which stores are intended to be used in different execution environments.
@@ -31,7 +31,7 @@ For more details on these optional constructor parameters, see the [Utilities](#
 
 ## Initialization
 
-Similar to the [`MemoryAnalyticsStore`](#memoryanalyticsstore), this implementation requires an asynchronous initialization step.
+Similar to the [`MemoryAnalyticsStore`](#memory), this implementation requires an asynchronous initialization step.
 
 > Note that this method is not available on the `IAnalyticsStore` interface, but only on the concrete type.
 

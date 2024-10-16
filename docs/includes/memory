@@ -1,2 +1,36 @@
-<h1 id='memoryanalyticsstore'>MemoryAnalyticsStore</h1>
-<p>Hi.</p>
+<h1 id='memory'>Memory</h1>
+<p>The <code>MemoryAnalyticsStore</code> is an <code>IAnalyticsStore</code> implementation that uses a an in-memory database as its storage mechanism. Under the hood, we load a WASM build of SQLite3.</p>
+
+<aside class="notice">
+See the <a href="#compatibility">Compatibility</a> section for details on which stores are intended to be used in different execution environments.
+</aside>
+<h2 id='construction'>Construction</h2>
+<p>The <code>MemoryAnalyticsStore</code> is simple to create.</p>
+
+<blockquote>
+<p>Create with no arguments.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">();</span>
+</code></pre></div>
+<blockquote>
+<p>The <code>MemoryAnalyticsStore</code> may also be created with optional contructor arguments that may be helpful for debugging or metrics collection.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">(</span>
+  <span class="nx">defaultQueryLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+  <span class="nx">defaultResultsLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+  <span class="k">new</span> <span class="nx">PassthroughAnalyticsProfiler</span><span class="p">()</span>
+<span class="p">);</span>
+</code></pre></div>
+<p>For more details on these optional constructor parameters, see the <a href="#utilities">Utilities</a> section.</p>
+<h2 id='initialization'>Initialization</h2>
+<p>While easy to use, the <code>MemoryAnalyticsStore</code> requires an asynchronous initialization step. This is for two reasons. For one, it needs time to download and initialize the WASM build of SQLite. This download is fairly small (~1 MB). Additionally, it also needs to initialize the database schema of the in-memory database. This is distinct from the <a href="#postgres">Postgres implementation</a>, which assumes a fully-initialized Postgres database already exists.</p>
+
+<blockquote>
+<p>Note that this method is not available on the <code>IAnalyticsStore</code> interface, but only on the <code>MemoryAnalyticsStore</code> type.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// create the store</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">();</span>
+
+<span class="c1">// initialize it</span>
+<span class="k">await</span> <span class="nx">store</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
+</code></pre></div>

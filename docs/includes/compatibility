@@ -18,7 +18,7 @@ This guide is intended for making high level decisions about which storage syste
 <td>X</td>
 </tr>
 <tr>
-<td><code>MemoryAnalyticsStore</code> with <code>idb</code></td>
+<td><code>BrowserAnalyticsStore</code></td>
 <td>X</td>
 <td></td>
 <td></td>

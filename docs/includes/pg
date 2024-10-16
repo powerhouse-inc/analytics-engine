@@ -1,2 +1,4 @@
-<h1 id='postgresanalyticsstore'>PostgresAnalyticsStore</h1>
-<p>Hi.</p>
+<h1 id='postgres'>Postgres</h1>
+<aside class="notice">
+See the <a href="#compatibility">Compatibility</a> section for details on which stores are intended to be used in different execution environments.
+</aside>

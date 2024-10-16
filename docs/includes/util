@@ -1,0 +1,29 @@
+<h1 id='utilities'>Utilities</h1>
+<p>This section describes various utility objects.</p>
+<h2 id='sqlquerylogger-and-sqlresultslogger'>SqlQueryLogger and SqlResultsLogger</h2>
+<p>The <code>SqlQueryLogger</code> type defines a synchronous interface for logging out SQL queries, while <code>SqlResultsLogger</code> provides the same for raw results. These can be very useful for debugging or understanding what queries are actually generated from top level Typescript objects.</p>
+
+<p>These types are used frequently in multiple <code>IAnalyticsStore</code> implementations, such as <code>KnexAnalyticsStore</code>, <code>PostgresAnalyticStore</code>, <code>MemoryAnalyticsStore</code>, and <code>BrowserAnalyticsStore</code>. Generally, they are optional inputs into the constructor.</p>
+
+<blockquote>
+<p>Create your own query logger.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">queryLogger</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[Q:</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">] </span><span class="p">${</span><span class="nx">query</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">(</span><span class="nx">queryLogger</span><span class="p">);</span>
+</code></pre></div>
+<blockquote>
+<p>You may also create a results logger. Since queries are asynchronous operations, indices match between query and results functions.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">queryLogger</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[Q:</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">] </span><span class="p">${</span><span class="nx">query</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">resultsLogger</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[R:</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">] </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">results</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">(</span><span class="nx">queryLogger</span><span class="p">,</span> <span class="nx">resultsLogger</span><span class="p">);</span>
+</code></pre></div>
+<p>More commonly, you can use the included utility functions, <code>defaultQueryLogger</code> and <code>defaultResultsLogger</code>. These functions append a tag to each log.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">(</span>
+  <span class="nx">defaultQueryLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+  <span class="nx">defaultResultsLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div><h2 id='analyticsprofiler'>AnalyticsProfiler</h2>
