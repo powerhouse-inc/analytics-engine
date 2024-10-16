@@ -71,6 +71,38 @@ pnpm test
 docker compose -f docker-compose.test.yml down
 ```
 
+Postgres allows for initialization scripts to be run, and we use this to create the necessary analytics tables, indices, and other objects. This script can be found in `pg/test/scripts`. However, sometimes it is handy to destroy this database, which can be tricky to find with Docker volumes. Instead of deleting the volume, you can simply delete the mounted folder that is configured:
+
+```bash
+docker compose -f docker-compose.test.yml down
+
+rm -rf ./.db
+
+docker compose -f docker-compose.test.yml up
+```
+
+You will be able to tell that the tables are recreated by looking at the logs. Here is an example of what you should see:
+
+```
+/usr/local/bin/docker-entrypoint.sh: running /docker-entrypoint-initdb.d/initdb.sh
+database-1  | CREATE DATABASE
+database-1  | You are now connected to database "analytics" as user "postgres".
+database-1  | CREATE TABLE
+database-1  | CREATE INDEX
+database-1  | CREATE INDEX
+database-1  | CREATE INDEX
+database-1  | CREATE INDEX
+database-1  | CREATE INDEX
+database-1  | CREATE INDEX
+database-1  | CREATE INDEX
+database-1  | CREATE TABLE
+database-1  | CREATE INDEX
+database-1  | CREATE INDEX
+database-1  | CREATE TABLE
+database-1  | CREATE INDEX
+database-1  | CREATE INDEX
+```
+
 #### /browser
 
 Finally, a store is provided for the browser in the `browser/` directory.

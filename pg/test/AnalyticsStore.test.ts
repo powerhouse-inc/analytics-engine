@@ -1,18 +1,20 @@
 import { DateTime } from "luxon";
-import { AnalyticsDimension, AnalyticsPath } from "@powerhouse/analytics-engine-core";
 import {
-  KnexQueryExecutor,
-  PostgresAnalyticsStore,
-} from "../src/PostgresAnalyticsStore.js";
+  AnalyticsDimension,
+  AnalyticsPath,
+} from "@powerhouse/analytics-engine-core";
+import { PostgresAnalyticsStore } from "../src/PostgresAnalyticsStore.js";
 import { afterAll, beforeAll, it, expect } from "vitest";
-import { passthroughProfiler } from "./utils.js";
+import {
+  defaultQueryLogger,
+  defaultResultsLogger,
+} from "@powerhouse/analytics-engine-knex";
 
 const connectionString = process.env.PG_CONNECTION_STRING;
 if (!connectionString) {
   throw new Error("Missing PG_CONNECTION_STRING");
 }
 
-const executor = new KnexQueryExecutor(passthroughProfiler());
 let store: PostgresAnalyticsStore;
 
 // Set to false during testing to see the resulting records in db
@@ -22,7 +24,11 @@ const TEST_SOURCE = AnalyticsPath.fromString(
 );
 
 beforeAll(async () => {
-  store = new PostgresAnalyticsStore(connectionString, executor);
+  store = new PostgresAnalyticsStore(
+    connectionString,
+    defaultQueryLogger("pg"),
+    defaultResultsLogger("pg")
+  );
   await store.clearSeriesBySource(TEST_SOURCE, true);
 
   await store.addSeriesValues([

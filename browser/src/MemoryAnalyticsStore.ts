@@ -1,12 +1,18 @@
-import knexFactory, { Knex } from "knex";
-import SQLiteESMFactory from "wa-sqlite/dist/wa-sqlite-async.mjs";
-import { IDBBatchAtomicVFS } from "wa-sqlite/src/examples/IDBBatchAtomicVFS.js";
-import * as SQLite from "wa-sqlite";
-import fs from "fs";
+import {
+  IAnalyticsProfiler,
+  PassthroughAnalyticsProfiler,
+} from "@powerhouse/analytics-engine-core";
 import {
   KnexAnalyticsStore,
-  IKnexQueryExecutor,
+  SqlQueryLogger,
+  SqlResultsLogger,
 } from "@powerhouse/analytics-engine-knex";
+import fs from "fs";
+import knexFactory from "knex";
+import * as SQLite from "wa-sqlite";
+import SQLiteESMFactory from "wa-sqlite/dist/wa-sqlite-async.mjs";
+import { IDBBatchAtomicVFS } from "wa-sqlite/src/examples/IDBBatchAtomicVFS.js";
+import { SQLiteQueryExecutor } from "./SQLiteExecutor";
 
 // this is awful, but needed for wa-sqlite to load from file:/// because fetch
 // cannot load file:/// paths
@@ -128,61 +134,6 @@ const initSql = `
 
 `;
 
-class SQLiteQueryExecutor implements IKnexQueryExecutor {
-  private _index: number = 0;
-  private _sql: SQLiteAPI | null = null;
-  private _db: number | null = null;
-
-  constructor(
-    private readonly _queryLogger?: (index: number, query: string) => void,
-    private readonly _resultsLogger?: (index: number, results: any) => void
-  ) {}
-
-  init(sql: SQLiteAPI, db: number) {
-    this._sql = sql;
-    this._db = db;
-  }
-
-  async execute<T extends {}, U>(query: Knex.QueryBuilder<T, U>) {
-    if (!this._sql || !this._db) {
-      throw new Error("SQLiteQueryExecutor not initialized");
-    }
-
-    const results: any = [];
-    const raw = query.toString();
-    const index = this._index++;
-
-    if (this._queryLogger) {
-      this._queryLogger(index, raw);
-    }
-
-    await this._sql!.exec(this._db!, raw, (row, col) => {
-      const value: any = {};
-
-      for (let i = 0; i < col.length; i++) {
-        // todo: "reviver"
-        const prop = col[i];
-        let val: any = row[i];
-        if (prop === "start" || prop === "end") {
-          val = val ? new Date(val) : null;
-        } else if (prop === "params") {
-          val = JSON.parse(val);
-        }
-
-        value[prop] = val;
-      }
-
-      results.push(value);
-    });
-
-    if (this._resultsLogger) {
-      this._resultsLogger(index, results);
-    }
-
-    return results;
-  }
-}
-
 export enum MemoryStoreType {
   Memory,
   IDB,
@@ -195,22 +146,33 @@ export type MemoryStoreOptions = {
 
 export class MemoryAnalyticsStore extends KnexAnalyticsStore {
   private _sqliteExecutor: SQLiteQueryExecutor;
+  private _profiler: IAnalyticsProfiler;
   private _sql: SQLiteAPI | null = null;
   private _db: number | null = null;
 
   public constructor(
-    queryLogger?: (index: number, query: string) => void,
-    resultsLogger?: (index: number, results: any) => void
+    queryLogger?: SqlQueryLogger,
+    resultsLogger?: SqlResultsLogger,
+    profiler?: IAnalyticsProfiler
   ) {
     const knex = knexFactory({
       client: "sqlite3",
       useNullAsDefault: true,
     });
 
-    const sqliteExecutor = new SQLiteQueryExecutor(queryLogger, resultsLogger);
+    if (!profiler) {
+      profiler = new PassthroughAnalyticsProfiler();
+    }
+
+    const sqliteExecutor = new SQLiteQueryExecutor(
+      profiler,
+      queryLogger,
+      resultsLogger
+    );
 
     super(sqliteExecutor, knex);
 
+    this._profiler = profiler;
     this._sqliteExecutor = sqliteExecutor;
   }
 
@@ -243,14 +205,19 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
 
   public async raw(sql: string) {
     const values: any[] = [];
-    await this._sql?.exec(this._db!, sql, (row, col) => {
-      const value: any = {};
-      for (let i = 0; i < col.length; i++) {
-        value[col[i]] = row[i];
-      }
 
-      values.push(value);
-    });
+    await this._profiler.record(
+      "QueryRaw",
+      async () =>
+        await this._sql?.exec(this._db!, sql, (row, col) => {
+          const value: any = {};
+          for (let i = 0; i < col.length; i++) {
+            value[col[i]] = row[i];
+          }
+
+          values.push(value);
+        })
+    );
 
     return values;
   }

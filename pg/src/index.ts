@@ -1,4 +1,1 @@
-export {
-  PostgresAnalyticsStore,
-  KnexQueryExecutor,
-} from "./PostgresAnalyticsStore.js";
+export { PostgresAnalyticsStore } from "./PostgresAnalyticsStore.js";

@@ -1,5 +1,8 @@
 export type { IAnalyticsProfiler } from "./AnalyticsProfiler.js";
-export { AnalyticsProfiler } from "./AnalyticsProfiler.js";
+export {
+  AnalyticsProfiler,
+  PassthroughAnalyticsProfiler,
+} from "./AnalyticsProfiler.js";
 
 export type {
   IAnalyticsStore,

@@ -3,8 +3,10 @@ export interface IAnalyticsProfiler {
 
   push: (system: string) => void;
   pop: () => void;
+  popAndReturn: (result: any) => any;
 
-  record: (metric: string, fn: () => Promise<any>) => Promise<any>;
+  record: <T>(metric: string, fn: () => Promise<T>) => Promise<T>;
+  recordSync: <T>(metric: string, fn: () => T) => T;
 }
 
 export class AnalyticsProfiler implements IAnalyticsProfiler {
@@ -34,14 +36,31 @@ export class AnalyticsProfiler implements IAnalyticsProfiler {
     }
   }
 
-  async record(metric: string, fn: () => Promise<any>): Promise<any> {
-    const start = Date.now();
+  popAndReturn(result: any): any {
+    this.pop();
+
+    return result;
+  }
+
+  async record<T>(metric: string, fn: () => Promise<T>): Promise<T> {
+    const start = performance.now();
     const fullMetric = `${this.prefix}.${metric}`;
 
     try {
       return await fn();
     } finally {
-      this._logger(fullMetric, Date.now() - start);
+      this._logger(fullMetric, performance.now() - start);
+    }
+  }
+
+  recordSync<T>(metric: string, fn: () => T): T {
+    const start = performance.now();
+    const fullMetric = `${this.prefix}.${metric}`;
+
+    try {
+      return fn();
+    } finally {
+      this._logger(fullMetric, performance.now() - start);
     }
   }
 
@@ -51,5 +70,31 @@ export class AnalyticsProfiler implements IAnalyticsProfiler {
     } else {
       this._prefix = this._ns;
     }
+  }
+}
+
+export class PassthroughAnalyticsProfiler implements IAnalyticsProfiler {
+  get prefix(): string {
+    return "";
+  }
+
+  push(system: string) {
+    //
+  }
+
+  pop() {
+    //
+  }
+
+  popAndReturn(result: any) {
+    return result;
+  }
+
+  async record<T>(metric: string, fn: () => Promise<T>) {
+    return await fn();
+  }
+
+  recordSync<T>(metric: string, fn: () => T) {
+    return fn();
   }
 }

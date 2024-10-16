@@ -18,9 +18,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
       params json
   );
 
-  create unique index "AnalyticsSeries_pkey"
-    on "AnalyticsSeries" (id);
-
   create index analyticsseries_end_index
       on "AnalyticsSeries" ("end");
 
@@ -51,9 +48,6 @@ psql -v ON_ERROR_STOP=1 --username "$POSTGRES_USER" --dbname "$POSTGRES_DB" <<-E
       icon        varchar(1000),
       description text
   );
-
-  create unique index "AnalyticsDimension_pkey"
-    on "AnalyticsDimension" (id);
 
   create index analyticsdimension_dimension_index
       on "AnalyticsDimension" (dimension);

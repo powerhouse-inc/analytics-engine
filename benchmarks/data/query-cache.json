@@ -1,602 +1,774 @@
 [
     {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 21 order by \"id\" asc",
+        "hitCount": 10,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"CoreUnit\" where \"type\" = 'CoreUnit' order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnits",
+        "queryName": "coreUnits db query"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 0 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 1 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 3 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 7 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 8 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 9 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 10 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 11 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 12 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 13 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 14 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 15 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 16 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 17 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 18 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 19 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 20 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 22 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 38 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"SocialMediaChannels\" where \"cuId\" = 66 order by \"id\" asc",
+        "hitCount": 9,
+        "moduleName": "CoreUnit",
+        "queryName": "getSocialMediaChannels"
+    },
+    {
+        "query": "select * from \"CoreUnit\" order by \"id\" asc",
+        "hitCount": 5,
+        "moduleName": "Teams",
+        "queryName": "getTeams"
+    },
+    {
+        "query": "select \"AV\".*, \"budget\".\"icon\" as \"dim_icon\", \"budget\".\"description\" as \"dim_description\", \"budget\".\"label\" as \"dim_label\" from (select *, (select \"path\" from \"AnalyticsSeries_AnalyticsDimension\" as \"ASAD\" left join \"AnalyticsDimension\" as \"AD\" on \"AD\".\"id\" = \"ASAD\".\"dimensionId\" where \"ASAD\".\"seriesId\" = \"AS_inner\".\"id\" and \"AD\".\"dimension\" = 'budget') as \"dim_budget\" from \"AnalyticsSeries\" as \"AS_inner\" where \"metric\" in ('Actuals', 'PaymentsOnChain', 'ProtocolNetOutflow', 'Forecast') and \"unit\" in ('DAI') and \"start\" < '2025-01-01 00:00:00.000') AS \"AV\" left join \"AnalyticsDimension\" as \"budget\" on \"budget\".\"path\" = \"dim_budget\" where \"dim_budget\" like 'atlas/%' order by \"start\" asc",
+        "analyticsQuery": "{\"start\":\"2021-01-01T00:00:00.000Z\",\"end\":\"2025-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":3},\"metrics\":[\"Actuals\",\"PaymentsOnChain\",\"ProtocolNetOutflow\",\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"DAI\"},\"select\":{\"budget\":[{\"_type\":\"AnalyticsPath\",\"value\":\"atlas\"}]},\"lod\":{\"budget\":4}}",
+        "hitCount": 4,
+        "moduleName": "analyticsQuery",
+        "queryName": "analyticsQuery"
+    },
+    {
+        "query": "select \"AV\".*, \"budget\".\"icon\" as \"dim_icon\", \"budget\".\"description\" as \"dim_description\", \"budget\".\"label\" as \"dim_label\" from (select *, (select \"path\" from \"AnalyticsSeries_AnalyticsDimension\" as \"ASAD\" left join \"AnalyticsDimension\" as \"AD\" on \"AD\".\"id\" = \"ASAD\".\"dimensionId\" where \"ASAD\".\"seriesId\" = \"AS_inner\".\"id\" and \"AD\".\"dimension\" = 'budget') as \"dim_budget\" from \"AnalyticsSeries\" as \"AS_inner\" where \"metric\" in ('PaymentsOffChainIncluded') and \"unit\" in ('DAI') and \"start\" < '2025-01-01 00:00:00.000') AS \"AV\" left join \"AnalyticsDimension\" as \"budget\" on \"budget\".\"path\" = \"dim_budget\" where \"dim_budget\" like 'atlas/%' order by \"start\" asc",
+        "analyticsQuery": "{\"start\":\"2021-01-01T00:00:00.000Z\",\"end\":\"2025-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":1},\"metrics\":[\"PaymentsOffChainIncluded\"],\"currency\":{\"_t\":0,\"_v\":\"DAI\"},\"select\":{\"budget\":[{\"_type\":\"AnalyticsPath\",\"value\":\"atlas\"}]},\"lod\":{\"budget\":1}}",
+        "hitCount": 4,
+        "moduleName": "analyticsQuery",
+        "queryName": "analyticsQuery"
+    },
+    {
+        "query": "select \"AV\".*, \"budget\".\"icon\" as \"dim_icon\", \"budget\".\"description\" as \"dim_description\", \"budget\".\"label\" as \"dim_label\" from (select *, (select \"path\" from \"AnalyticsSeries_AnalyticsDimension\" as \"ASAD\" left join \"AnalyticsDimension\" as \"AD\" on \"AD\".\"id\" = \"ASAD\".\"dimensionId\" where \"ASAD\".\"seriesId\" = \"AS_inner\".\"id\" and \"AD\".\"dimension\" = 'budget') as \"dim_budget\" from \"AnalyticsSeries\" as \"AS_inner\" where \"metric\" in ('PaymentsOffChainIncluded') and \"unit\" in ('MKR') and \"start\" < '2025-01-01 00:00:00.000') AS \"AV\" left join \"AnalyticsDimension\" as \"budget\" on \"budget\".\"path\" = \"dim_budget\" where \"dim_budget\" like 'atlas/%' order by \"start\" asc",
+        "analyticsQuery": "{\"start\":\"2021-01-01T00:00:00.000Z\",\"end\":\"2025-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":6},\"metrics\":[\"PaymentsOffChainIncluded\"],\"currency\":{\"_t\":0,\"_v\":\"MKR\"},\"select\":{\"budget\":[{\"_type\":\"AnalyticsPath\",\"value\":\"atlas\"}]},\"lod\":{\"budget\":1}}",
+        "hitCount": 4,
+        "moduleName": "analyticsQuery",
+        "queryName": "analyticsQuery"
+    },
+    {
+        "query": "select \"AV\".*, \"priceData\".\"icon\" as \"dim_icon\", \"priceData\".\"description\" as \"dim_description\", \"priceData\".\"label\" as \"dim_label\" from (select *, (select \"path\" from \"AnalyticsSeries_AnalyticsDimension\" as \"ASAD\" left join \"AnalyticsDimension\" as \"AD\" on \"AD\".\"id\" = \"ASAD\".\"dimensionId\" where \"ASAD\".\"seriesId\" = \"AS_inner\".\"id\" and \"AD\".\"dimension\" = 'priceData') as \"dim_priceData\" from \"AnalyticsSeries\" as \"AS_inner\" where \"metric\" in ('DailyMkrPriceChange') and \"unit\" in ('DAI') and \"start\" < '2025-01-01 00:00:00.000') AS \"AV\" left join \"AnalyticsDimension\" as \"priceData\" on \"priceData\".\"path\" = \"dim_priceData\" where \"dim_priceData\" like 'atlas/%' order by \"start\" asc",
+        "analyticsQuery": "{\"start\":\"2021-01-01T00:00:00.000Z\",\"end\":\"2025-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":6},\"metrics\":[\"DailyMkrPriceChange\"],\"currency\":{\"_t\":0,\"_v\":\"DAI\"},\"select\":{\"priceData\":[{\"_type\":\"AnalyticsPath\",\"value\":\"atlas\"}]},\"lod\":{\"priceData\":1}}",
+        "hitCount": 4,
+        "moduleName": "analyticsQuery",
+        "queryName": "analyticsQuery"
+    },
+    {
         "query": "select * from \"BudgetStatement\" where \"ownerType\" in ('CoreUnit', 'EcosystemActor', 'AlignedDelegates') order by \"month\" desc",
-        "hitCount": 7,
+        "hitCount": 0,
         "moduleName": "BudgetStatements",
         "queryName": "getBudgetStatements"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
     },
     {
-        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
-        "hitCount": 7,
+        "analyticsQuery": "{\"start\":\"2020-01-01T00:00:00.000Z\",\"end\":\"2100-01-01T00:00:00.000Z\",\"granularity\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":{\"_type\":\"AnalyticsGranularity\",\"value\":0}}}}}},\"metrics\":[\"Forecast\"],\"currency\":{\"_t\":0,\"_v\":\"[object Object]\"},\"select\":{\"report\":[{\"_type\":\"AnalyticsPath\",\"value\":\"[object Object]\"}]},\"lod\":{\"report\":5}}",
+        "hitCount": 0,
         "moduleName": "analyticsQuery",
         "queryName": "analyticsQuery"
+    },
+    {
+        "query": "select * from \"CoreUnit\" where \"shortCode\" = 'SF' and \"type\" = 'CoreUnit' order by \"id\" asc",
+        "hitCount": 1,
+        "moduleName": "CoreUnits",
+        "queryName": "coreUnits db query"
     }
 ]

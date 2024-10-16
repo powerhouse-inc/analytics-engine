@@ -5,6 +5,10 @@ import {
 } from "./AnalyticsDiscretizer.js";
 import { AnalyticsPath } from "./AnalyticsPath.js";
 import {
+  IAnalyticsProfiler,
+  PassthroughAnalyticsProfiler,
+} from "./AnalyticsProfiler.js";
+import {
   AnalyticsQuery,
   AnalyticsSeries,
   AnalyticsSeriesQuery,
@@ -15,15 +19,20 @@ import {
 import { IAnalyticsStore } from "./AnalyticsStore.js";
 
 export class AnalyticsQueryEngine {
-  private _analyticsStore: IAnalyticsStore;
+  private readonly _profiler: IAnalyticsProfiler;
 
-  public constructor(store: IAnalyticsStore) {
-    this._analyticsStore = store;
+  public constructor(
+    private readonly _analyticsStore: IAnalyticsStore,
+    profiler?: IAnalyticsProfiler
+  ) {
+    this._profiler = profiler ?? new PassthroughAnalyticsProfiler();
   }
 
   public async executeCompound(
     query: CompoundAnalyticsQuery
   ): Promise<GroupedPeriodResults> {
+    let result: GroupedPeriodResults;
+
     const inputsQuery: AnalyticsQuery = {
       start: query.start,
       end: query.end,
@@ -43,35 +52,51 @@ export class AnalyticsQueryEngine {
       metrics: [query.expression.operand.metric],
       currency: query.expression.operand.currency,
     };
+
     const inputExecute = await this.execute(inputsQuery);
     const operandExecute = await this.execute(operandQuery);
+
     if (
       [CompoundOperator.VectorAdd, CompoundOperator.VectorSubtract].includes(
         query.expression.operator
       )
     ) {
-      return this._applyVectorOperator(
-        inputExecute,
-        operandExecute,
-        query.expression.operator,
-        query.expression.resultCurrency
+      result = await this._profiler.record(
+        "ApplyVectorOperator",
+        async () =>
+          await this._applyVectorOperator(
+            inputExecute,
+            operandExecute,
+            query.expression.operator,
+            query.expression.resultCurrency
+          )
+      );
+    } else {
+      result = await this._profiler.record(
+        "ApplyScalarOperator",
+        async () =>
+          await this._applyScalarOperator(
+            inputExecute,
+            operandExecute,
+            query.expression.operator,
+            query.expression.operand.useSum,
+            query.expression.resultCurrency
+          )
       );
     }
-    return this._applyScalarOperator(
-      inputExecute,
-      operandExecute,
-      query.expression.operator,
-      query.expression.operand.useSum,
-      query.expression.resultCurrency
-    );
+
+    return result;
   }
 
   public async execute(query: AnalyticsQuery): Promise<GroupedPeriodResults> {
     const seriesResults = await this._executeSeriesQuery(query);
-    const normalizedSeriesResults = this._applyLods(seriesResults, query.lod);
+
+    const normalizedSeriesResults = this._profiler.recordSync("ApplyLODs", () =>
+      this._applyLods(seriesResults, query.lod)
+    );
 
     const dimensions = Object.keys(query.select);
-    const discretizedResult =
+    const discretizedResult = this._profiler.recordSync("Discretize", () =>
       normalizedSeriesResults.length < 1
         ? []
         : AnalyticsDiscretizer.discretize(
@@ -80,7 +105,8 @@ export class AnalyticsQueryEngine {
             query.start,
             query.end,
             query.granularity
-          );
+          )
+    );
     return discretizedResult;
   }
 

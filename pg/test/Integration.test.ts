@@ -6,24 +6,20 @@ import {
   AnalyticsGranularity,
   AnalyticsQuery,
   GroupedPeriodResults,
+  PassthroughAnalyticsProfiler,
 } from "@powerhouse/analytics-engine-core";
+import { PostgresAnalyticsStore } from "../src/PostgresAnalyticsStore";
 import {
+  defaultQueryLogger,
+  defaultResultsLogger,
   KnexQueryExecutor,
-  PostgresAnalyticsStore,
-} from "../src/PostgresAnalyticsStore";
-import { passthroughProfiler } from "./utils";
+} from "@powerhouse/analytics-engine-knex";
 
 const connectionString = process.env.PG_CONNECTION_STRING;
 if (!connectionString) {
   throw new Error("Missing PG_CONNECTION_STRING");
 }
 
-const executor = new KnexQueryExecutor(
-  passthroughProfiler(),
-  (index: number, query: string) => console.log(`[Q${index}]: ${query}`),
-  (index: number, value: any) =>
-    console.log(`[R${index}]: ${JSON.stringify(value, null, 2)}\n`)
-);
 let store: PostgresAnalyticsStore;
 let engine: AnalyticsQueryEngine;
 
@@ -59,7 +55,11 @@ const getResultsForGranularity = async (
 };
 
 beforeAll(async () => {
-  store = new PostgresAnalyticsStore(connectionString, executor);
+  store = new PostgresAnalyticsStore(
+    connectionString,
+    defaultQueryLogger("pg"),
+    defaultResultsLogger("pg")
+  );
   engine = new AnalyticsQueryEngine(store);
 
   // clear all records first

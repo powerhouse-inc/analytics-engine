@@ -3,14 +3,17 @@ import { DateTime } from "luxon";
 import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
 import { Bench } from "tinybench";
 import { AnalyticsPath } from "@powerhouse/analytics-engine-core";
-import { queryLogger, resultsLogger } from "./util.js";
+import {
+  defaultQueryLogger,
+  defaultResultsLogger,
+} from "@powerhouse/analytics-engine-knex";
 
 // first, load the data
 const sqlHuge = fs.readFileSync("./data/dump-huge.sql", "utf-8");
 
 const store: MemoryAnalyticsStore = new MemoryAnalyticsStore(
-  queryLogger("memory"),
-  resultsLogger("memory")
+  defaultQueryLogger("memory"),
+  defaultResultsLogger("memory")
 );
 await store.init();
 await store.raw(sqlHuge);
