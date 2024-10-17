@@ -2,40 +2,26 @@ import fs from "fs";
 import { DateTime } from "luxon";
 import { Bench } from "tinybench";
 import { AnalyticsPath } from "@powerhouse/analytics-engine-core";
-import { logs, queryLogger, resultsLogger } from "./util.js";
-import {
-  KnexQueryExecutor,
-  PostgresAnalyticsStore,
-} from "@powerhouse/analytics-engine-pg";
+import { logs } from "./util.js";
+import { PostgresAnalyticsStore } from "@powerhouse/analytics-engine-pg";
 import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
-
-// todo: export these from @powerhouse/analytics-engine-pg
-const passthroughProfiler = () => ({
-  prefix: "",
-  push: (system: string) => {},
-  pop: () => {},
-  record: async (metric: string, fn: () => Promise<any>) => await fn(),
-});
+import {
+  defaultQueryLogger,
+  defaultResultsLogger,
+} from "@powerhouse/analytics-engine-knex";
 
 const connectionString = process.env.PG_CONNECTION_STRING;
 if (!connectionString) {
   throw new Error("PG_CONNECTION_STRING not set");
 }
-const postgres = new PostgresAnalyticsStore(
-  connectionString,
-  new KnexQueryExecutor(
-    passthroughProfiler(),
-    queryLogger("pg"),
-    resultsLogger("pg")
-  )
-);
+const postgres = new PostgresAnalyticsStore(connectionString);
 
 console.log(`Postgres initialized and connecting to ${connectionString}.`);
 
 const sqlHuge = fs.readFileSync("./data/dump-huge.sql", "utf-8");
 const memory = new MemoryAnalyticsStore(
-  queryLogger("memory"),
-  resultsLogger("memory")
+  defaultQueryLogger("memory"),
+  defaultResultsLogger("memory")
 );
 await memory.init();
 await memory.raw(sqlHuge);

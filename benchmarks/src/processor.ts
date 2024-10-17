@@ -1,6 +1,9 @@
 import fs from "fs";
 import crc32 from "crc-32";
-import { AnalyticsGranularity, AnalyticsQuery } from "@powerhouse/analytics-engine-core";
+import {
+  AnalyticsGranularity,
+  AnalyticsQuery,
+} from "@powerhouse/analytics-engine-core";
 
 type QueryRecord = {
   crc: number;
@@ -33,18 +36,18 @@ for (const { analyticsQuery, hitCount, moduleName, queryName } of queries) {
         currency: json.currency,
         metrics: json.metrics,
         select: json.select,
-        granularity: AnalyticsGranularity[json.granularity.value.value],
+        granularity: json.granularity as AnalyticsGranularity,
         lod: {},
       },
       hitCount: 0,
       modules: [],
       names: [],
-    }
+    };
   }
 
   const set = querySet[crc];
   set.hitCount += hitCount;
-  
+
   if (!set.modules.includes(moduleName)) {
     set.modules.push(moduleName);
   }
@@ -57,7 +60,7 @@ for (const { analyticsQuery, hitCount, moduleName, queryName } of queries) {
 const queryList: QueryRecord[] = [];
 for (const crc in querySet) {
   const set = querySet[crc];
-  
+
   queryList.push(set);
 }
 

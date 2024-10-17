@@ -1,36 +1,1636 @@
 [
   {
-    "crc": 629965837,
+    "crc": 51978731,
     "query": {
       "start": "2020-01-01T00:00:00.000Z",
       "end": "2100-01-01T00:00:00.000Z",
-      "granularity": {
-        "_type": "AnalyticsGranularity",
-        "value": {
-          "_type": "AnalyticsGranularity",
-          "value": 0
-        }
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/59/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 86013073,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
       },
       "metrics": [
         "Forecast"
       ],
-      "currency": {
-        "_t": 0,
-        "_v": "[object Object]"
-      },
       "select": {
         "report": [
           {
-            "_type": "AnalyticsPath",
-            "value": "[object Object]"
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/75/2024/10"
           }
         ]
       },
-      "lod": {
-        "report": 5
-      }
+      "granularity": 0,
+      "lod": {}
     },
-    "hitCount": 693,
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 88319533,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/47/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 208868522,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/45/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 484328396,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/55/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 637120281,
+    "query": {
+      "start": "2024-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals",
+        "Budget",
+        "Forecast",
+        "PaymentsOnChain",
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas/scopes"
+          }
+        ]
+      },
+      "granularity": 1,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 686900636,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/55/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 869459042,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/74/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 887820583,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/52/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 945558266,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/45/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1260200888,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/73/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1277482749,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/55/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1342853533,
+    "query": {
+      "start": "2024-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals",
+        "Budget",
+        "Forecast",
+        "PaymentsOnChain",
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas"
+          }
+        ]
+      },
+      "granularity": 2,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1438200604,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/47/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1440407968,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/75/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1460107011,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/74/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1494102209,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/50/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1637233996,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/47/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1643505648,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/75/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1663594835,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/74/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1755744203,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/45/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1867014305,
+    "query": {
+      "start": "2024-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals",
+        "Budget",
+        "Forecast",
+        "PaymentsOnChain",
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas"
+          }
+        ]
+      },
+      "granularity": 1,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": 1878827058,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/51/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -344633043,
+    "query": {
+      "start": "2021-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals",
+        "PaymentsOnChain",
+        "ProtocolNetOutflow",
+        "Forecast"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas"
+          }
+        ]
+      },
+      "granularity": 3,
+      "lod": {}
+    },
+    "hitCount": 2,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1717217421,
+    "query": {
+      "start": "2021-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOffChainIncluded"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas"
+          }
+        ]
+      },
+      "granularity": 1,
+      "lod": {}
+    },
+    "hitCount": 2,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -492297233,
+    "query": {
+      "start": "2021-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "MKR"
+      },
+      "metrics": [
+        "PaymentsOffChainIncluded"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas"
+          }
+        ]
+      },
+      "granularity": 6,
+      "lod": {}
+    },
+    "hitCount": 2,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1242024117,
+    "query": {
+      "start": "2021-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "DailyMkrPriceChange"
+      ],
+      "select": {
+        "priceData": [
+          {
+            "_t": 0,
+            "_v": "atlas"
+          }
+        ]
+      },
+      "granularity": 6,
+      "lod": {}
+    },
+    "hitCount": 2,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1318249206,
+    "query": {
+      "start": "2024-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals",
+        "Budget",
+        "Forecast",
+        "PaymentsOnChain",
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas/scopes"
+          }
+        ]
+      },
+      "granularity": 4,
+      "lod": {}
+    },
+    "hitCount": 2,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1330677955,
+    "query": {
+      "start": "2024-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals",
+        "Budget",
+        "Forecast",
+        "PaymentsOnChain",
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas/scopes"
+          }
+        ]
+      },
+      "granularity": 4,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -437638574,
+    "query": {
+      "start": "2024-01-01T00:00:00.000Z",
+      "end": "2025-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals",
+        "Budget",
+        "Forecast",
+        "PaymentsOnChain",
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas/scopes"
+          }
+        ]
+      },
+      "granularity": 2,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -470449270,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/73/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1410235943,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/59/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1677479659,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/52/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -236547853,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/50/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -954990592,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/51/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -856087516,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/52/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1290856773,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/73/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -83159832,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/59/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1591999038,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/50/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1745971919,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Forecast"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/51/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1473464507,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/52/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -673544742,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/73/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1612806263,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/59/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -976644445,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/50/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -214235568,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "PaymentsOnChain"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/51/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -876555935,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/74/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1271471106,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/55/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -1867205944,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/45/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -44985554,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/47/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -47038062,
+    "query": {
+      "start": "2020-01-01T00:00:00.000Z",
+      "end": "2100-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "ProtocolNetOutflow"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/EcosystemActor/75/2024/10"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 1,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -118193201,
+    "query": {
+      "start": "2022-01-01T00:00:00.000Z",
+      "end": "2024-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "report": [
+          {
+            "_t": 0,
+            "_v": "atlas/CoreUnit"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 0,
+    "modules": [
+      "analyticsQuery"
+    ],
+    "names": [
+      "analyticsQuery"
+    ]
+  },
+  {
+    "crc": -2076007952,
+    "query": {
+      "start": "2022-01-01T00:00:00.000Z",
+      "end": "2024-01-01T00:00:00.000Z",
+      "currency": {
+        "_t": 0,
+        "_v": "DAI"
+      },
+      "metrics": [
+        "Actuals"
+      ],
+      "select": {
+        "budget": [
+          {
+            "_t": 0,
+            "_v": "atlas/scopes"
+          }
+        ]
+      },
+      "granularity": 0,
+      "lod": {}
+    },
+    "hitCount": 0,
     "modules": [
       "analyticsQuery"
     ],
