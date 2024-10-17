@@ -11,7 +11,7 @@ import fs from "fs";
 import knexFactory from "knex";
 import * as SQLite from "wa-sqlite";
 import SQLiteESMFactory from "wa-sqlite/dist/wa-sqlite-async.mjs";
-import { SQLiteQueryExecutor } from "./SQLiteExecutor";
+import { SQLiteQueryExecutor } from "./SQLiteExecutor.js";
 
 // this is awful, but needed for wa-sqlite to load from file:/// because fetch
 // cannot load file:/// paths

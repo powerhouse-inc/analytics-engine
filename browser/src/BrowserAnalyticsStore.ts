@@ -1,5 +1,5 @@
 import { IDBBatchAtomicVFS } from "wa-sqlite/src/examples/IDBBatchAtomicVFS.js";
-import { MemoryAnalyticsStore } from "./MemoryAnalyticsStore";
+import { MemoryAnalyticsStore } from "./MemoryAnalyticsStore.js";
 import {
   SqlQueryLogger,
   SqlResultsLogger,
