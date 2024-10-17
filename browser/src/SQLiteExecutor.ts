@@ -16,7 +16,7 @@ export class SQLiteQueryExecutor implements IKnexQueryExecutor {
     private readonly _queryLogger?: SqlQueryLogger,
     private readonly _resultsLogger?: SqlResultsLogger
   ) {
-    _profiler.push("SQLite");
+    //
   }
 
   init(sql: SQLiteAPI, db: number) {
