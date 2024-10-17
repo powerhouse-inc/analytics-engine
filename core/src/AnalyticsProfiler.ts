@@ -15,7 +15,7 @@ export class AnalyticsProfiler implements IAnalyticsProfiler {
 
   constructor(
     private readonly _ns: string,
-    private readonly _logger: (metricName: string, nano: number) => void
+    private readonly _logger: (metricName: string, ms: number) => void
   ) {
     this._prefix = _ns;
   }

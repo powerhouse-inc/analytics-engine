@@ -15,8 +15,8 @@ import {
 class ExecutionResults {
   public readonly durationMs: number;
 
-  constructor(public readonly name: string, durationNano: number) {
-    this.durationMs = durationNano / 1e6;
+  constructor(public readonly name: string, durationMs: number) {
+    this.durationMs = durationMs;
   }
 }
 
@@ -183,7 +183,7 @@ const rawTable = (results: AggregateResults[]) =>
     ...Object.entries(memory).reduce(
       (acc, [key, value]) => ({
         ...acc,
-        [`mem.${key}`]: value,
+        [`mem.${key}`]: value.toFixed(5),
       }),
       {}
     ),
@@ -191,7 +191,7 @@ const rawTable = (results: AggregateResults[]) =>
     ...Object.entries(pg).reduce(
       (acc, [key, value]) => ({
         ...acc,
-        [`pg.${key}`]: value,
+        [`pg.${key}`]: value.toFixed(5),
       }),
       {}
     ),
@@ -207,7 +207,7 @@ const compareTable = (results: AggregateResults[]) =>
     return keys.reduce(
       (acc, key) => ({
         ...acc,
-        [`${key} diff`]: memory[key] - pg[key],
+        [`${key} diff`]: (memory[key] - pg[key]).toFixed(5),
         [`${key} x`]: `${(memory[key] / pg[key]).toFixed(2)}x`,
       }),
       {}
