@@ -1,6 +1,7 @@
 {
   "name": "compat",
   "type": "module",
+  "license": "AGPL-3.0-only",
   "scripts": {
     "test": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest"
   },

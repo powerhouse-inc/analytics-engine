@@ -1,6 +1,7 @@
 {
   "name": "@powerhousedao/analytics-engine-pg",
   "version": "0.1.0",
+  "license": "AGPL-3.0-only",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "type": "module",
