@@ -7,10 +7,10 @@ export default defineConfig({
     server: {
       deps: {
         inline: [
-          "@powerhouse/analytics-engine-core",
-          "@powerhouse/analytics-engine-knex",
-          "@powerhouse/analytics-engine-pg",
-          "@powerhouse/analytics-engine-memory",
+          "@powerhousedao/analytics-engine-core",
+          "@powerhousedao/analytics-engine-knex",
+          "@powerhousedao/analytics-engine-pg",
+          "@powerhousedao/analytics-engine-memory",
         ],
       },
     },

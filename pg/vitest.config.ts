@@ -6,7 +6,10 @@ export default defineConfig({
     testTimeout: 5000,
     server: {
       deps: {
-        inline: ["@powerhouse/analytics-engine-core", "@powerhouse/analytics-engine-knex"],
+        inline: [
+          "@powerhousedao/analytics-engine-core",
+          "@powerhousedao/analytics-engine-knex",
+        ],
       },
     },
     setupFiles: "./test/vitest.setup.ts",

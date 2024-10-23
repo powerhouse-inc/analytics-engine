@@ -6,7 +6,7 @@ import {
   AnalyticsGranularity,
   AnalyticsQuery,
   GroupedPeriodResults,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 import { MemoryAnalyticsStore } from "../src/MemoryAnalyticsStore";
 
 let store: MemoryAnalyticsStore;

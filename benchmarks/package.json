@@ -10,10 +10,10 @@
     "test-raw": "pnpm build && PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/raw.js"
   },
   "dependencies": {
-    "@powerhouse/analytics-engine-browser": "0.1.0",
-    "@powerhouse/analytics-engine-core": "0.1.0",
-    "@powerhouse/analytics-engine-knex": "0.1.0",
-    "@powerhouse/analytics-engine-pg": "0.1.0",
+    "@powerhousedao/analytics-engine-browser": "0.1.0",
+    "@powerhousedao/analytics-engine-core": "0.1.0",
+    "@powerhousedao/analytics-engine-knex": "0.1.0",
+    "@powerhousedao/analytics-engine-pg": "0.1.0",
     "crc-32": "^1.2.2",
     "knex": "^3.1.0",
     "luxon": "^3.5.0",

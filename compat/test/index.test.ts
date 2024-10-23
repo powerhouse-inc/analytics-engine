@@ -1,11 +1,11 @@
 import fs from "fs";
 import { DateTime } from "luxon";
-import { AnalyticsPath } from "@powerhouse/analytics-engine-core";
+import { AnalyticsPath } from "@powerhousedao/analytics-engine-core";
 import {
   KnexQueryExecutor,
   PostgresAnalyticsStore,
-} from "@powerhouse/analytics-engine-pg";
-import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
+} from "@powerhousedao/analytics-engine-pg";
+import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-browser";
 import { afterAll, beforeAll, it, expect, describe } from "vitest";
 
 const connectionString = process.env.PG_CONNECTION_STRING;
@@ -16,7 +16,7 @@ if (!connectionString) {
 let postgres: PostgresAnalyticsStore;
 let memory: MemoryAnalyticsStore;
 
-// todo: export these from @powerhouse/analytics-engine-pg
+// todo: export these from @powerhousedao/analytics-engine-pg
 const passthroughProfiler = () => ({
   prefix: "",
   push: (system: string) => {},

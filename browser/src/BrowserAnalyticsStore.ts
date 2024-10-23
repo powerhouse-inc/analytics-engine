@@ -3,8 +3,8 @@ import { MemoryAnalyticsStore } from "./MemoryAnalyticsStore.js";
 import {
   SqlQueryLogger,
   SqlResultsLogger,
-} from "@powerhouse/analytics-engine-knex";
-import { IAnalyticsProfiler } from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-knex";
+import { IAnalyticsProfiler } from "@powerhousedao/analytics-engine-core";
 
 export class BrowserAnalyticsStore extends MemoryAnalyticsStore {
   private _dbName: string;

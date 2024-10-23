@@ -1,13 +1,13 @@
 import {
   IAnalyticsProfiler,
   PassthroughAnalyticsProfiler,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 import {
   KnexAnalyticsStore,
   KnexQueryExecutor,
   SqlQueryLogger,
   SqlResultsLogger,
-} from "@powerhouse/analytics-engine-knex";
+} from "@powerhousedao/analytics-engine-knex";
 import knexFactory, { Knex } from "knex";
 import pkg from "pg";
 import { reviver } from "./AnalyticsSerializer.js";

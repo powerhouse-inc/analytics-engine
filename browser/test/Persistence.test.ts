@@ -2,7 +2,7 @@ import { DateTime } from "luxon";
 import {
   AnalyticsDimension,
   AnalyticsPath,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 import { BrowserAnalyticsStore } from "../src/BrowserAnalyticsStore.js";
 
 import { afterAll, beforeAll, it, expect, describe } from "vitest";

@@ -3,7 +3,7 @@ import crc32 from "crc-32";
 import {
   AnalyticsGranularity,
   AnalyticsQuery,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 
 type QueryRecord = {
   crc: number;

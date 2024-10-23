@@ -7,7 +7,7 @@ import {
   AnalyticsSeriesQuery,
   AnalyticsDimension,
   IAnalyticsStore,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 
 function toPascalCase(str: string) {
   return str

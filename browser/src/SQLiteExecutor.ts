@@ -1,9 +1,9 @@
-import { IAnalyticsProfiler } from "@powerhouse/analytics-engine-core";
+import { IAnalyticsProfiler } from "@powerhousedao/analytics-engine-core";
 import {
   IKnexQueryExecutor,
   SqlQueryLogger,
   SqlResultsLogger,
-} from "@powerhouse/analytics-engine-knex";
+} from "@powerhousedao/analytics-engine-knex";
 import { Knex } from "knex";
 
 export class SQLiteQueryExecutor implements IKnexQueryExecutor {

@@ -39,7 +39,7 @@ While this analytics engine is highly flexible, it is also extremely simple to g
 The `IAnalyticsStore` interface is the primary entry point for inserting and deleting metrics data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the [`MemoryAnalyticsStore`](#memory).
 
 ```typescript
-import { MemoryStorageEngine } from "@powerhouse/analytics-engine-memory";
+import { MemoryStorageEngine } from "@powerhousedao/analytics-engine-memory";
 
 const store = new MemoryStorageEngine();
 ```
@@ -50,7 +50,7 @@ Data can be added using the `addSeriesValue` method.
 
 ```typescript
 import { DateTime } from "luxon";
-import { AnalyticsPath } from "@powerhouse/analytics-engine-core";
+import { AnalyticsPath } from "@powerhousedao/analytics-engine-core";
 
 const source = AnalyticsPath.fromString("example/insert");
 await store.addSeriesValue([
@@ -78,8 +78,8 @@ The entry point for data reads is the `AnalyticsQueryEngine`. This object expose
 This object should be created on top of a storage engine. In this example, we create a simple in-memory storage engine which is compatible with all platforms.
 
 ```typescript
-import { AnalyticsQueryEngine } from "@powerhouse/analytics-core";
-import { MemoryStorageEngine } from "@powerhouse/analytics-memory";
+import { AnalyticsQueryEngine } from "@powerhousedao/analytics-core";
+import { MemoryStorageEngine } from "@powerhousedao/analytics-memory";
 
 const engine = new AnalyticsQueryEngine(new MemoryStorageEngine());
 ```

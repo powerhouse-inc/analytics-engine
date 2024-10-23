@@ -1,5 +1,5 @@
 import fs from "fs";
-import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
+import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-browser";
 import { Bench, Task } from "tinybench";
 import { logs } from "./util.js";
 

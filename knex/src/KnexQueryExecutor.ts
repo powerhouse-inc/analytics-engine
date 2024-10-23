@@ -1,4 +1,4 @@
-import { IAnalyticsProfiler } from "@powerhouse/analytics-engine-core";
+import { IAnalyticsProfiler } from "@powerhousedao/analytics-engine-core";
 import { Knex } from "knex";
 import { IKnexQueryExecutor } from "./KnexAnalyticsStore";
 

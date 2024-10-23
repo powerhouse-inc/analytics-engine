@@ -3,7 +3,7 @@ import {
   AnalyticsGranularity,
   AnalyticsQuery,
   AnalyticsPath,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 import { DateTime } from "luxon";
 
 export type queryFilter = {

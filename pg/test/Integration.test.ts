@@ -7,13 +7,13 @@ import {
   AnalyticsQuery,
   GroupedPeriodResults,
   PassthroughAnalyticsProfiler,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 import { PostgresAnalyticsStore } from "../src/PostgresAnalyticsStore";
 import {
   defaultQueryLogger,
   defaultResultsLogger,
   KnexQueryExecutor,
-} from "@powerhouse/analytics-engine-knex";
+} from "@powerhousedao/analytics-engine-knex";
 
 const connectionString = process.env.PG_CONNECTION_STRING;
 if (!connectionString) {

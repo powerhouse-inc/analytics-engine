@@ -1,12 +1,12 @@
 import {
   IAnalyticsProfiler,
   PassthroughAnalyticsProfiler,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 import {
   KnexAnalyticsStore,
   SqlQueryLogger,
   SqlResultsLogger,
-} from "@powerhouse/analytics-engine-knex";
+} from "@powerhousedao/analytics-engine-knex";
 import fs from "fs";
 import knexFactory from "knex";
 import * as SQLite from "wa-sqlite";

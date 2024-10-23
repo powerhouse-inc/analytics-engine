@@ -13,7 +13,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@powerhouse/analytics-engine-core": "0.1.0",
+    "@powerhousedao/analytics-engine-core": "0.1.0",
     "luxon": "^3.5.0"
   },
   "devDependencies": {

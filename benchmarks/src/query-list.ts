@@ -1,16 +1,16 @@
 import fs from "fs";
 import { DateTime } from "luxon";
-import { MemoryAnalyticsStore } from "@powerhouse/analytics-engine-browser";
+import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-browser";
 import {
   AnalyticsGranularity,
   AnalyticsPath,
   AnalyticsProfiler,
   AnalyticsQueryEngine,
-} from "@powerhouse/analytics-engine-core";
+} from "@powerhousedao/analytics-engine-core";
 import {
   PostgresAnalyticsStore,
   reviver,
-} from "@powerhouse/analytics-engine-pg";
+} from "@powerhousedao/analytics-engine-pg";
 
 class ExecutionResults {
   public readonly durationMs: number;
