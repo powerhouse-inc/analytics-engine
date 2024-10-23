@@ -1,0 +1,25 @@
+{
+  "name": "@powerhousedao/analytics-engine-graphql",
+  "version": "0.1.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsc-watch",
+    "build": "rm -rf dist/ && tsc",
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@powerhouse/analytics-engine-core": "0.1.0",
+    "luxon": "^3.5.0"
+  },
+  "devDependencies": {
+    "@types/luxon": "^3.4.2",
+    "tsc": "^2.0.4",
+    "tsc-watch": "^6.2.0",
+    "vitest": "^2.1.3"
+  }
+}
