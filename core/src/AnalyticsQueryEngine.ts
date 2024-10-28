@@ -16,7 +16,7 @@ import {
   CompoundOperator,
   MultiCurrencyConversion,
 } from "./AnalyticsQuery.js";
-import { IAnalyticsStore } from "./AnalyticsStore.js";
+import { IAnalyticsStore } from "./IAnalyticsStore.js";
 
 export class AnalyticsQueryEngine {
   private readonly _profiler: IAnalyticsProfiler;

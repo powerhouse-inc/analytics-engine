@@ -15,6 +15,13 @@ export class AnalyticsPath {
     return new AnalyticsPath(segments);
   }
 
+  public static fromJSON(json: any): AnalyticsPath {
+    const segments = json._v
+      .split("/")
+      .map((segment: string) => AnalyticsPathSegment.fromString(segment));
+    return new AnalyticsPath(segments);
+  }
+
   constructor(segments: AnalyticsPathSegment[]) {
     this._segments = segments;
   }

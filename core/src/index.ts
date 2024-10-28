@@ -7,7 +7,7 @@ export {
 export type {
   IAnalyticsStore,
   AnalyticsSeriesInput,
-} from "./AnalyticsStore.js";
+} from "./IAnalyticsStore.js";
 
 export { AnalyticsPath, AnalyticsPathSegment } from "./AnalyticsPath.js";
 export type {
