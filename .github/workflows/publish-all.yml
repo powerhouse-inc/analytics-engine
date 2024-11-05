@@ -1,0 +1,129 @@
+name: Publish All Packages
+
+on:
+  workflow_dispatch:
+  # push:
+  #   branches: ["main"]
+
+jobs:
+  core:
+    name: Publish Core Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest-9
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install
+        working-directory: core/
+
+      - name: Build Package
+        run: pnpm build
+        working-directory: core/
+
+      - name: Publish to NPM
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: core
+          token: ${{ secrets.NPM_ACCESS_TOKEN }}
+          access: public
+  knex:
+    name: Publish Core Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest-9
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install
+        working-directory: knex/
+
+      - name: Build Package
+        run: pnpm build
+        working-directory: knex/
+
+      - name: Publish to NPM
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: knex
+          token: ${{ secrets.NPM_ACCESS_TOKEN }}
+          access: public
+  pg:
+    name: Publish Pg Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest-9
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install
+        working-directory: pg/
+
+      - name: Build Package
+        run: pnpm build
+        working-directory: pg/
+
+      - name: Publish to NPM
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: pg
+          token: ${{ secrets.NPM_ACCESS_TOKEN }}
+          access: public
+  browser:
+    name: Publish Browser Package
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest-9
+          run_install: false
+
+      - name: Install Dependencies
+        run: pnpm install
+        working-directory: browser/
+
+      - name: Build Package
+        run: pnpm build
+        working-directory: browser/
+
+      - name: Publish to NPM
+        uses: JS-DevTools/npm-publish@v3
+        with:
+          package: browser
+          token: ${{ secrets.NPM_ACCESS_TOKEN }}
+          access: public
+  
