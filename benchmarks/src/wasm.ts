@@ -58,7 +58,7 @@ bench
   .add(
     "Select Distinct",
     async () => {
-      await store.raw("select distinct unit from AnalyticsSeries");
+      await store.raw(`select distinct unit from "AnalyticsSeries"`);
     },
     logs("Select Distinct", {
       beforeAll: async () => {

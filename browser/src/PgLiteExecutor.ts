@@ -11,8 +11,6 @@ export const parseRawResults = (rawResults: any[]) => {
   const allValues = [];
   for (const returnValue of rawResults.values() || []) {
     const { fields, rows } = returnValue;
-    console.log("processing", JSON.stringify(returnValue, null, 2));
-
     const values = new Array(rows.length);
     for (let i = 0, iLen = values.length; i < iLen; i++) {
       const row = rows[i];
@@ -67,9 +65,6 @@ export class PGLiteQueryExecutor implements IKnexQueryExecutor {
       }
 
       const allValues = parseRawResults(rawResults);
-
-      console.log("returning: ", JSON.stringify(allValues, null, 2));
-
       return allValues;
     });
 

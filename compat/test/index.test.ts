@@ -1,10 +1,7 @@
 import fs from "fs";
 import { DateTime } from "luxon";
 import { AnalyticsPath } from "@powerhousedao/analytics-engine-core";
-import {
-  KnexQueryExecutor,
-  PostgresAnalyticsStore,
-} from "@powerhousedao/analytics-engine-pg";
+import { PostgresAnalyticsStore } from "@powerhousedao/analytics-engine-pg";
 import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-browser";
 import { afterAll, beforeAll, it, expect, describe } from "vitest";
 
@@ -29,10 +26,7 @@ beforeAll(async () => {
   const sqlHuge = fs.readFileSync("../benchmarks/data/dump-huge.sql", "utf-8");
 
   // initialize stores
-  postgres = new PostgresAnalyticsStore(
-    connectionString,
-    new KnexQueryExecutor(passthroughProfiler())
-  );
+  postgres = new PostgresAnalyticsStore(connectionString);
 
   memory = new MemoryAnalyticsStore();
   await memory.init();

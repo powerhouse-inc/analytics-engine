@@ -16,6 +16,7 @@
     "@powerhousedao/analytics-engine-core": "0.1.0",
     "@powerhousedao/analytics-engine-knex": "0.1.0",
     "@powerhousedao/analytics-engine-pg": "0.1.0",
+    "crc": "^4.3.2",
     "crc-32": "^1.2.2",
     "knex": "^3.1.0",
     "luxon": "^3.5.0",
@@ -26,5 +27,13 @@
     "@tsconfig/node-lts": "^20.1.3",
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.7.4"
+  },
+  "pnpm": {
+    "overrides": {
+      "@powerhousedao/analytics-engine-browser": "file:../browser",
+      "@powerhousedao/analytics-engine-core": "file:../core",
+      "@powerhousedao/analytics-engine-knex": "file:../knex",
+      "@powerhousedao/analytics-engine-pg": "file:../pg"
+    }
   }
 }

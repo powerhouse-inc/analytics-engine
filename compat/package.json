@@ -8,7 +8,7 @@
   "dependencies": {
     "@powerhousedao/analytics-engine-core": "0.1.0",
     "@powerhousedao/analytics-engine-knex": "0.1.0",
-    "@powerhousedao/analytics-engine-memory": "0.1.0",
+    "@powerhousedao/analytics-engine-browser": "0.1.0",
     "@powerhousedao/analytics-engine-pg": "0.1.0",
     "knex": "^3.1.0",
     "luxon": "^3.5.0",
@@ -19,5 +19,13 @@
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.7.4",
     "vitest": "^2.1.2"
+  },
+  "pnpm": {
+    "overrides": {
+      "@powerhousedao/analytics-engine-browser": "file:../browser",
+      "@powerhousedao/analytics-engine-core": "file:../core",
+      "@powerhousedao/analytics-engine-knex": "file:../knex",
+      "@powerhousedao/analytics-engine-pg": "file:../pg"
+    }
   }
 }
