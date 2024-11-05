@@ -1,7 +1,7 @@
 import { defineConfig } from "vitest/config";
 
 export default defineConfig({
-  assetsInclude: ["node_modules/wa-sqlite/dist/*.wasm", "*.sql"],
+  assetsInclude: ["*.sql"],
   test: {
     browser: {
       provider: "playwright",
@@ -11,13 +11,20 @@ export default defineConfig({
     testTimeout: 5000,
     server: {
       deps: {
-        inline: ["@powerhousedao/analytics-engine-core", "events"],
+        inline: [
+          "@powerhousedao/analytics-engine-core",
+          "@powerhousedao/analytics-engine-knex",
+          "events",
+        ],
       },
     },
     setupFiles: "./test/vitest.setup.ts",
     passWithNoTests: true,
   },
   optimizeDeps: {
-    exclude: ["@sqlite.org/sqlite-wasm"],
+    exclude: ["@electric-sql/pglite"],
+  },
+  define: {
+    "process.env": {},
   },
 });

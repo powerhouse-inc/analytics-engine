@@ -9,56 +9,14 @@ import {
 } from "@powerhousedao/analytics-engine-knex";
 import fs from "fs";
 import knexFactory from "knex";
-import * as SQLite from "wa-sqlite";
-import SQLiteESMFactory from "wa-sqlite/dist/wa-sqlite-async.mjs";
-import { SQLiteQueryExecutor } from "./SQLiteExecutor.js";
-
-// this is awful, but needed for wa-sqlite to load from file:/// because fetch
-// cannot load file:/// paths
-const unalteredFetch = fetch;
-if (typeof window === "undefined") {
-  (global as any).fetch = async function (...args: any) {
-    const url = args[0];
-    if (url.startsWith("file:///")) {
-      // read file from disk
-      const path = url.replace("file://", "");
-      const res = fs.readFileSync(path);
-
-      return new Response(res, {
-        status: 200,
-        headers: { "Content-Type": "application/wasm" },
-      });
-    }
-
-    // call original fetch
-    return await (unalteredFetch as Function)(...args);
-  };
-} else {
-  (window as any).fetch = async function (...args: any) {
-    let url = args[0];
-
-    console.log("fetch", url);
-
-    // is this a localhost path? (save the port)
-    if (
-      url.startsWith("http://localhost") &&
-      url.includes("wa-sqlite-async.wasm")
-    ) {
-      const port = window.location.port;
-      url = `http://localhost:${port}/node_modules/wa-sqlite/dist/wa-sqlite-async.wasm`;
-      args[0] = url;
-    }
-
-    return await (unalteredFetch as Function)(...args);
-  };
-}
+import { parseRawResults, PGLiteQueryExecutor } from "./PgLiteExecutor.js";
+import { PGlite } from "@electric-sql/pglite";
 
 const initSql = `
 
   create table if not exists "AnalyticsSeries"
   (
-    -- id is a serial in psql, but not in sqlite
-    id     integer       primary key,
+    id     serial       primary key,
     source varchar(255) not null,
     start  timestamp    not null,
     "end"  timestamp,
@@ -95,8 +53,7 @@ const initSql = `
 
   create table if not exists "AnalyticsDimension"
   (
-    -- id is a serial in psql, but not in sqlite
-    id          integer        primary key,
+    id          serial        primary key,
     dimension   varchar(255)  not null,
     path        varchar(255)  not null,
     label       varchar(255),
@@ -134,10 +91,11 @@ const initSql = `
 `;
 
 export class MemoryAnalyticsStore extends KnexAnalyticsStore {
-  private _sqliteExecutor: SQLiteQueryExecutor;
+  private _queryLogger: SqlQueryLogger;
+  private _resultsLogger: SqlResultsLogger;
+  private _pgExecutor: PGLiteQueryExecutor;
   private _profiler: IAnalyticsProfiler;
-  private _sql: SQLiteAPI | null = null;
-  private _db: number | null = null;
+  private _sql: PGlite | null = null;
 
   public constructor(
     queryLogger?: SqlQueryLogger,
@@ -145,7 +103,7 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
     profiler?: IAnalyticsProfiler
   ) {
     const knex = knexFactory({
-      client: "sqlite3",
+      client: "pg",
       useNullAsDefault: true,
     });
 
@@ -153,68 +111,49 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
       profiler = new PassthroughAnalyticsProfiler();
     }
 
-    const sqliteExecutor = new SQLiteQueryExecutor(
+    const executor = new PGLiteQueryExecutor(
       profiler,
       queryLogger,
       resultsLogger
     );
 
-    super(sqliteExecutor, knex);
+    super(executor, knex);
 
+    this._queryLogger = queryLogger || (() => {});
+    this._resultsLogger = resultsLogger || (() => {});
     this._profiler = profiler;
-    this._sqliteExecutor = sqliteExecutor;
+    this._pgExecutor = executor;
   }
 
   public async init() {
-    // sqlite3
-    let module: any;
-    try {
-      module = await SQLiteESMFactory();
-    } catch (error) {
-      throw new Error("Failed to load SQLite module: " + error);
-    }
-
-    this._sql = SQLite.Factory(module);
-
-    // create filesystems
-    this.initFS(module, this._sql);
-
-    // open db
-    this._db = await this._sql.open_v2("analytics");
+    this._sql = await this.instance();
 
     // init executor
-    this._sqliteExecutor.init(this._sql, this._db);
+    this._pgExecutor.init(this._sql);
 
     // create tables if they do not exist
-    await this._sql.exec(this._db!, initSql);
+    await this._sql.exec(initSql);
   }
 
-  protected initFS(module: any, sql: SQLiteAPI) {
-    // subclasses may implement
+  protected instance(): Promise<PGlite> {
+    return Promise.resolve(new PGlite());
   }
 
   public async raw(sql: string) {
-    const values: any[] = [];
+    this._queryLogger(-1, sql);
 
-    await this._profiler.record(
-      "QueryRaw",
-      async () =>
-        await this._sql?.exec(this._db!, sql, (row, col) => {
-          const value: any = {};
-          for (let i = 0; i < col.length; i++) {
-            value[col[i]] = row[i];
-          }
+    return await this._profiler.record("QueryRaw", async () => {
+      const results = await this._sql?.exec(sql);
 
-          values.push(value);
-        })
-    );
+      this._resultsLogger(-1, results);
 
-    return values;
+      return parseRawResults(results || []);
+    });
   }
 
   public async destroy() {
     super.destroy();
 
-    await this._sql?.close(this._db);
+    this._sql?.close();
   }
 }

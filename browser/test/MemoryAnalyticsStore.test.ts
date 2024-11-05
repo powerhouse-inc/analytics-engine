@@ -5,6 +5,7 @@ import {
 } from "@powerhousedao/analytics-engine-core";
 import { MemoryAnalyticsStore } from "../src/MemoryAnalyticsStore.js";
 import { afterAll, beforeAll, it, expect } from "vitest";
+import { defaultQueryLogger } from "@powerhousedao/analytics-engine-knex";
 
 let store: MemoryAnalyticsStore;
 
@@ -13,7 +14,7 @@ const TEST_SOURCE = AnalyticsPath.fromString(
 );
 
 beforeAll(async () => {
-  store = new MemoryAnalyticsStore();
+  store = new MemoryAnalyticsStore(defaultQueryLogger("memory"));
   await store.init();
 
   await store.addSeriesValues([

@@ -1,10 +1,10 @@
-import { IDBBatchAtomicVFS } from "wa-sqlite/src/examples/IDBBatchAtomicVFS.js";
 import { MemoryAnalyticsStore } from "./MemoryAnalyticsStore.js";
 import {
   SqlQueryLogger,
   SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
 import { IAnalyticsProfiler } from "@powerhousedao/analytics-engine-core";
+import { IdbFs, PGlite } from "@electric-sql/pglite";
 
 export class BrowserAnalyticsStore extends MemoryAnalyticsStore {
   private _dbName: string;
@@ -20,8 +20,10 @@ export class BrowserAnalyticsStore extends MemoryAnalyticsStore {
     this._dbName = databaseName;
   }
 
-  protected initFS(module: any, sql: SQLiteAPI) {
-    const vfs = new IDBBatchAtomicVFS(this._dbName, module);
-    sql.vfs_register(vfs, true);
+  override async instance(): Promise<PGlite> {
+    return await PGlite.create({
+      fs: new IdbFs(this._dbName),
+      relaxedDurability: true,
+    });
   }
 }

@@ -145,7 +145,7 @@ describe("IDB VFS", () => {
       performance.mark("end");
 
       const results = await store.raw(
-        "select count(*) as count from AnalyticsDimension"
+        `select count(*) as count from "AnalyticsDimension"`
       );
 
       const count = results[0].count;
