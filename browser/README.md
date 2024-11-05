@@ -1,5 +1,5 @@
 ### Memory
 
-The in-memory implementation uses a WASM build of a SQLite3 database.
+The in-memory implementation uses a WASM build of a PGLite database.
 
 #### Tests
