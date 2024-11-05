@@ -136,7 +136,7 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
   }
 
   protected instance(): Promise<PGlite> {
-    return Promise.resolve(new PGlite());
+    return PGlite.create();
   }
 
   public async raw(sql: string) {
