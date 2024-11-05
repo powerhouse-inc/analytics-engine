@@ -6,9 +6,10 @@
   "scripts": {
     "build": "rm -rf dist/ && tsc",
     "processCache": "pnpm build && node ./dist/processor.js",
-    "test-memory-wasm": "pnpm build && node ./dist/wasm.js",
-    "test-memory-query-list": "pnpm build && PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/query-list.js",
-    "test-raw": "pnpm build && PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/raw.js"
+    "test-wasm": "pnpm build && node ./dist/wasm.js",
+    "test-query-list": "pnpm build && PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/query-list.js",
+    "test-series": "pnpm build && PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/series.js",
+    "test-hash-keys": "pnpm build && node ./dist/hash-keys.js"
   },
   "dependencies": {
     "@powerhousedao/analytics-engine-browser": "0.1.0",
