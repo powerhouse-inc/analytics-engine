@@ -1,3 +1,3 @@
-export { AnalyticsResolvers } from "./AnalyticsResolvers";
-export type { queryFilter, AnalyticsModel } from "./AnalyticsModel";
-export { typedefs } from "./schema";
+export { AnalyticsResolvers } from "./AnalyticsResolvers.js";
+export type { queryFilter, AnalyticsModel } from "./AnalyticsModel.js";
+export { typedefs } from "./schema.js";
