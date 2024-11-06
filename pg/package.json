@@ -17,8 +17,8 @@
     "test": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest"
   },
   "dependencies": {
-    "@powerhousedao/analytics-engine-core": "0.1.0",
-    "@powerhousedao/analytics-engine-knex": "0.1.0",
+    "@powerhousedao/analytics-engine-core": "0.2.0",
+    "@powerhousedao/analytics-engine-knex": "0.2.1",
     "date-fns": "^3.6.0",
     "knex": "^3.1.0",
     "luxon": "^3.5.0",

@@ -1,6 +1,6 @@
 {
   "name": "@powerhousedao/analytics-engine-knex",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "license": "AGPL-3.0-only",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -17,7 +17,7 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@powerhousedao/analytics-engine-core": "0.1.0",
+    "@powerhousedao/analytics-engine-core": "0.2.0",
     "@types/luxon": "^3.4.2",
     "@types/node": "^22.4.2",
     "@types/pg": "^8.11.6",

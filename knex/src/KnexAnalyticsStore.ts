@@ -66,7 +66,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
   public async clearSeriesBySource(
     source: AnalyticsPath,
     cleanUpDimensions: boolean = false
-  ) {
+  ): Promise<number> {
     const query = this._knex("AnalyticsSeries")
       .whereLike("source", source.toString("/%"))
       .delete();
