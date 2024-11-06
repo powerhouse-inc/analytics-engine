@@ -4,28 +4,22 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-overrides:
-  '@powerhousedao/analytics-engine-browser': file:../browser
-  '@powerhousedao/analytics-engine-core': file:../core
-  '@powerhousedao/analytics-engine-knex': file:../knex
-  '@powerhousedao/analytics-engine-pg': file:../pg
-
 importers:
 
   .:
     dependencies:
       '@powerhousedao/analytics-engine-browser':
-        specifier: file:../browser
-        version: file:../browser(pg@8.13.0)
+        specifier: ^0.2.0
+        version: 0.2.0(pg@8.13.1)
       '@powerhousedao/analytics-engine-core':
-        specifier: file:../core
-        version: file:../core
+        specifier: ^0.2.0
+        version: 0.2.0
       '@powerhousedao/analytics-engine-knex':
-        specifier: file:../knex
-        version: file:../knex
+        specifier: ^0.2.0
+        version: 0.2.0
       '@powerhousedao/analytics-engine-pg':
-        specifier: file:../pg
-        version: file:../pg
+        specifier: ^0.2.0
+        version: 0.2.0
       crc:
         specifier: ^4.3.2
         version: 4.3.2
@@ -34,13 +28,13 @@ importers:
         version: 1.2.2
       knex:
         specifier: ^3.1.0
-        version: 3.1.0(pg@8.13.0)
+        version: 3.1.0(pg@8.13.1)
       luxon:
         specifier: ^3.5.0
         version: 3.5.0
       pg:
-        specifier: ^8.13.0
-        version: 8.13.0
+        specifier: ^8.13.1
+        version: 8.13.1
       tinybench:
         specifier: ^2.9.0
         version: 2.9.0
@@ -52,25 +46,31 @@ importers:
         specifier: ^3.4.2
         version: 3.4.2
       '@types/node':
-        specifier: ^22.7.4
-        version: 22.7.4
+        specifier: ^22.9.0
+        version: 22.9.0
 
 packages:
 
   '@electric-sql/pglite@0.2.12':
     resolution: {integrity: sha512-J/X42ujcoFEbOkgRyoNqZB5qcqrnJRWVlwpH3fKYoJkTz49N91uAK/rDSSG/85WRas9nC9mdV4FnMTxnQWE/rw==}
 
-  '@powerhousedao/analytics-engine-browser@file:../browser':
-    resolution: {directory: ../browser, type: directory}
+  '@powerhousedao/analytics-engine-browser@0.2.0':
+    resolution: {integrity: sha512-5kMxzRQ3MsyesjAafXzWOkli3DNWLp29wwWd9E/M7q0azkQ0QftqY4NMzELARkAlLI/grzlmZdyOJ/VWSjZvoA==}
 
-  '@powerhousedao/analytics-engine-core@file:../core':
-    resolution: {directory: ../core, type: directory}
+  '@powerhousedao/analytics-engine-core@0.1.0':
+    resolution: {integrity: sha512-pGBehMV7+zxzlkfYbq1SjAvfrn0VIPgT6HbczfYsGocRLaDIHE+ue8LKNi3ptPygbVi2eops3VkO5GyIVLbCkw==}
 
-  '@powerhousedao/analytics-engine-knex@file:../knex':
-    resolution: {directory: ../knex, type: directory}
+  '@powerhousedao/analytics-engine-core@0.2.0':
+    resolution: {integrity: sha512-IdyMfhZcRbpc9LSv3L2IRa6W9Y+xpQqtvh/hVOmTs6OPEStC1EYcRJJ8nEIKXawKLZ5QQuDE6cwIoMcfPk552Q==}
 
-  '@powerhousedao/analytics-engine-pg@file:../pg':
-    resolution: {directory: ../pg, type: directory}
+  '@powerhousedao/analytics-engine-knex@0.1.0':
+    resolution: {integrity: sha512-0mJrdl9u1QsEXREHHIyklbDba5vrYtczoqeW4NxBk9W1bVS5VkzL6XwMMDFQiGKeQuCxV/i4FSuOdgipTA3VCg==}
+
+  '@powerhousedao/analytics-engine-knex@0.2.0':
+    resolution: {integrity: sha512-Xd5xFwxgh19WxG50NLLPIsVNajki18uK4sQV+t+dKyV0czWljK+IGNTTA/BH4DIq0oRsa1dCo3rRB6GhRNU1qQ==}
+
+  '@powerhousedao/analytics-engine-pg@0.2.0':
+    resolution: {integrity: sha512-liCrkMtbd+UK+UHxwE4PU+oeQqG6ywHeUvG7fZ1UGCbQKPX/906BOVHcB9seqcqncZPQX2BJUyWOEIKYPOOqpg==}
 
   '@tsconfig/node-lts@20.1.3':
     resolution: {integrity: sha512-m3b7EP2U+h5tNSpaBMfcTuHmHn04wrgRPQQrfKt75YIPq6kPs2153/KfPHdqkEWGx5pEBvS6rnvToT+yTtC1iw==}
@@ -78,8 +78,8 @@ packages:
   '@types/luxon@3.4.2':
     resolution: {integrity: sha512-TifLZlFudklWlMBfhubvgqTXRzLDI5pCbGa4P8a3wPyUQSW+1xQ5eDsreP9DWHX3tjq1ke96uYG/nwundroWcA==}
 
-  '@types/node@22.7.4':
-    resolution: {integrity: sha512-y+NPi1rFzDs1NdQHHToqeiX2TIS79SWEAw9GYhkkx8bD0ChpfqC+n2j5OXOCpzfojBEBt6DnEnnG9MY0zk1XLg==}
+  '@types/node@22.9.0':
+    resolution: {integrity: sha512-vuyHg81vvWA1Z1ELfvLko2c8f34gyA0zaic0+Rllc5lbCnbSyuvb2Oxpm6TAUAC/2xZN3QGqxBNggD1nNR2AfQ==}
 
   '@types/pg@8.11.10':
     resolution: {integrity: sha512-LczQUW4dbOQzsH2RQ5qoeJ6qJPdrcM/DcMLoqWQkMLMsq83J5lAX3LXjdkWdpscFy67JSOWDnh7Ny/sPFykmkg==}
@@ -292,8 +292,8 @@ packages:
     resolution: {integrity: sha512-cRL3JpS3lKMGsKaWndugWQoLOCoP+Cic8oseVcbr0qhPzYD5DWXK+RZ9LY9wxRf7RQia4SCwQlXk0q6FCPrVng==}
     engines: {node: '>=10'}
 
-  pg@8.13.0:
-    resolution: {integrity: sha512-34wkUTh3SxTClfoHB3pQ7bIMvw9dpFU1audQQeZG837fmHfHpr14n/AELVDoOYVDW2h5RDWU78tFjkD+erSBsw==}
+  pg@8.13.1:
+    resolution: {integrity: sha512-OUir1A0rPNZlX//c7ksiu7crsGZTKSOXJPgtNiHGIlC9H0lO+NC6ZDYksSgBYY/thSWhnSRBv8w1lieNNGATNQ==}
     engines: {node: '>= 8.0.0'}
     peerDependencies:
       pg-native: '>=3.0.1'
@@ -396,14 +396,14 @@ snapshots:
 
   '@electric-sql/pglite@0.2.12': {}
 
-  '@powerhousedao/analytics-engine-browser@file:../browser(pg@8.13.0)':
+  '@powerhousedao/analytics-engine-browser@0.2.0(pg@8.13.1)':
     dependencies:
       '@electric-sql/pglite': 0.2.12
-      '@powerhousedao/analytics-engine-core': file:../core
-      '@powerhousedao/analytics-engine-knex': file:../knex
+      '@powerhousedao/analytics-engine-core': 0.1.0
+      '@powerhousedao/analytics-engine-knex': 0.1.0
       date-fns: 3.6.0
       events: 3.3.0
-      knex: 3.1.0(pg@8.13.0)
+      knex: 3.1.0(pg@8.13.1)
       luxon: 3.5.0
       util: 0.12.5
     transitivePeerDependencies:
@@ -416,20 +416,24 @@ snapshots:
       - supports-color
       - tedious
 
-  '@powerhousedao/analytics-engine-core@file:../core':
+  '@powerhousedao/analytics-engine-core@0.1.0':
     dependencies:
       date-fns: 3.6.0
 
-  '@powerhousedao/analytics-engine-knex@file:../knex':
+  '@powerhousedao/analytics-engine-core@0.2.0':
     dependencies:
-      '@powerhousedao/analytics-engine-core': file:../core
+      date-fns: 3.6.0
+
+  '@powerhousedao/analytics-engine-knex@0.1.0':
+    dependencies:
+      '@powerhousedao/analytics-engine-core': 0.1.0
       '@types/luxon': 3.4.2
-      '@types/node': 22.7.4
+      '@types/node': 22.9.0
       '@types/pg': 8.11.10
       date-fns: 3.6.0
-      knex: 3.1.0(pg@8.13.0)
+      knex: 3.1.0(pg@8.13.1)
       luxon: 3.5.0
-      pg: 8.13.0
+      pg: 8.13.1
     transitivePeerDependencies:
       - better-sqlite3
       - mysql
@@ -439,14 +443,33 @@ snapshots:
       - supports-color
       - tedious
 
-  '@powerhousedao/analytics-engine-pg@file:../pg':
+  '@powerhousedao/analytics-engine-knex@0.2.0':
     dependencies:
-      '@powerhousedao/analytics-engine-core': file:../core
-      '@powerhousedao/analytics-engine-knex': file:../knex
+      '@powerhousedao/analytics-engine-core': 0.1.0
+      '@types/luxon': 3.4.2
+      '@types/node': 22.9.0
+      '@types/pg': 8.11.10
       date-fns: 3.6.0
-      knex: 3.1.0(pg@8.13.0)
+      knex: 3.1.0(pg@8.13.1)
       luxon: 3.5.0
-      pg: 8.13.0
+      pg: 8.13.1
+    transitivePeerDependencies:
+      - better-sqlite3
+      - mysql
+      - mysql2
+      - pg-native
+      - sqlite3
+      - supports-color
+      - tedious
+
+  '@powerhousedao/analytics-engine-pg@0.2.0':
+    dependencies:
+      '@powerhousedao/analytics-engine-core': 0.1.0
+      '@powerhousedao/analytics-engine-knex': 0.1.0
+      date-fns: 3.6.0
+      knex: 3.1.0(pg@8.13.1)
+      luxon: 3.5.0
+      pg: 8.13.1
     transitivePeerDependencies:
       - better-sqlite3
       - mysql
@@ -460,13 +483,13 @@ snapshots:
 
   '@types/luxon@3.4.2': {}
 
-  '@types/node@22.7.4':
+  '@types/node@22.9.0':
     dependencies:
       undici-types: 6.19.8
 
   '@types/pg@8.11.10':
     dependencies:
-      '@types/node': 22.7.4
+      '@types/node': 22.9.0
       pg-protocol: 1.7.0
       pg-types: 4.0.2
 
@@ -575,7 +598,7 @@ snapshots:
     dependencies:
       which-typed-array: 1.1.15
 
-  knex@3.1.0(pg@8.13.0):
+  knex@3.1.0(pg@8.13.1):
     dependencies:
       colorette: 2.0.19
       commander: 10.0.1
@@ -592,7 +615,7 @@ snapshots:
       tarn: 3.0.2
       tildify: 2.0.0
     optionalDependencies:
-      pg: 8.13.0
+      pg: 8.13.1
     transitivePeerDependencies:
       - supports-color
 
@@ -617,9 +640,9 @@ snapshots:
 
   pg-numeric@1.0.2: {}
 
-  pg-pool@3.7.0(pg@8.13.0):
+  pg-pool@3.7.0(pg@8.13.1):
     dependencies:
-      pg: 8.13.0
+      pg: 8.13.1
 
   pg-protocol@1.7.0: {}
 
@@ -641,10 +664,10 @@ snapshots:
       postgres-interval: 3.0.0
       postgres-range: 1.1.4
 
-  pg@8.13.0:
+  pg@8.13.1:
     dependencies:
       pg-connection-string: 2.7.0
-      pg-pool: 3.7.0(pg@8.13.0)
+      pg-pool: 3.7.0(pg@8.13.1)
       pg-protocol: 1.7.0
       pg-types: 2.2.0
       pgpass: 1.0.5

@@ -14,20 +14,20 @@
     "test-hash-keys": "pnpm build && node ./dist/hash-keys.js"
   },
   "dependencies": {
-    "@powerhousedao/analytics-engine-browser": "^0.1.0",
-    "@powerhousedao/analytics-engine-core": "^0.1.0",
-    "@powerhousedao/analytics-engine-knex": "^0.1.0",
-    "@powerhousedao/analytics-engine-pg": "^0.1.0",
+    "@powerhousedao/analytics-engine-browser": "^0.2.0",
+    "@powerhousedao/analytics-engine-core": "^0.2.0",
+    "@powerhousedao/analytics-engine-knex": "^0.2.0",
+    "@powerhousedao/analytics-engine-pg": "^0.2.0",
     "crc": "^4.3.2",
     "crc-32": "^1.2.2",
     "knex": "^3.1.0",
     "luxon": "^3.5.0",
-    "pg": "^8.13.0",
+    "pg": "^8.13.1",
     "tinybench": "^2.9.0"
   },
   "devDependencies": {
     "@tsconfig/node-lts": "^20.1.3",
     "@types/luxon": "^3.4.2",
-    "@types/node": "^22.7.4"
+    "@types/node": "^22.9.0"
   }
 }

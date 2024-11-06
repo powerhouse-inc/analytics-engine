@@ -37,7 +37,7 @@ jobs:
           token: ${{ secrets.NPM_ACCESS_TOKEN }}
           access: public
   knex:
-    name: Publish Core Package
+    name: Publish Knex Package
     runs-on: ubuntu-latest
 
     steps:
