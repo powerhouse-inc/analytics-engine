@@ -1,5 +1,7 @@
 ## Overview
 
+![License](https://img.shields.io/npm/l/%40powerhousedao%2Fanalytics-engine-core?color=blue) ![Build](https://github.com/powerhouse-inc/analytics-engine/actions/workflows/publish-all.yml/badge.svg)
+
 The Powerhouse `analytics-engine` contains a powerful, distributed, time-series analytics system, written in Typescript.
 
 ### Usage Quickstart
@@ -15,6 +17,9 @@ For all modules, we use the `pnpm` package manager, `tsc-watch` as a filewatcher
 All modules extend the [`tsconfig.json`](./tsconfig.json) found the root directory of the repo.
 
 #### core/
+
+![Core Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-core?color=blue
+)
 
 Local development of the `core/` module is simple:
 
@@ -44,11 +49,17 @@ pnpm test
 
 #### knex/
 
+![Knex Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-knex?color=blue
+)
+
 The `knex/` directory provides an analytics storage implementation on top of [knex.js](https://knexjs.org/).
 
 Similarly to the `core/` module, use `pnpm install` for setup, `pnpm dev` for a file watcher, and `pnpm test` to run tests.
 
 #### pg/
+
+![PG Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-pg?color=blue
+)
 
 The `pg/` directory provides an analytics storage implementation on top of the Postgres adapter, [`pg`](https://www.npmjs.com/package/pg). This module is intended to be run in a server-side environment and relies on several packages typically provided by NodeJS.
 
@@ -104,6 +115,9 @@ database-1  | CREATE INDEX
 ```
 
 #### /browser
+
+![Browser Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-browser?color=blue
+)
 
 Finally, a store is provided for the browser in the `browser/` directory.
 
