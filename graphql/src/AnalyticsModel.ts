@@ -1,8 +1,8 @@
 import {
-  AnalyticsQueryEngine,
   AnalyticsGranularity,
-  AnalyticsQuery,
   AnalyticsPath,
+  AnalyticsQuery,
+  AnalyticsQueryEngine,
 } from "@powerhousedao/analytics-engine-core";
 import { DateTime } from "luxon";
 
@@ -44,6 +44,14 @@ export class AnalyticsModel {
       lod: {},
     };
 
+    if (query.start && !query.start.isValid) {
+      query.start = null;
+    }
+
+    if (query.end && !query.end.isValid) {
+      query.end = null;
+    }
+
     if (filter.dimensions.length < 1) {
       throw new Error("No dimensions provided");
     } else {
@@ -54,7 +62,13 @@ export class AnalyticsModel {
         query.lod[dimension.name] = Number(dimension.lod);
       });
     }
-    return this.engine.execute(query);
+
+    const results = await this.engine.execute(query);
+
+    return results;
+
+    // TODO: pull caching interface out into analytics module
+    //return measureAnalyticsQueryPerformance('analyticsQuery', 'analyticsQuery', query, false, "high");
   }
 
   public async multiCurrencyQuery(filter: MultiCurrencyFilter) {
@@ -71,6 +85,14 @@ export class AnalyticsModel {
       select: {},
       lod: {},
     };
+
+    if (query.start && !query.start.isValid) {
+      query.start = null;
+    }
+
+    if (query.end && !query.end.isValid) {
+      query.end = null;
+    }
 
     if (filter.dimensions.length < 1) {
       throw new Error("No dimensions provided");
@@ -96,9 +118,12 @@ export class AnalyticsModel {
   public async getDimensions() {
     return await this.engine.getDimensions();
   }
-}
 
-export default (engine: AnalyticsQueryEngine) => new AnalyticsModel(engine);
+  public async getCurrencies() {
+    // todo: use knex inside of the analytics engine to select distinct currencies
+    return ["DAI", "FTE", "MKR", "USDC", "USDP", "USDT"];
+  }
+}
 
 const getGranularity = (
   granularity: string | undefined

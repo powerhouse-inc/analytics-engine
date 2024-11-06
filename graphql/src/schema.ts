@@ -1,3 +1,4 @@
+export const typedefs = `
 type AnalyticsQuery {
   series(filter: AnalyticsFilter): [AnalyticsPeriod]
   multiCurrencySeries(filter: MultiCurrencyConversions): [AnalyticsPeriod]
@@ -91,3 +92,4 @@ input AnalyticsFilter {
 extend type Query {
   analytics: AnalyticsQuery
 }
+`;

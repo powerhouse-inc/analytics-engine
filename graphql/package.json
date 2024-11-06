@@ -14,13 +14,13 @@
     "test": "vitest"
   },
   "dependencies": {
-    "@powerhousedao/analytics-engine-core": "0.1.0",
+    "@powerhousedao/analytics-engine-core": "^0.3.0",
     "luxon": "^3.5.0"
   },
   "devDependencies": {
     "@types/luxon": "^3.4.2",
-    "tsc": "^2.0.4",
     "tsc-watch": "^6.2.0",
+    "typescript": "^5.6.3",
     "vitest": "^2.1.3"
   }
 }
