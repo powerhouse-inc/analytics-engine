@@ -22,12 +22,12 @@ jobs:
           version: latest-9
           run_install: false
 
-      - name: Install Dependencies
-        run: pnpm install
-        working-directory: core/
-
       - name: Build Package
-        run: pnpm build
+        run: pnpm install && pnpm build
+        working-directory: core/
+      
+      - name: Test Package
+        run: pnpm test
         working-directory: core/
 
       - name: Publish to NPM
@@ -52,12 +52,12 @@ jobs:
           version: latest-9
           run_install: false
 
-      - name: Install Dependencies
-        run: pnpm install
+      - name: Build Package
+        run: pnpm install && pnpm build
         working-directory: knex/
 
-      - name: Build Package
-        run: pnpm build
+      - name: Test Package
+        run: pnpm test
         working-directory: knex/
 
       - name: Publish to NPM
@@ -82,12 +82,8 @@ jobs:
           version: latest-9
           run_install: false
 
-      - name: Install Dependencies
-        run: pnpm install
-        working-directory: pg/
-
       - name: Build Package
-        run: pnpm build
+        run: pnpm install && pnpm build
         working-directory: pg/
 
       - name: Publish to NPM
@@ -112,12 +108,8 @@ jobs:
           version: latest-9
           run_install: false
 
-      - name: Install Dependencies
-        run: pnpm install
-        working-directory: browser/
-
       - name: Build Package
-        run: pnpm build
+        run: pnpm install && pnpm build
         working-directory: browser/
 
       - name: Publish to NPM
@@ -126,4 +118,26 @@ jobs:
           package: browser
           token: ${{ secrets.NPM_ACCESS_TOKEN }}
           access: public
-  
+  benchmark:
+    name: Benchmark Packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          ref: ${{ github.ref }}
+
+      - name: Install PNPM
+        uses: pnpm/action-setup@v3
+        with:
+          version: latest-9
+          run_install: false
+
+      - name: Build Package
+        run: pnpm install && pnpm build
+        working-directory: benchmarks/
+      
+      - name: Run Benchmarks
+        run: pnpm run ci
+        working-directory: benchmarks/

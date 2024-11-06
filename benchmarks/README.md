@@ -1,16 +1,6 @@
 #### Benchmarks
 
-The code in this directory measures performance characteristics of the in-memory analytics implementation.
-
-##### Development Prereqs
-
-```
-pnpm link --global @powerhousedao/analytics-engine-core
-pnpm link --global @powerhousedao/analytics-engine-knex
-pnpm link --global @powerhousedao/analytics-engine-browser
-pnpm link --global @powerhousedao/analytics-engine-pg
-pnpm install
-```
+The code in this directory measures various performance characteristics the analytics engine.
 
 ##### Dump
 
@@ -26,16 +16,9 @@ This outputs a raw file in `data/dump.sql`. The small and dumps have been hand-e
 
 ### Execute
 
-The tests may take awhile to run because of the HUGE dump.
+The tests may take awhile to run.
 
 ```
-# test memory
-pnpm test-memory-wasm
-pnpm test-memory-js
-```
-
-```
-# test pg
 docker compose -f ../pg/docker-compose.test.yml up -d
-pnpm test-pg-js
+pnpm benchmark
 ```

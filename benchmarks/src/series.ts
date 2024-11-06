@@ -5,24 +5,22 @@ import { AnalyticsPath } from "@powerhousedao/analytics-engine-core";
 import { logs } from "./util.js";
 import { PostgresAnalyticsStore } from "@powerhousedao/analytics-engine-pg";
 import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-browser";
-import {
-  defaultQueryLogger,
-  defaultResultsLogger,
-} from "@powerhousedao/analytics-engine-knex";
 
-const connectionString = process.env.PG_CONNECTION_STRING;
-if (!connectionString) {
-  throw new Error("PG_CONNECTION_STRING not set");
+const isPgDisabled = process.env.PG_DISABLED === "true";
+const connString = process.env.PG_CONNECTION_STRING;
+if (!isPgDisabled && !connString) {
+  throw new Error(
+    "PG_CONNECTION_STRING not set. Either set it or run with PG_DISABLED=true"
+  );
 }
-const postgres = new PostgresAnalyticsStore(connectionString);
 
-console.log(`Postgres initialized and connecting to ${connectionString}.`);
+const postgres = isPgDisabled ? null : new PostgresAnalyticsStore(connString!);
+if (postgres) {
+  console.log(`Postgres initialized and connecting to ${connString}.`);
+}
 
 const sqlHuge = fs.readFileSync("./data/dump-huge.sql", "utf-8");
-const memory = new MemoryAnalyticsStore(
-  defaultQueryLogger("memory"),
-  defaultResultsLogger("memory")
-);
+const memory = new MemoryAnalyticsStore();
 await memory.init();
 await memory.raw(sqlHuge);
 
@@ -38,28 +36,30 @@ const query = {
   },
 };
 
-const bench = new Bench();
+let bench = new Bench();
 
-bench
-  .add(
+if (!isPgDisabled) {
+  bench = bench.add(
     "PG",
     async () => {
-      await postgres.getMatchingSeries(query);
+      await postgres!.getMatchingSeries(query);
     },
     logs("PG")
-  )
-  .add(
-    "Memory",
-    async () => {
-      await memory.getMatchingSeries(query);
-    },
-    logs("Memory")
   );
+}
+
+bench.add(
+  "Memory",
+  async () => {
+    await memory.getMatchingSeries(query);
+  },
+  logs("Memory")
+);
 
 await bench.warmup();
 await bench.run();
 
 console.table(bench.table());
 
-postgres.destroy();
+postgres?.destroy();
 memory.destroy();

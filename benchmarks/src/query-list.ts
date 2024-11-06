@@ -98,9 +98,12 @@ function deepEquals(a: any, b: any) {
 }
 
 // validate
+const isPgDisabled = process.env.PG_DISABLED === "true";
 const connString = process.env.PG_CONNECTION_STRING;
-if (!connString) {
-  throw new Error("PG_CONNECTION_STRING not set");
+if (!isPgDisabled && !connString) {
+  throw new Error(
+    "PG_CONNECTION_STRING not set. Either set it or run with PG_DISABLED=true"
+  );
 }
 
 // first, load the data
@@ -115,9 +118,11 @@ const pgResults: ExecutionResults[] = [];
 const memoryProfiler = new AnalyticsProfiler("memory", (name, durationNano) =>
   memoryResults.push(new ExecutionResults(name, durationNano))
 );
-const pgProfiler = new AnalyticsProfiler("pg", (name, durationNano) =>
-  pgResults.push(new ExecutionResults(name, durationNano))
-);
+const pgProfiler = isPgDisabled
+  ? null
+  : new AnalyticsProfiler("pg", (name, durationNano) =>
+      pgResults.push(new ExecutionResults(name, durationNano))
+    );
 
 // stores
 const memory: MemoryAnalyticsStore = new MemoryAnalyticsStore(
@@ -132,13 +137,17 @@ await memory.raw(sqlHuge);
 memoryResults.length = 0;
 const memoryEngine = new AnalyticsQueryEngine(memory, memoryProfiler);
 
-const pg = new PostgresAnalyticsStore(
-  connString,
-  () => {},
-  () => {},
-  pgProfiler
-);
-const pgEngine = new AnalyticsQueryEngine(pg, pgProfiler);
+const pg = isPgDisabled
+  ? null
+  : new PostgresAnalyticsStore(
+      connString!,
+      () => {},
+      () => {},
+      pgProfiler!
+    );
+const pgEngine = isPgDisabled
+  ? null
+  : new AnalyticsQueryEngine(pg!, pgProfiler!);
 
 const allMemoryResults = [];
 const allPgResults = [];
@@ -151,12 +160,14 @@ for (let i = 0; i < queries.length; i++) {
   const memoryValues = await memoryEngine.execute(query);
   memoryProfiler.pop();
 
-  pgProfiler.push(i.toString());
-  const pgValues = await pgEngine.execute(query);
-  pgProfiler.pop();
+  if (pgProfiler && pgEngine) {
+    pgProfiler.push(i.toString());
+    const pgValues = await pgEngine.execute(query);
+    pgProfiler.pop();
 
-  // validate that they are the same
-  deepEquals(memoryValues, pgValues);
+    // validate that they are the same
+    deepEquals(memoryValues, pgValues);
+  }
 
   // pull results
   const mem = memoryResults.concat();
@@ -215,7 +226,10 @@ const compareTable = (results: AggregateResults[]) =>
   });
 
 console.table(rawTable(rawResults));
-console.table(compareTable(rawResults));
 
-pg.destroy();
+if (!isPgDisabled) {
+  console.table(compareTable(rawResults));
+}
+
+pg?.destroy();
 await memory.destroy();

@@ -16,6 +16,21 @@ For all modules, we use the `pnpm` package manager, `tsc-watch` as a filewatcher
 
 All modules extend the [`tsconfig.json`](./tsconfig.json) found the root directory of the repo.
 
+#### A note about dependencies
+
+When working on multiple packages locally, it's generally advisable to link them to each other. In the corresponding `package.json` files, add a `pnpm.overrides` block:
+
+```
+"pnpm": {
+  "overrides": {
+    "@powerhousedao/analytics-engine-browser": "file:../browser",
+    "@powerhousedao/analytics-engine-core": "file:../core",
+    "@powerhousedao/analytics-engine-knex": "file:../knex",
+    "@powerhousedao/analytics-engine-pg": "file:../pg"
+  }
+}
+```
+
 #### core/
 
 ![Core Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-core?color=blue
