@@ -15,8 +15,8 @@ importers:
         specifier: ^0.2.0
         version: 0.2.0
       '@powerhousedao/analytics-engine-knex':
-        specifier: ^0.2.0
-        version: 0.2.0
+        specifier: ^0.2.1
+        version: 0.2.1
       '@powerhousedao/analytics-engine-pg':
         specifier: ^0.2.0
         version: 0.2.0
@@ -66,8 +66,8 @@ packages:
   '@powerhousedao/analytics-engine-knex@0.1.0':
     resolution: {integrity: sha512-0mJrdl9u1QsEXREHHIyklbDba5vrYtczoqeW4NxBk9W1bVS5VkzL6XwMMDFQiGKeQuCxV/i4FSuOdgipTA3VCg==}
 
-  '@powerhousedao/analytics-engine-knex@0.2.0':
-    resolution: {integrity: sha512-Xd5xFwxgh19WxG50NLLPIsVNajki18uK4sQV+t+dKyV0czWljK+IGNTTA/BH4DIq0oRsa1dCo3rRB6GhRNU1qQ==}
+  '@powerhousedao/analytics-engine-knex@0.2.1':
+    resolution: {integrity: sha512-5Dn02FEvG59L48w7vRHFgERhDRyd4RXRinMfBf+tYJgHeN+B4eRdSOF6EM5vOD5KkYjkI3l6ZJHFWOGnHPrgNg==}
 
   '@powerhousedao/analytics-engine-pg@0.2.0':
     resolution: {integrity: sha512-liCrkMtbd+UK+UHxwE4PU+oeQqG6ywHeUvG7fZ1UGCbQKPX/906BOVHcB9seqcqncZPQX2BJUyWOEIKYPOOqpg==}
@@ -443,9 +443,9 @@ snapshots:
       - supports-color
       - tedious
 
-  '@powerhousedao/analytics-engine-knex@0.2.0':
+  '@powerhousedao/analytics-engine-knex@0.2.1':
     dependencies:
-      '@powerhousedao/analytics-engine-core': 0.1.0
+      '@powerhousedao/analytics-engine-core': 0.2.0
       '@types/luxon': 3.4.2
       '@types/node': 22.9.0
       '@types/pg': 8.11.10
