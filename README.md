@@ -33,8 +33,8 @@ When working on multiple packages locally, it's generally advisable to link them
 
 #### core/
 
-![Core Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-core?color=blue
-)
+[![Core Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-core?color=blue
+)](https://www.npmjs.com/package/@powerhousedao/analytics-engine-core)
 
 Local development of the `core/` module is simple:
 
@@ -64,8 +64,8 @@ pnpm test
 
 #### knex/
 
-![Knex Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-knex?color=blue
-)
+[![Knex Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-knex?color=blue
+)](https://www.npmjs.com/package/@powerhousedao/analytics-engine-knex)
 
 The `knex/` directory provides an analytics storage implementation on top of [knex.js](https://knexjs.org/).
 
@@ -73,8 +73,8 @@ Similarly to the `core/` module, use `pnpm install` for setup, `pnpm dev` for a 
 
 #### pg/
 
-![PG Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-pg?color=blue
-)
+[![PG Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-pg?color=blue
+)](https://www.npmjs.com/package/@powerhousedao/analytics-engine-pg)
 
 The `pg/` directory provides an analytics storage implementation on top of the Postgres adapter, [`pg`](https://www.npmjs.com/package/pg). This module is intended to be run in a server-side environment and relies on several packages typically provided by NodeJS.
 
@@ -131,10 +131,10 @@ database-1  | CREATE INDEX
 
 #### /browser
 
-![Browser Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-browser?color=blue
-)
+[![Browser Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-browser?color=blue
+)](https://www.npmjs.com/package/@powerhousedao/analytics-engine-core)
 
-Finally, a store is provided for the browser in the `browser/` directory.
+A store is provided for the browser in the `browser/` directory.
 
 ```bash
 cd browser/
@@ -156,6 +156,19 @@ pnpm test
 ```
 
 This will open a browser window and run your tests!
+
+#### /graphql
+
+[![GraphQL Version](https://img.shields.io/npm/v/%40powerhousedao%2Fanalytics-engine-graphql?color=blue
+)](https://www.npmjs.com/package/@powerhousedao/analytics-engine-core)
+
+GraphQL types and resolvers are found in the the `/graphql` directory. This module does not depend on any particular GQL libraries, but contain only basic primitives.
+
+```
+cd graphql/
+pnpm install
+pnpm dev
+```
 
 ### Benchmarks
 
