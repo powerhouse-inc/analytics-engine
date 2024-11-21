@@ -26,11 +26,20 @@ export const AnalyticsResolvers: any = {
     },
     metrics: async (parent: any, { filter }: any, { dataSources }: any) => {
       return [
-        "Budget",
-        "Forecast",
         "Actuals",
-        "PaymentsOnChain",
+        "AuditorNetOutflow",
+        "Budget",
+        "Contributors",
+        "Count",
+        "DailyDaiPriceChange",
+        "DailyEthPriceChange",
+        "DailyMkrPriceChange",
+        "DailyUsdcPriceChange",
+        "DailyUsdpPriceChange",
+        "Forecast",
         "PaymentsOffChainIncluded",
+        "PaymentsOnChain",
+        "ProtocolNetOutflow",
       ];
     },
     dimensions: async (_: any, { filter }: any, { dataSources }: any) => {
@@ -38,7 +47,7 @@ export const AnalyticsResolvers: any = {
       return await queryEngine.getDimensions();
     },
     currencies: async (_: any, { filter }: any, { dataSources }: any) => {
-      return ["MKR", "DAI"];
+      return ["DAI", "FTE", "GUSD", "MKR", "USDC", "USDP", "USDT"];
     },
     multiCurrencySeries: async (
       _: any,
