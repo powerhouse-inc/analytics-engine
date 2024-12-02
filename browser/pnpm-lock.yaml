@@ -15,8 +15,8 @@ importers:
         specifier: 0.3.0
         version: 0.3.0
       '@powerhousedao/analytics-engine-knex':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.0
+        version: 0.4.0
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
@@ -261,8 +261,8 @@ packages:
   '@powerhousedao/analytics-engine-core@0.3.0':
     resolution: {integrity: sha512-8Rl8U2P3u5Y+O8iXqEmN+Vjezal32SQ/ce05IgsZqOvtIpuiUmX44wdyufXw8qObxWFPdc7cyFXTHJ3yYUWlzw==}
 
-  '@powerhousedao/analytics-engine-knex@0.3.0':
-    resolution: {integrity: sha512-a0diLxFy6ID0LJfjpyr8Xrgrc2xFEHnnLBDHY+P1fdvJMFHs3FnHrMmFvF2/VF9hZja+PhndgI4nGHZ4kynGLQ==}
+  '@powerhousedao/analytics-engine-knex@0.4.0':
+    resolution: {integrity: sha512-WzMwRR8K1p/MA8SpkOXv6IR5KUjJv7QRce8Y372H5agjBlZvE8WwDUDgsNRcGEX+1ArD87vverkN/c6j+ui+ag==}
 
   '@rollup/rollup-android-arm-eabi@4.24.4':
     resolution: {integrity: sha512-jfUJrFct/hTA0XDM5p/htWKoNNTbDLY0KRwEt6pyOA6k2fmk0WVwl65PdUdJZgzGEHWx+49LilkcSaumQRyNQw==}
@@ -1354,7 +1354,7 @@ snapshots:
     dependencies:
       date-fns: 3.6.0
 
-  '@powerhousedao/analytics-engine-knex@0.3.0':
+  '@powerhousedao/analytics-engine-knex@0.4.0':
     dependencies:
       '@powerhousedao/analytics-engine-core': 0.3.0
       '@types/luxon': 3.4.2
