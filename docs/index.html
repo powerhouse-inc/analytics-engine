@@ -315,15 +315,26 @@
       <ul id="toc" class="toc-list-h1">
           <li>
             <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#overview" class="toc-h2 toc-link" data-title="Overview">Overview</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#quickstart" class="toc-h1 toc-link" data-title="Quickstart">Quickstart</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#insert-data" class="toc-h2 toc-link" data-title="Insert Data">Insert Data</a>
+                    <a href="#queries" class="toc-h2 toc-link" data-title="Queries">Queries</a>
                   </li>
                   <li>
-                    <a href="#analyticsqueryengine" class="toc-h2 toc-link" data-title="AnalyticsQueryEngine">AnalyticsQueryEngine</a>
+                    <a href="#querying-with-graphql" class="toc-h2 toc-link" data-title="Querying with GraphQL">Querying with GraphQL</a>
+                  </li>
+                  <li>
+                    <a href="#querying-with-typescript-api" class="toc-h2 toc-link" data-title="Querying with Typescript API">Querying with Typescript API</a>
+                  </li>
+                  <li>
+                    <a href="#insert-data" class="toc-h2 toc-link" data-title="Insert Data">Insert Data</a>
                   </li>
                   <li>
                     <a href="#store-implementations" class="toc-h2 toc-link" data-title="Store Implementations">Store Implementations</a>
@@ -357,9 +368,36 @@
           </li>
           <li>
             <a href="#postgres" class="toc-h1 toc-link" data-title="Postgres">Postgres</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#construction" class="toc-h2 toc-link" data-title="Construction">Construction</a>
+                  </li>
+                  <li>
+                    <a href="#raw-queries" class="toc-h2 toc-link" data-title="Raw Queries">Raw Queries</a>
+                  </li>
+              </ul>
+          </li>
+          <li>
+            <a href="#graphql" class="toc-h1 toc-link" data-title="Graphql">Graphql</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#apollo-4-setup" class="toc-h2 toc-link" data-title="Apollo 4 Setup">Apollo 4 Setup</a>
+                  </li>
+              </ul>
           </li>
           <li>
             <a href="#compatibility" class="toc-h1 toc-link" data-title="Compatibility">Compatibility</a>
+          </li>
+          <li>
+            <a href="#utilities" class="toc-h1 toc-link" data-title="Utilities">Utilities</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#sqlquerylogger-and-sqlresultslogger" class="toc-h2 toc-link" data-title="SqlQueryLogger and SqlResultsLogger">SqlQueryLogger and SqlResultsLogger</a>
+                  </li>
+                  <li>
+                    <a href="#ianalyticsprofiler" class="toc-h2 toc-link" data-title="IAnalyticsProfiler">IAnalyticsProfiler</a>
+                  </li>
+              </ul>
           </li>
       </ul>
         <ul class="toc-footer">
@@ -374,13 +412,39 @@
 <p>Welcome to the Powerhouse Analytics Engine API. This engine is a powerful, distributed, time-series analytics system, written in Typescript. It is designed to run anywhere: from browsers, to server environments, or even in embedded systems.</p>
 
 <p>This documentation serves as a guide for API usage, not library development. For documentation on how to contribute to this project, see our <a href="https://github.com/powerhouse-inc/analytics-engine/blob/main/README.md">README</a>.</p>
-<h1 id='quickstart'>Quickstart</h1>
-<p>While this analytics engine is highly flexible, it is also extremely simple to get started.</p>
-<h2 id='insert-data'>Insert Data</h2>
-<p>The <code>IAnalyticsStore</code> interface is the primary entry point for inserting and deleting metrics data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the <a href="#memory"><code>MemoryAnalyticsStore</code></a>.</p>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MemoryStorageEngine</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhouse/analytics-engine-memory</span><span class="dl">"</span><span class="p">;</span>
+<h2 id='overview'>Overview</h2>
+<p>The analytics system is broken into several modules, allowing developers to deploy across many environments, for a diverse set of use cases.</p>
 
-<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryStorageEngine</span><span class="p">();</span>
+<p><img src="images/libs-d233026a.jpg" alt="libs" /></p>
+
+<p>The <code>core</code> library contains common data types and abstractions used throughout. The job of the core library is to link together query, storage, and aggregation logic.</p>
+
+<p><img src="images/libs-core-32ad1171.jpg" alt="libs" /></p>
+
+<p>The <code>knex</code>, <code>pg</code>, and <code>browser</code> libraries contain various storage implementations. Finally, the <code>graphql</code> library contains types, resolvers, and data types for a GraphQL API on top.</p>
+<h1 id='quickstart'>Quickstart</h1>
+<p>...</p>
+<h2 id='queries'>Queries</h2>
+<p>Querying data is a good place to start.</p>
+
+<p>For this purpose, we have created the <a href="#graphql">GraphQL</a> package, which provides types and resolvers a GraphQL API. This quickstart will focus on making queries, but if you are interested in using this package with your own GraphQL server, see the section on <code>Apollo 4 Setup</code> in the <a href="#graphql">documentation below</a>.</p>
+<h2 id='querying-with-graphql'>Querying with GraphQL</h2>
+<p>...</p>
+<h2 id='querying-with-typescript-api'>Querying with Typescript API</h2>
+<p>The entry point for data queries in Typescript is the <code>AnalyticsQueryEngine</code>. This object exposes an interface for inserting, querying, and deleting metrics data.</p>
+
+<p>This object should be created on top of a storage engine. In this example, we create a simple in-memory storage engine which is compatible with all platforms.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AnalyticsQueryEngine</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhousedao/analytics-core</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">MemoryAnalyticsStore</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhousedao/analytics-memory</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">engine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnalyticsQueryEngine</span><span class="p">(</span><span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">());</span>
+</code></pre></div><h2 id='insert-data'>Insert Data</h2>
+<p>The GraphQL library is for querying data only.</p>
+
+<p>The <code>IAnalyticsStore</code> interface is the primary entry point for inserting and deleting data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the <a href="#memory"><code>MemoryAnalyticsStore</code></a>.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">MemoryAnalyticsStore</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhousedao/analytics-engine-memory</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">();</span>
 </code></pre></div>
 <p>Data can be added using the <code>addSeriesValue</code> method.</p>
 
@@ -388,7 +452,7 @@
 <p>Note that we use the <a href="https://moment.github.io/luxon/#/"><code>luxon</code> library</a> in our API for immutable, time-zone aware data types.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">DateTime</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">luxon</span><span class="dl">"</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">AnalyticsPath</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhouse/analytics-engine-core</span><span class="dl">"</span><span class="p">;</span>
+<span class="k">import</span> <span class="p">{</span> <span class="nx">AnalyticsPath</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhousedao/analytics-engine-core</span><span class="dl">"</span><span class="p">;</span>
 
 <span class="kd">const</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">AnalyticsPath</span><span class="p">.</span><span class="nx">fromString</span><span class="p">(</span><span class="dl">"</span><span class="s2">example/insert</span><span class="dl">"</span><span class="p">);</span>
 <span class="k">await</span> <span class="nx">store</span><span class="p">.</span><span class="nx">addSeriesValue</span><span class="p">([</span>
@@ -407,14 +471,6 @@
     <span class="p">},</span>
   <span class="p">},</span>
 <span class="p">]);</span>
-</code></pre></div><h2 id='analyticsqueryengine'>AnalyticsQueryEngine</h2>
-<p>The entry point for data reads is the <code>AnalyticsQueryEngine</code>. This object exposes an interface for inserting, querying, and deleting metrics data.</p>
-
-<p>This object should be created on top of a storage engine. In this example, we create a simple in-memory storage engine which is compatible with all platforms.</p>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="p">{</span> <span class="nx">AnalyticsQueryEngine</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhouse/analytics-core</span><span class="dl">"</span><span class="p">;</span>
-<span class="k">import</span> <span class="p">{</span> <span class="nx">MemoryStorageEngine</span> <span class="p">}</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">@powerhouse/analytics-memory</span><span class="dl">"</span><span class="p">;</span>
-
-<span class="kd">const</span> <span class="nx">engine</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnalyticsQueryEngine</span><span class="p">(</span><span class="k">new</span> <span class="nx">MemoryStorageEngine</span><span class="p">());</span>
 </code></pre></div><h2 id='store-implementations'>Store Implementations</h2>
 <p>Multiple storage implementations are provided, each with comprehensive documentation. See the corresponding docs for:</p>
 
@@ -424,7 +480,7 @@
 <li><a href="#postgres">PostgresAnalyticsStore</a></li>
 </ul>
 <h1 id='memory'>Memory</h1>
-<p>The <code>MemoryAnalyticsStore</code> is an <code>IAnalyticsStore</code> implementation that uses a an in-memory database as its storage mechanism. Under the hood, we load a WASM build of SQLite3.</p>
+<p>The <code>MemoryAnalyticsStore</code> is an <code>IAnalyticsStore</code> implementation that uses a an in-memory database as its storage mechanism. Under the hood, we load a WASM build of Postgres, called <a href="https://pglite.dev/">PGlite</a>.</p>
 
 <aside class="notice">
 See the <a href="#compatibility">Compatibility</a> section for details on which stores are intended to be used in different execution environments.
@@ -440,15 +496,39 @@ See the <a href="#compatibility">Compatibility</a> section for details on which 
 <blockquote>
 <p>The <code>MemoryAnalyticsStore</code> may also be created with optional contructor arguments that may be helpful for debugging or metrics collection.</p>
 </blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">(</span>
-  <span class="nx">defaultQueryLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
-  <span class="nx">defaultResultsLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
-  <span class="k">new</span> <span class="nx">PassthroughAnalyticsProfiler</span><span class="p">()</span>
-<span class="p">);</span>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">({</span>
+  <span class="na">queryLogger</span><span class="p">:</span> <span class="nx">querydefaultQueryLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">resultsLogger</span><span class="p">:</span> <span class="nx">defaultResultsLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">profiler</span><span class="p">:</span> <span class="k">new</span> <span class="nx">PassthroughAnalyticsProfiler</span><span class="p">(),</span>
+<span class="p">});</span>
 </code></pre></div>
 <p>For more details on these optional constructor parameters, see the <a href="#utilities">Utilities</a> section.</p>
-<h2 id='initialization'>Initialization</h2>
-<p>While easy to use, the <code>MemoryAnalyticsStore</code> requires an asynchronous initialization step. This is for two reasons. For one, it needs time to download and initialize the WASM build of SQLite. This download is fairly small (~1 MB). Additionally, it also needs to initialize the database schema of the in-memory database. This is distinct from the <a href="#postgres">Postgres implementation</a>, which assumes a fully-initialized Postgres database already exists.</p>
+
+<blockquote>
+<p>Additionally, both <code>knex</code> and <code>pglite</code> objects may be passed in. This is helpful in contexts where multiple objects are sharing the same database.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// knex must be created with these options</span>
+<span class="kd">const</span> <span class="nx">knex</span> <span class="o">=</span> <span class="nx">knexFactory</span><span class="p">({</span> <span class="na">client</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pg</span><span class="dl">"</span><span class="p">,</span> <span class="na">useNullAsDefault</span><span class="p">:</span> <span class="kc">true</span> <span class="p">});</span>
+
+<span class="c1">// create your own Pglite instance and pass it in</span>
+<span class="c1">// See (https://github.com/electric-sql/pglite/blob/main/packages/pglite/src/interface.ts) for full list of options.</span>
+<span class="kd">const</span> <span class="nx">pgLiteFactory</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="nx">PGlite</span><span class="p">.</span><span class="nx">create</span><span class="p">({</span>
+  <span class="na">debug</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span>
+  <span class="na">relaxedDurability</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">({</span>
+  <span class="nx">knex</span><span class="p">,</span>
+  <span class="nx">pgLiteFactory</span><span class="p">,</span>
+<span class="p">})</span>
+</code></pre></div><h2 id='initialization'>Initialization</h2>
+<p>While easy to use, the <code>MemoryAnalyticsStore</code> requires an asynchronous initialization step. This is for two reasons.</p>
+
+<p>In cases where the <code>MemoryAnalyticsStore</code> was not provided a <code>PGlite</code> instance, it needs time to download and initialize the WASM build.</p>
+
+<p>Additionally, it also needs to initialize the database schema of the in-memory database. This is distinct from the <a href="#postgres">Postgres implementation</a>, which assumes a fully-initialized Postgres database already exists. The initialization is idempotent, so tables already created will not be recreated.</p>
+
+<p>The full SQL query used can be found in the <a href="https://github.com/powerhouse-inc/analytics-engine/blob/main/browser/src/MemoryAnalyticsStore.ts"><code>MemoryAnalyticsStore</code> source</a>.</p>
 
 <blockquote>
 <p>Note that this method is not available on the <code>IAnalyticsStore</code> interface, but only on the <code>MemoryAnalyticsStore</code> type.</p>
@@ -465,24 +545,29 @@ See the <a href="#compatibility">Compatibility</a> section for details on which 
 See the <a href="#compatibility">Compatibility</a> section for details on which stores are intended to be used in different execution environments.
 </aside>
 <h2 id='construction'>Construction</h2>
-<p>The <code>BrowserAnalyticsStore</code> requires a database name but may also be created with optional contructor arguments that may be helpful for debugging or metrics collection.</p>
-
+<p>A default implementation of the <code>BrowserAnalyticsStore</code> may be created with no arguments, or options are provided for specialized needs.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// creates a database named "analytics"</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">();</span>
+</code></pre></div>
 <blockquote>
-<p>Create with database name.</p>
+<p>Create with a specific database name.</p>
 </blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">(</span><span class="dl">"</span><span class="s2">analytics</span><span class="dl">"</span><span class="p">);</span>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">({</span> <span class="na">databaseName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">analytics</span><span class="dl">"</span> <span class="p">});</span>
 </code></pre></div>
 <blockquote>
 <p>It may also be created with optional contructor arguments that may be helpful for debugging or metrics collection.</p>
 </blockquote>
-<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">(</span>
-  <span class="dl">"</span><span class="s2">analytics</span><span class="dl">"</span><span class="p">,</span>
-  <span class="nx">defaultQueryLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser</span><span class="dl">"</span><span class="p">),</span>
-  <span class="nx">defaultResultsLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser</span><span class="dl">"</span><span class="p">),</span>
-  <span class="k">new</span> <span class="nx">PassthroughAnalyticsProfiler</span><span class="p">()</span>
-<span class="p">);</span>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">({</span>
+  <span class="na">databaseName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">analytics</span><span class="dl">"</span><span class="p">,</span>
+
+  <span class="na">queryLogger</span><span class="p">:</span> <span class="nx">defaultQueryLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">resultsLogger</span><span class="p">:</span> <span class="nx">defaultResultsLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">browser</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">profiler</span><span class="p">:</span> <span class="k">new</span> <span class="nx">PassthroughAnalyticsProfiler</span><span class="p">(),</span>
+<span class="p">});</span>
 </code></pre></div>
 <p>For more details on these optional constructor parameters, see the <a href="#utilities">Utilities</a> section.</p>
+
+<p>Since the constructor options argument extends the <code>MemoryAnalyticsStore</code> options argument, see the <a href="#memory"><code>MemoryAnalyticsStore</code></a> documentation for further details on other optional parameters.</p>
 <h2 id='initialization'>Initialization</h2>
 <p>Similar to the <a href="#memory"><code>MemoryAnalyticsStore</code></a>, this implementation requires an asynchronous initialization step.</p>
 
@@ -490,12 +575,12 @@ See the <a href="#compatibility">Compatibility</a> section for details on which 
 <p>Note that this method is not available on the <code>IAnalyticsStore</code> interface, but only on the concrete type.</p>
 </blockquote>
 <div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// create the store</span>
-<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">(</span><span class="dl">"</span><span class="s2">analytics</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">();</span>
 
 <span class="c1">// initialize it</span>
 <span class="k">await</span> <span class="nx">store</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
 </code></pre></div><h2 id='persistence'>Persistence</h2>
-<p>The <code>databaseName</code> constructor argument essentially namespaces the database. This allows users to create multiple stores, if needed, which will not conflict with each other. You can use your browser&#39;s developer tools to see these databases, usually through the &quot;Storage&quot; tab.</p>
+<p>The <code>databaseName</code> constructor argument namespaces the database. This allows users to create multiple stores, if needed, which will not conflict with each other. You can use your browser&#39;s developer tools to see these databases, usually through the &quot;Storage&quot; tab.</p>
 
 <aside class="notice">
 While manipulating the data manually is not recommended, this allows you to easily delete and recreate databases if needed.
@@ -505,16 +590,62 @@ While manipulating the data manually is not recommended, this allows you to easi
 
 <p>The store interface is intended to be immutable, meaning that it does not provide a general method of wiping a DB. However, an IDB database may be deleted via the standard <a href="https://developer.mozilla.org/en-US/docs/Web/API/IndexedDB_API">IDB API</a>.</p>
 <div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// creates the database</span>
-<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">(</span><span class="dl">"</span><span class="s2">my-analytics</span><span class="dl">"</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">BrowserAnalyticsStore</span><span class="p">({</span> <span class="na">databaseName</span><span class="p">:</span> <span class="dl">"</span><span class="s2">my-analytics</span><span class="dl">"</span> <span class="p">});</span>
 <span class="k">await</span> <span class="nx">store</span><span class="p">.</span><span class="nx">init</span><span class="p">();</span>
 
-<span class="c1">// deletes the database</span>
+<span class="c1">// use the browser API to delete the database</span>
 <span class="nb">window</span><span class="p">.</span><span class="nx">indexedDB</span><span class="p">.</span><span class="nx">deleteDatabase</span><span class="p">(</span><span class="dl">"</span><span class="s2">my-analytics</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div><h1 id='postgres'>Postgres</h1>
+<p>The <code>PostgresAnalyticsStore</code> is an <code>IAnalyticsStore</code> implementation that leverages a Postgres database. It requires some APIs that do not run in a browser, and is intended for server-side applications.</p>
+
 <aside class="notice">
 See the <a href="#compatibility">Compatibility</a> section for details on which stores are intended to be used in different execution environments.
 </aside>
-<h1 id='compatibility'>Compatibility</h1>
+<h2 id='construction'>Construction</h2>
+<p>The <code>PostgresAnalyticsStore</code> uses the <a href="https://www.npmjs.com/package/pg"><code>pg</code></a> package and requires Postgres connection information.</p>
+
+<p>By providing a PG connection string, the store will automatically create a <code>pg</code> instance, internally.</p>
+
+<p>A docker-compose file is provided <a href="https://github.com/powerhouse-inc/analytics-engine/blob/main/pg/docker-compose.test.yml">here</a> that will spin up an instance quickly. Note that it cannot be copy/pasted but must be run in the checked out repository to access the correct initialization scripts. See the <a href="https://github.com/powerhouse-inc/analytics-engine/tree/main?tab=readme-ov-file#pg">developer documentation</a> for more information.</p>
+
+<blockquote>
+<p>Create with only a connection string.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// connects to a local postgres instance, configured by the provided docker-compose file</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PostgresAnalyticsStore</span><span class="p">({</span>
+  <span class="na">connectionString</span><span class="p">:</span> <span class="dl">"</span><span class="s2">postgresql://postgres:password@localhost:5555/analytics</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>Instead, create with a <code>knex</code> object.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="k">import</span> <span class="nx">knexFactory</span> <span class="k">from</span> <span class="dl">"</span><span class="s2">knex</span><span class="dl">"</span><span class="p">;</span>
+
+<span class="kd">const</span> <span class="nx">knex</span> <span class="o">=</span> <span class="nx">knexFactory</span><span class="p">({</span>
+  <span class="na">client</span><span class="p">:</span> <span class="dl">"</span><span class="s2">pg</span><span class="dl">"</span><span class="p">,</span>
+  <span class="na">connection</span><span class="p">:</span> <span class="dl">"</span><span class="s2">...</span><span class="dl">"</span><span class="p">,</span>
+<span class="p">});</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PostgresAnalyticsStore</span><span class="p">({</span>
+  <span class="nx">knex</span><span class="p">,</span>
+<span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>The <code>PostgresAnalyticsStore</code> may also be created with optional contructor arguments that may be helpful for debugging or metrics collection.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PostgresAnalyticsStore</span><span class="p">({</span>
+  <span class="na">queryLogger</span><span class="p">:</span> <span class="nx">querydefaultQueryLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">resultsLogger</span><span class="p">:</span> <span class="nx">defaultResultsLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">profiler</span><span class="p">:</span> <span class="k">new</span> <span class="nx">PassthroughAnalyticsProfiler</span><span class="p">(),</span>
+<span class="p">});</span>
+</code></pre></div>
+<p>For more details on these optional constructor parameters, see the <a href="#utilities">Utilities</a> section.</p>
+<h2 id='raw-queries'>Raw Queries</h2>
+<p>Though there is no method on <code>IAnalyticsStore</code> for running arbitrary queries, the <code>PostgresAnalyticsStore</code> implementation provides a <code>raw(sql: string)</code> method. This is used only in development, testing, and <a href="https://github.com/powerhouse-inc/analytics-engine/blob/main/benchmarks/src/wasm.ts">benchmarking</a> situations and is not intended for production use cases.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">results</span> <span class="o">=</span> <span class="nx">store</span><span class="p">.</span><span class="nx">raw</span><span class="p">(</span><span class="s2">`select distinct unit from "AnalyticsSeries"`</span><span class="p">);</span>
+</code></pre></div><h1 id='graphql'>Graphql</h1>
+<p>The <code>analytics-engine-graphql</code> module provides types and resolvers needed for a fully-functional GraphQL Server API. This library has no dependencies on any particular server but has been tested using <a href="https://www.apollographql.com/docs/apollo-server">Apollo Server 3 and 4</a>.</p>
+<h2 id='apollo-4-setup'>Apollo 4 Setup</h2><h1 id='compatibility'>Compatibility</h1>
 <aside class="notice">
 This guide is intended for making high level decisions about which storage systems to use in which contexts. These stores have not been tested across thousands of browser or serverside runtime versions.
 </aside>
@@ -552,7 +683,76 @@ This guide is intended for making high level decisions about which storage syste
 <td>X</td>
 </tr>
 </tbody></table>
+<h1 id='utilities'>Utilities</h1>
+<p>This section describes various utility objects.</p>
+<h2 id='sqlquerylogger-and-sqlresultslogger'>SqlQueryLogger and SqlResultsLogger</h2>
+<p>The <code>SqlQueryLogger</code> type defines a synchronous interface for logging out SQL queries, while <code>SqlResultsLogger</code> provides the same for raw query results. These can be very useful for debugging or understanding what queries are actually generated from top level Typescript objects.</p>
 
+<p>These types are used frequently in multiple <code>IAnalyticsStore</code> implementations, such as <code>KnexAnalyticsStore</code>, <code>PostgresAnalyticStore</code>, <code>MemoryAnalyticsStore</code>, and <code>BrowserAnalyticsStore</code>. Generally, they are optional inputs into the constructor options object.</p>
+
+<blockquote>
+<p>Create your own query logger.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">queryLogger</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[Q:</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">] </span><span class="p">${</span><span class="nx">query</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">({</span> <span class="nx">queryLogger</span> <span class="p">});</span>
+</code></pre></div>
+<blockquote>
+<p>You may also create a results logger. Since queries are asynchronous operations, indices match between query and results functions.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">queryLogger</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">query</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[Q:</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">] </span><span class="p">${</span><span class="nx">query</span><span class="p">}</span><span class="s2">`</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">resultsLogger</span> <span class="o">=</span> <span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="o">=&gt;</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[R:</span><span class="p">${</span><span class="nx">index</span><span class="p">}</span><span class="s2">] </span><span class="p">${</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">results</span><span class="p">)}</span><span class="s2">`</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">({</span> <span class="nx">queryLogger</span><span class="p">,</span> <span class="nx">resultsLogger</span> <span class="p">});</span>
+</code></pre></div>
+<p>More commonly, you can use the included utility functions, <code>defaultQueryLogger</code> and <code>defaultResultsLogger</code>. These functions append a tag to each log.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">({</span>
+  <span class="na">queryLogger</span><span class="p">:</span> <span class="nx">defaultQueryLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+  <span class="na">resultsLogger</span><span class="p">:</span> <span class="nx">defaultResultsLogger</span><span class="p">(</span><span class="dl">"</span><span class="s2">memory</span><span class="dl">"</span><span class="p">),</span>
+<span class="p">});</span>
+</code></pre></div><h2 id='ianalyticsprofiler'>IAnalyticsProfiler</h2>
+<p>The Powerhouse Analytics Engine includes a simple profiling interface, <code>IAnalyticsProfiler</code>, that is consumed by each <code>IAnalyticsStore</code> implementation. A default implementation, <code>AnalyticsProfiler</code> is provided as part of the <code>@powerhousedao/analytics-engine-core</code> package.</p>
+
+<p>The <code>AnalyticsProfiler</code> requires a namespace and a logger.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">profiler</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">AnalyticsProfiler</span><span class="p">(</span>
+  <span class="dl">"</span><span class="s2">my-system</span><span class="dl">"</span><span class="p">,</span>
+  <span class="p">(</span><span class="nx">metricName</span><span class="p">:</span> <span class="kr">string</span><span class="p">,</span> <span class="nx">ms</span><span class="p">:</span> <span class="kr">number</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s2">`[</span><span class="p">${</span><span class="nx">metricName</span><span class="p">}</span><span class="s2">] </span><span class="p">${</span><span class="nb">Math</span><span class="p">.</span><span class="nx">floor</span><span class="p">(</span><span class="nx">ms</span><span class="p">)}</span><span class="s2"> ms`</span><span class="p">));</span>
+</code></pre></div>
+<blockquote>
+<p>This object may be passed in through the constructor.</p>
+</blockquote>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// pass this object in to profile the memory store</span>
+<span class="kd">const</span> <span class="nx">store</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">MemoryAnalyticsStore</span><span class="p">({</span> <span class="nx">profiler</span> <span class="p">});</span>
+</code></pre></div><h3 id='record'>Record</h3>
+<p>The <code>record</code> method accepts a metric name and an asynchronous function to time. It returns the value returned by the asynchronous method.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">profiler</span><span class="p">.</span><span class="nx">record</span><span class="p">(</span><span class="dl">"</span><span class="s2">compute</span><span class="dl">"</span><span class="p">,</span> <span class="k">async</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// elided</span>
+<span class="p">});</span>
+</code></pre></div><h3 id='recordsync'>RecordSync</h3>
+<p>A synchronous version is also included.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">profiler</span><span class="p">.</span><span class="nx">recordSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">computeSync</span><span class="dl">"</span><span class="p">,</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// elided</span>
+<span class="p">});</span>
+</code></pre></div><h3 id='name-stack'>Name Stack</h3>
+<p>Often, it is useful to group metrics together. This is accomplished through a metric naming stack, which takes the form: <code>[Namespace].[... Stack Values].[Metric Name]</code>. This allows systems to pass down a profiler instance, and compose results.</p>
+<div class="highlight"><pre class="highlight typescript tab-typescript"><code><span class="c1">// Blocks, { }, are a good convention to signal stack depth.</span>
+<span class="nx">profiler</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">system</span><span class="dl">"</span><span class="p">);</span>
+<span class="p">{</span>
+  <span class="nx">profiler</span><span class="p">.</span><span class="nx">recordSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">a</span><span class="dl">"</span><span class="p">,</span> <span class="nx">myFuncA</span><span class="p">);</span>    <span class="c1">// my-system.system.a</span>
+
+  <span class="nx">profiler</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="dl">"</span><span class="s2">subsystem</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">{</span>
+    <span class="nx">profiler</span><span class="p">.</span><span class="nx">recordSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">b</span><span class="dl">"</span><span class="p">,</span> <span class="nx">myFuncB</span><span class="p">);</span>  <span class="c1">// my-system.system.subsystem.b</span>
+  <span class="p">}</span>
+  <span class="nx">profiler</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+
+  <span class="nx">profiler</span><span class="p">.</span><span class="nx">recordSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">c</span><span class="dl">"</span><span class="p">,</span> <span class="nx">myFuncC</span><span class="p">);</span>    <span class="c1">// my-system.system.c</span>
+<span class="p">}</span>
+<span class="nx">profiler</span><span class="p">.</span><span class="nx">pop</span><span class="p">();</span>
+
+<span class="nx">profiler</span><span class="p">.</span><span class="nx">recordSync</span><span class="p">(</span><span class="dl">"</span><span class="s2">d</span><span class="dl">"</span><span class="p">,</span> <span class="nx">myFuncC</span><span class="p">);</span>      <span class="c1">// my-system.c</span>
+</code></pre></div>
       </div>
       <div class="dark-box">
           <div class="lang-selector">
