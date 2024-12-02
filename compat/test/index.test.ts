@@ -13,20 +13,12 @@ if (!connectionString) {
 let postgres: PostgresAnalyticsStore;
 let memory: MemoryAnalyticsStore;
 
-// todo: export these from @powerhousedao/analytics-engine-pg
-const passthroughProfiler = () => ({
-  prefix: "",
-  push: (system: string) => {},
-  pop: () => {},
-  record: async (metric: string, fn: () => Promise<any>) => await fn(),
-});
-
 beforeAll(async () => {
   // read dump
   const sqlHuge = fs.readFileSync("../benchmarks/data/dump-huge.sql", "utf-8");
 
   // initialize stores
-  postgres = new PostgresAnalyticsStore(connectionString);
+  postgres = new PostgresAnalyticsStore({ connectionString });
 
   memory = new MemoryAnalyticsStore();
   await memory.init();
