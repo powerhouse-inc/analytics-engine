@@ -45,18 +45,18 @@ export interface IKnexQueryExecutor {
   execute<T extends {}, U>(query: Knex.QueryBuilder<T, U>): Promise<any>;
 }
 
+export type KnexAnalyticsStoreOptions = {
+  executor: IKnexQueryExecutor;
+  knex: Knex;
+};
+
 export class KnexAnalyticsStore implements IAnalyticsStore {
+  protected readonly _executor: IKnexQueryExecutor;
   protected readonly _knex: Knex;
 
-  public constructor(
-    protected readonly _executor: IKnexQueryExecutor,
-    knex?: Knex
-  ) {
-    this._knex =
-      knex ||
-      knexFactory({
-        client: "sqlite3",
-      });
+  public constructor({ executor, knex }: KnexAnalyticsStoreOptions) {
+    this._executor = executor;
+    this._knex = knex;
   }
 
   public destroy() {
