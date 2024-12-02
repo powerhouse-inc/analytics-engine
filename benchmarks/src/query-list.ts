@@ -139,12 +139,10 @@ const memoryEngine = new AnalyticsQueryEngine(memory, memoryProfiler);
 
 const pg = isPgDisabled
   ? null
-  : new PostgresAnalyticsStore(
-      connString!,
-      () => {},
-      () => {},
-      pgProfiler!
-    );
+  : new PostgresAnalyticsStore({
+      connectionString: connString!,
+      profiler: pgProfiler,
+    });
 const pgEngine = isPgDisabled
   ? null
   : new AnalyticsQueryEngine(pg!, pgProfiler!);
