@@ -119,17 +119,15 @@ const memoryProfiler = new AnalyticsProfiler("memory", (name, durationNano) =>
   memoryResults.push(new ExecutionResults(name, durationNano))
 );
 const pgProfiler = isPgDisabled
-  ? null
+  ? undefined
   : new AnalyticsProfiler("pg", (name, durationNano) =>
       pgResults.push(new ExecutionResults(name, durationNano))
     );
 
 // stores
-const memory: MemoryAnalyticsStore = new MemoryAnalyticsStore(
-  () => {},
-  () => {},
-  memoryProfiler
-);
+const memory: MemoryAnalyticsStore = new MemoryAnalyticsStore({
+  profiler: memoryProfiler,
+});
 await memory.init();
 await memory.raw(sqlHuge);
 
