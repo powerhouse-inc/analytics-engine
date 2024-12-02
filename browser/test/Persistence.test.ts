@@ -31,7 +31,7 @@ describe("IDB VFS", () => {
     // first, delete db
     await deleteIdbDb(dbName);
 
-    const store = new BrowserAnalyticsStore(dbName);
+    const store = new BrowserAnalyticsStore({ databaseName: dbName });
     await store.init();
     await store.addSeriesValues([
       {
@@ -92,7 +92,7 @@ describe("IDB VFS", () => {
       },
     });
 
-    const newStore = new BrowserAnalyticsStore(dbName);
+    const newStore = new BrowserAnalyticsStore({ databaseName: dbName });
     await newStore.init();
 
     const results = await newStore.getMatchingSeries({
@@ -135,7 +135,9 @@ describe("IDB VFS", () => {
       // delete existing db
       await deleteIdbDb("analytics.db.huge");
 
-      const store = new BrowserAnalyticsStore("analytics.db.huge");
+      const store = new BrowserAnalyticsStore({
+        databaseName: "analytics.db.huge",
+      });
       await store.init();
 
       console.log("Executing SQL...", sql);

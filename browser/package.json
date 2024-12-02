@@ -1,6 +1,6 @@
 {
   "name": "@powerhousedao/analytics-engine-browser",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "AGPL-3.0-only",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,7 +19,7 @@
   "dependencies": {
     "@electric-sql/pglite": "^0.2.12",
     "@powerhousedao/analytics-engine-core": "0.3.0",
-    "@powerhousedao/analytics-engine-knex": "0.3.0",
+    "@powerhousedao/analytics-engine-knex": "0.4.0",
     "date-fns": "^3.6.0",
     "events": "^3.3.0",
     "knex": "^3.1.0",

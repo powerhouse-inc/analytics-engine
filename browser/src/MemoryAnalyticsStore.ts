@@ -8,7 +8,7 @@ import {
   SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
 import fs from "fs";
-import knexFactory from "knex";
+import knexFactory, { Knex } from "knex";
 import { parseRawResults, PGLiteQueryExecutor } from "./PgLiteExecutor.js";
 import { PGlite } from "@electric-sql/pglite";
 
@@ -90,23 +90,29 @@ const initSql = `
 
 `;
 
+export type MemoryAnalyticsStoreOptions = {
+  pgLiteFactory?: () => Promise<PGlite>;
+  knex?: Knex;
+  queryLogger?: SqlQueryLogger;
+  resultsLogger?: SqlResultsLogger;
+  profiler?: IAnalyticsProfiler;
+};
+
 export class MemoryAnalyticsStore extends KnexAnalyticsStore {
+  private _pgLiteFactory: () => Promise<PGlite>;
   private _queryLogger: SqlQueryLogger;
   private _resultsLogger: SqlResultsLogger;
   private _pgExecutor: PGLiteQueryExecutor;
   private _profiler: IAnalyticsProfiler;
   private _sql: PGlite | null = null;
 
-  public constructor(
-    queryLogger?: SqlQueryLogger,
-    resultsLogger?: SqlResultsLogger,
-    profiler?: IAnalyticsProfiler
-  ) {
-    const knex = knexFactory({
-      client: "pg",
-      useNullAsDefault: true,
-    });
-
+  public constructor({
+    knex,
+    pgLiteFactory,
+    queryLogger,
+    resultsLogger,
+    profiler,
+  }: MemoryAnalyticsStoreOptions = {}) {
     if (!profiler) {
       profiler = new PassthroughAnalyticsProfiler();
     }
@@ -117,8 +123,17 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
       resultsLogger
     );
 
-    super(executor, knex);
+    super({
+      executor,
+      knex:
+        knex ||
+        knexFactory({
+          client: "pg",
+          useNullAsDefault: true,
+        }),
+    });
 
+    this._pgLiteFactory = pgLiteFactory || PGlite.create;
     this._queryLogger = queryLogger || (() => {});
     this._resultsLogger = resultsLogger || (() => {});
     this._profiler = profiler;
@@ -126,17 +141,13 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
   }
 
   public async init() {
-    this._sql = await this.instance();
+    this._sql = await this._pgLiteFactory();
 
     // init executor
     this._pgExecutor.init(this._sql);
 
     // create tables if they do not exist
     await this._sql.exec(initSql);
-  }
-
-  protected instance(): Promise<PGlite> {
-    return PGlite.create();
   }
 
   public async raw(sql: string) {

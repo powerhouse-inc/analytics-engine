@@ -1,29 +1,25 @@
-import { MemoryAnalyticsStore } from "./MemoryAnalyticsStore.js";
 import {
-  SqlQueryLogger,
-  SqlResultsLogger,
-} from "@powerhousedao/analytics-engine-knex";
-import { IAnalyticsProfiler } from "@powerhousedao/analytics-engine-core";
+  MemoryAnalyticsStore,
+  MemoryAnalyticsStoreOptions,
+} from "./MemoryAnalyticsStore.js";
 import { IdbFs, PGlite } from "@electric-sql/pglite";
 
+export type BrowserAnalyticsStoreOptions = MemoryAnalyticsStoreOptions & {
+  databaseName: string;
+};
+
 export class BrowserAnalyticsStore extends MemoryAnalyticsStore {
-  private _dbName: string;
-
   constructor(
-    databaseName: string,
-    queryLogger?: SqlQueryLogger,
-    resultsLogger?: SqlResultsLogger,
-    profiler?: IAnalyticsProfiler
+    options: BrowserAnalyticsStoreOptions = { databaseName: "analytics" }
   ) {
-    super(queryLogger, resultsLogger, profiler);
+    if (!options.pgLiteFactory) {
+      options.pgLiteFactory = async () =>
+        PGlite.create({
+          fs: new IdbFs(options.databaseName),
+          relaxedDurability: true,
+        });
+    }
 
-    this._dbName = databaseName;
-  }
-
-  override async instance(): Promise<PGlite> {
-    return await PGlite.create({
-      fs: new IdbFs(this._dbName),
-      relaxedDurability: true,
-    });
+    super(options);
   }
 }

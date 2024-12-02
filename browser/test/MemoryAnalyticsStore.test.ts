@@ -14,7 +14,9 @@ const TEST_SOURCE = AnalyticsPath.fromString(
 );
 
 beforeAll(async () => {
-  store = new MemoryAnalyticsStore(defaultQueryLogger("memory"));
+  store = new MemoryAnalyticsStore({
+    queryLogger: defaultQueryLogger("memory"),
+  });
   await store.init();
 
   await store.addSeriesValues([
