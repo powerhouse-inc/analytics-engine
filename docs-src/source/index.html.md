@@ -13,7 +13,9 @@ includes:
   - memory
   - browser
   - pg
+  - graphql
   - compatibility
+  - util
 
 search: true
 
@@ -64,9 +66,9 @@ This object should be created on top of a storage engine. In this example, we cr
 
 ```typescript
 import { AnalyticsQueryEngine } from "@powerhousedao/analytics-core";
-import { MemoryStorageEngine } from "@powerhousedao/analytics-memory";
+import { MemoryAnalyticsStore } from "@powerhousedao/analytics-memory";
 
-const engine = new AnalyticsQueryEngine(new MemoryStorageEngine());
+const engine = new AnalyticsQueryEngine(new MemoryAnalyticsStore());
 ```
 
 ## Insert Data
@@ -76,9 +78,9 @@ The GraphQL library is for querying data only.
 The `IAnalyticsStore` interface is the primary entry point for inserting and deleting data. Multiple storage implementations are provided, but for simplicity we can get up and running quickly with the [`MemoryAnalyticsStore`](#memory).
 
 ```typescript
-import { MemoryStorageEngine } from "@powerhousedao/analytics-engine-memory";
+import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-memory";
 
-const store = new MemoryStorageEngine();
+const store = new MemoryAnalyticsStore();
 ```
 
 Data can be added using the `addSeriesValue` method.

@@ -8,26 +8,34 @@ See the <a href="#compatibility">Compatibility</a> section for details on which 
 
 ## Construction
 
-The `BrowserAnalyticsStore` requires a database name but may also be created with optional contructor arguments that may be helpful for debugging or metrics collection.
-
-> Create with database name.
+A default implementation of the `BrowserAnalyticsStore` may be created with no arguments, or options are provided for specialized needs.
 
 ```typescript
-const store = new BrowserAnalyticsStore("analytics");
+// creates a database named "analytics"
+const store = new BrowserAnalyticsStore();
+```
+
+> Create with a specific database name.
+
+```typescript
+const store = new BrowserAnalyticsStore({ databaseName: "analytics" });
 ```
 
 > It may also be created with optional contructor arguments that may be helpful for debugging or metrics collection.
 
 ```typescript
-const store = new BrowserAnalyticsStore(
-  "analytics",
-  defaultQueryLogger("browser"),
-  defaultResultsLogger("browser"),
-  new PassthroughAnalyticsProfiler()
-);
+const store = new BrowserAnalyticsStore({
+  databaseName: "analytics",
+
+  queryLogger: defaultQueryLogger("browser"),
+  resultsLogger: defaultResultsLogger("browser"),
+  profiler: new PassthroughAnalyticsProfiler(),
+});
 ```
 
 For more details on these optional constructor parameters, see the [Utilities](#utilities) section.
+
+Since the constructor options argument extends the `MemoryAnalyticsStore` options argument, see the [`MemoryAnalyticsStore`](#memory) documentation for further details on other optional parameters.
 
 ## Initialization
 
@@ -37,7 +45,7 @@ Similar to the [`MemoryAnalyticsStore`](#memory), this implementation requires a
 
 ```typescript
 // create the store
-const store = new BrowserAnalyticsStore("analytics");
+const store = new BrowserAnalyticsStore();
 
 // initialize it
 await store.init();
@@ -45,7 +53,7 @@ await store.init();
 
 ## Persistence
 
-The `databaseName` constructor argument essentially namespaces the database. This allows users to create multiple stores, if needed, which will not conflict with each other. You can use your browser's developer tools to see these databases, usually through the "Storage" tab.
+The `databaseName` constructor argument namespaces the database. This allows users to create multiple stores, if needed, which will not conflict with each other. You can use your browser's developer tools to see these databases, usually through the "Storage" tab.
 
 <aside class="notice">
 While manipulating the data manually is not recommended, this allows you to easily delete and recreate databases if needed.
@@ -57,9 +65,9 @@ The store interface is intended to be immutable, meaning that it does not provid
 
 ```typescript
 // creates the database
-const store = new BrowserAnalyticsStore("my-analytics");
+const store = new BrowserAnalyticsStore({ databaseName: "my-analytics" });
 await store.init();
 
-// deletes the database
+// use the browser API to delete the database
 window.indexedDB.deleteDatabase("my-analytics");
 ```
