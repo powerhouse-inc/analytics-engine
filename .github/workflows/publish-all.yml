@@ -8,7 +8,7 @@ on:
 jobs:
   core:
     name: Publish Core Package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
@@ -38,7 +38,7 @@ jobs:
           access: public
   knex:
     name: Publish Knex Package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: core
 
     steps:
@@ -69,7 +69,7 @@ jobs:
           access: public
   graphql:
     name: Publish GraphQL Package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: core
 
     steps:
@@ -96,7 +96,7 @@ jobs:
           access: public
   pg:
     name: Publish Pg Package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [core, knex]
 
     steps:
@@ -123,7 +123,7 @@ jobs:
           access: public
   browser:
     name: Publish Browser Package
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [core, knex]
 
     steps:
@@ -150,7 +150,7 @@ jobs:
           access: public
   benchmark:
     name: Benchmark Packages
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: [core, knex, pg, browser]
 
     steps:
