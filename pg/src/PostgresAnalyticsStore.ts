@@ -18,20 +18,37 @@ types.setTypeParser(types.builtins.JSON, (value: string) => {
   return JSON.parse(value, reviver);
 });
 
+export type PostgresAnalyticsStoreOptions = {
+  connectionString?: string;
+  knex?: Knex;
+  queryLogger?: SqlQueryLogger;
+  resultsLogger?: SqlResultsLogger;
+  profiler?: IAnalyticsProfiler;
+};
+
 export class PostgresAnalyticsStore extends KnexAnalyticsStore {
   private readonly _postgres: Knex;
   private readonly _profiler: IAnalyticsProfiler;
 
-  constructor(
-    connectionString: string,
-    queryLogger?: SqlQueryLogger,
-    resultsLogger?: SqlResultsLogger,
-    profiler?: IAnalyticsProfiler
-  ) {
-    const knex = knexFactory({
-      client: "pg",
-      connection: connectionString,
-    });
+  constructor({
+    connectionString,
+    knex,
+    queryLogger,
+    resultsLogger,
+    profiler,
+  }: PostgresAnalyticsStoreOptions) {
+    if (!knex) {
+      if (!connectionString) {
+        throw new Error(
+          "Either knex or connectionString parameters are required"
+        );
+      }
+
+      knex = knexFactory({
+        client: "pg",
+        connection: connectionString,
+      });
+    }
 
     if (!profiler) {
       profiler = new PassthroughAnalyticsProfiler();
@@ -39,7 +56,10 @@ export class PostgresAnalyticsStore extends KnexAnalyticsStore {
 
     profiler.push("Pg");
 
-    super(new KnexQueryExecutor(queryLogger, resultsLogger, profiler), knex);
+    super({
+      executor: new KnexQueryExecutor(queryLogger, resultsLogger, profiler),
+      knex,
+    });
 
     this._postgres = knex;
     this._profiler = profiler;

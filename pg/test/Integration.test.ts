@@ -55,11 +55,11 @@ const getResultsForGranularity = async (
 };
 
 beforeAll(async () => {
-  store = new PostgresAnalyticsStore(
+  store = new PostgresAnalyticsStore({
     connectionString,
-    defaultQueryLogger("pg"),
-    defaultResultsLogger("pg")
-  );
+    queryLogger: defaultQueryLogger("pg"),
+    resultsLogger: defaultResultsLogger("pg"),
+  });
   engine = new AnalyticsQueryEngine(store);
 
   // clear all records first

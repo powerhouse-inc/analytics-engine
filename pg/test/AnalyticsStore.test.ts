@@ -24,11 +24,11 @@ const TEST_SOURCE = AnalyticsPath.fromString(
 );
 
 beforeAll(async () => {
-  store = new PostgresAnalyticsStore(
+  store = new PostgresAnalyticsStore({
     connectionString,
-    defaultQueryLogger("pg"),
-    defaultResultsLogger("pg")
-  );
+    queryLogger: defaultQueryLogger("pg"),
+    resultsLogger: defaultResultsLogger("pg"),
+  });
   await store.clearSeriesBySource(TEST_SOURCE, true);
 
   await store.addSeriesValues([
