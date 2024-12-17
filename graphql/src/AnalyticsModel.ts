@@ -7,8 +7,8 @@ import {
 import { DateTime } from "luxon";
 
 export type queryFilter = {
-  start?: Date;
-  end?: Date;
+  start?: string;
+  end?: string;
   granularity?: string;
   metrics: string[];
   dimensions: [Record<string, string>];
@@ -25,8 +25,13 @@ type MultiCurrencyFilter = queryFilter & {
 };
 
 export class AnalyticsModel {
-  constructor(public readonly engine: AnalyticsQueryEngine) {
-    //
+  queryLogger: (query: AnalyticsQuery) => void;
+
+  constructor(
+    public readonly engine: AnalyticsQueryEngine,
+    queryLogger?: (query: AnalyticsQuery) => void
+  ) {
+    this.queryLogger = queryLogger || (() => {});
   }
 
   public async query(filter: queryFilter) {
@@ -35,8 +40,8 @@ export class AnalyticsModel {
     }
 
     const query: AnalyticsQuery = {
-      start: filter.start ? DateTime.fromJSDate(filter.start) : null,
-      end: filter.end ? DateTime.fromJSDate(filter.end) : null,
+      start: filter.start ? DateTime.fromISO(filter.start) : null,
+      end: filter.end ? DateTime.fromISO(filter.end) : null,
       granularity: getGranularity(filter.granularity),
       metrics: filter.metrics,
       currency: getCurrency(filter.currency),
@@ -62,6 +67,8 @@ export class AnalyticsModel {
         query.lod[dimension.name] = Number(dimension.lod);
       });
     }
+
+    this.queryLogger(query);
 
     const results = await this.engine.execute(query);
 
@@ -77,8 +84,8 @@ export class AnalyticsModel {
     }
 
     const query: AnalyticsQuery = {
-      start: filter.start ? DateTime.fromJSDate(filter.start) : null,
-      end: filter.end ? DateTime.fromJSDate(filter.end) : null,
+      start: filter.start ? DateTime.fromISO(filter.start) : null,
+      end: filter.end ? DateTime.fromISO(filter.end) : null,
       granularity: getGranularity(filter.granularity),
       metrics: filter.metrics,
       currency: getCurrency(filter.currency),
@@ -104,6 +111,9 @@ export class AnalyticsModel {
         query.lod[dimension.name] = Number(dimension.lod);
       });
     }
+
+    this.queryLogger(query);
+
     return this.engine.executeMultiCurrency(query, {
       targetCurrency: query.currency,
       conversions: filter.conversions.map((c) => {
