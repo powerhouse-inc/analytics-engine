@@ -190,14 +190,3 @@ Finally, you're ready to compare the in-memory and pg stores side by side for co
 ```bash
 pnpm test
 ```
-
-### Docs
-
-Our API usage docs are found in the `/docs` folder. We use [slatedocs](https://github.com/slatedocs/slate). To build and serve these locally, with a watcher:
-
-```bash
-cd docs-src
-docker run --rm --name slate -p 4567:4567 -v $(pwd)/source:/srv/slate/source slatedocs/slate serve
-```
-
-Then navigate to [`http://localhost:4567`](http://localhost:4567).
