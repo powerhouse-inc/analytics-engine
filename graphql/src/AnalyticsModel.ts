@@ -72,7 +72,14 @@ export class AnalyticsModel {
 
     const results = await this.engine.execute(query);
 
-    return results;
+    // convert dates again
+    const convertedResults = results.map((r) => ({
+      ...r,
+      start: r.start.toJSDate(),
+      end: r.end.toJSDate(),
+    }));
+
+    return convertedResults;
 
     // TODO: pull caching interface out into analytics module
     //return measureAnalyticsQueryPerformance('analyticsQuery', 'analyticsQuery', query, false, "high");
