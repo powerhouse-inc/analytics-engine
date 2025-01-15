@@ -12,8 +12,9 @@
     "declaration": true,
     "moduleResolution": "Bundler",
     "module": "ESNext",
-    "noEmit": true,
-    "types": ["node"]
+    "types": ["node"],
+    "rootDir": "./",
+    "outDir": "./dist",
   },
-  "include": ["./test/**/*"]
+  "include": ["./test/**/*", "./src/**/*"],
 }
