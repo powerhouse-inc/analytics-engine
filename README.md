@@ -176,17 +176,4 @@ There are several benchmarking suites that test relative performance of the diff
 
 ### Compatibility
 
-We also provide integration tests that compare responses from an analytics store with a Postgres store with responses from the browser store. These are found in the `compat/` directory. Before running, ensure you setup the postgres db.
-
-```bash
-cd compat/
-docker compose -f ../pg/docker-compose.test.yml up -d
-```
-
-Next, follow the [benchmarking docs](./benchmarks/README.md) to to dump ~200k records into the local db.
-
-Finally, you're ready to compare the in-memory and pg stores side by side for compatibility:
-
-```bash
-pnpm test
-```
+The `compat/` folder contains tests that compare results from different analytics stores or environments. See the accompanying [README](./compat/README.md) for more information.
