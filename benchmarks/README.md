@@ -2,17 +2,21 @@
 
 The code in this directory measures various performance characteristics the analytics engine.
 
-##### Dump
+##### Migrate to Local
 
-First, a SQL dump was created using the `dump-db.sh` script:
+For many of these test, it is necessary to migrate a remote database to your local database. This is straightforward with the script provided.
 
 ```
-./dump-db.sh <user> <password> <host> <db>
+# start postgres
+docker compose -f ../pg/docker-compose.test.yml up -d
+
+# migrate
+./scripts/dump-db.sh <user> <password> <host> <db>
 ```
 
-This outputs a raw file in `data/dump.sql`. The small and dumps have been hand-edited to remove some create table statements, schema ("public."), and pared down to just the raw inserts. These are then loaded from disk for benchmarking.
+This will create a data dump in the `/data` folder and insert it for you.
 
-> This dump also needs to be input into the postgres instance. No script is included to do this for you, as of yet.
+> This script is for macOS users. If you're on Linux, open the script look for the `# GNU sed (Linux)` block.
 
 ### Execute
 
