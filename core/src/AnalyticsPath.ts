@@ -15,6 +15,12 @@ export class AnalyticsPath {
     return new AnalyticsPath(segments);
   }
 
+  public static fromStringArray(segments: string[]): AnalyticsPath {
+    return new AnalyticsPath(
+      segments.map((segment) => AnalyticsPathSegment.fromString(segment))
+    );
+  }
+
   public static fromArray(segments: AnalyticsPathSegment[]): AnalyticsPath {
     return new AnalyticsPath(segments);
   }
