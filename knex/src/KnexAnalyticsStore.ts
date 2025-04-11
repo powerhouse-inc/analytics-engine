@@ -10,7 +10,7 @@ import {
   AnalyticsUpdateCallback,
   AnalyticsSubscriptionManager,
 } from "@powerhousedao/analytics-engine-core";
-import { toPascalCase } from "./util";
+import { toPascalCase } from "./util.js";
 
 type DimensionsMap = Record<string, Record<string, number[]>>;
 
