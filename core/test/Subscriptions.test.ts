@@ -1,6 +1,9 @@
 import { it, expect } from "vitest";
 import { AnalyticsPath } from "../src/AnalyticsPath";
-import { AnalyticsSubscriptionManager } from "../src/AnalyticsSubscriptionManager";
+import {
+  AnalyticsSubscriptionManager,
+  NotificationError,
+} from "../src/AnalyticsSubscriptionManager";
 
 it("it should allow subscribing to a source with an explicit match", () => {
   const subscriptions = new AnalyticsSubscriptionManager();
@@ -19,6 +22,48 @@ it("it should allow subscribing to a source with an explicit match", () => {
   subscriptions.notifySubscribers([AnalyticsPath.fromString("/a")]);
 
   expect(called).toBe(1);
+});
+
+it("all subscriptions should be notified of a path update", () => {
+  const subscriptions = new AnalyticsSubscriptionManager();
+
+  let called = 0;
+  subscriptions.subscribeToPath(AnalyticsPath.fromString("/a"), () => {
+    called++;
+  });
+
+  subscriptions.subscribeToPath(AnalyticsPath.fromString("/a"), () => {
+    called++;
+  });
+
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/a")]);
+
+  expect(called).toBe(2);
+});
+
+it("all subscriptions should be guaranteed to be notified, even if a subscriber throws an error", () => {
+  const subscriptions = new AnalyticsSubscriptionManager();
+
+  let called = 0;
+  subscriptions.subscribeToPath(AnalyticsPath.fromString("/a"), () => {
+    called++;
+    throw new Error("test");
+  });
+
+  subscriptions.subscribeToPath(AnalyticsPath.fromString("/a"), () => {
+    called++;
+  });
+
+  // notify throws, but only after all subscribers have been notified
+  try {
+    subscriptions.notifySubscribers([AnalyticsPath.fromString("/a")]);
+  } catch (e) {
+    expect(e).toBeInstanceOf(NotificationError);
+    expect((e as NotificationError).innerErrors.length).toBe(1);
+    expect((e as NotificationError).innerErrors[0].message).toBe("test");
+  }
+
+  expect(called).toBe(2);
 });
 
 it("it should ignore trailing slashes in both subscription and notification paths", () => {
@@ -124,4 +169,54 @@ it("notifying a parent path should not notify child paths", () => {
   subscriptions.notifySubscribers([AnalyticsPath.fromString("/a/b")]);
 
   expect(called).toBe(0);
+});
+
+it("subscriptions support wildcards", () => {
+  const subscriptions = new AnalyticsSubscriptionManager();
+
+  // Test subscription with wildcard segment
+  let wildcardCalls = 0;
+  const wildcardPath = AnalyticsPath.fromString("/a/*/c");
+  subscriptions.subscribeToPath(wildcardPath, (source) => {
+    wildcardCalls++;
+  });
+
+  // This should match the wildcard pattern
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/a/b/c")]);
+  expect(wildcardCalls).toBe(1);
+
+  // This should also match
+  subscriptions.notifySubscribers([
+    AnalyticsPath.fromString("/a/something-else/c"),
+  ]);
+  expect(wildcardCalls).toBe(2);
+
+  // This should not match (different first segment)
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/different/b/c")]);
+  expect(wildcardCalls).toBe(2);
+
+  // This should not match (different last segment)
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/a/b/different")]);
+  expect(wildcardCalls).toBe(2);
+
+  // Test wildcard at the end - should match any child path
+  let endWildcardCalls = 0;
+  subscriptions.subscribeToPath(
+    AnalyticsPath.fromString("/x/y/*"),
+    (source) => {
+      endWildcardCalls++;
+    }
+  );
+
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/x/y/z")]);
+  expect(endWildcardCalls).toBe(1);
+
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/x/y/anything")]);
+  expect(endWildcardCalls).toBe(2);
+
+  // This should also match, as it's a child of the wildcard
+  subscriptions.notifySubscribers([
+    AnalyticsPath.fromString("/x/y/anything/again"),
+  ]);
+  expect(endWildcardCalls).toBe(3);
 });
