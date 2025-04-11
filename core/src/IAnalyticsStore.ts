@@ -15,6 +15,8 @@ export type AnalyticsSeriesInput = {
   dimensionMetadata?: Record<string, string>;
 };
 
+export type AnalyticsUpdateCallback = (source: AnalyticsPath) => void;
+
 export interface IAnalyticsStore {
   clearSeriesBySource: (
     source: AnalyticsPath,
@@ -27,4 +29,9 @@ export interface IAnalyticsStore {
   addSeriesValue: (input: AnalyticsSeriesInput) => Promise<void>;
   addSeriesValues: (inputs: AnalyticsSeriesInput[]) => Promise<void>;
   getDimensions: () => Promise<any>;
+
+  subscribeToSource: (
+    source: AnalyticsPath,
+    callback: AnalyticsUpdateCallback
+  ) => () => void;
 }

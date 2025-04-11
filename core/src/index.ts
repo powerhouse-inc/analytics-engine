@@ -7,6 +7,7 @@ export {
 export type {
   IAnalyticsStore,
   AnalyticsSeriesInput,
+  AnalyticsUpdateCallback,
 } from "./IAnalyticsStore.js";
 
 export { AnalyticsPath, AnalyticsPathSegment } from "./AnalyticsPath.js";
@@ -26,3 +27,4 @@ export {
   AnalyticsSerializerTypes,
   AnalyticsPeriod,
 } from "./AnalyticsPeriod.js";
+export type { AnalyticsSubscriptionManager } from "./AnalyticsSubscriptionManager.js";
