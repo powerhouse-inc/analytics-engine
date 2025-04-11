@@ -9,11 +9,11 @@ importers:
   .:
     dependencies:
       '@powerhousedao/analytics-engine-core':
-        specifier: 0.3.0
-        version: 0.3.0
-      '@powerhousedao/analytics-engine-knex':
         specifier: 0.4.0
         version: 0.4.0
+      '@powerhousedao/analytics-engine-knex':
+        specifier: 0.5.0
+        version: 0.5.0(@powerhousedao/analytics-engine-core@0.4.0)
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
@@ -189,11 +189,13 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
-  '@powerhousedao/analytics-engine-core@0.3.0':
-    resolution: {integrity: sha512-8Rl8U2P3u5Y+O8iXqEmN+Vjezal32SQ/ce05IgsZqOvtIpuiUmX44wdyufXw8qObxWFPdc7cyFXTHJ3yYUWlzw==}
+  '@powerhousedao/analytics-engine-core@0.4.0':
+    resolution: {integrity: sha512-PxbASaW64xe2fX0wCcYJTK8bZUt+aAGI7OPLcd9UE5rHZ26cQhV4ysPfXrBzlmHlPdmo/3ELAl7g4E4nO4t7Fw==}
 
-  '@powerhousedao/analytics-engine-knex@0.4.0':
-    resolution: {integrity: sha512-WzMwRR8K1p/MA8SpkOXv6IR5KUjJv7QRce8Y372H5agjBlZvE8WwDUDgsNRcGEX+1ArD87vverkN/c6j+ui+ag==}
+  '@powerhousedao/analytics-engine-knex@0.5.0':
+    resolution: {integrity: sha512-xeKtZsPpw7wkYEh0g8XdxrpsX0JvkyR5VMDdzb5morDPb7Ytnupuf+11Z9xOlJB4c3ZI57tfvhr0hs3/1TnClQ==}
+    peerDependencies:
+      '@powerhousedao/analytics-engine-core': ^0.4.0
 
   '@rollup/rollup-android-arm-eabi@4.24.4':
     resolution: {integrity: sha512-jfUJrFct/hTA0XDM5p/htWKoNNTbDLY0KRwEt6pyOA6k2fmk0WVwl65PdUdJZgzGEHWx+49LilkcSaumQRyNQw==}
@@ -855,13 +857,13 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@powerhousedao/analytics-engine-core@0.3.0':
+  '@powerhousedao/analytics-engine-core@0.4.0':
     dependencies:
       date-fns: 3.6.0
 
-  '@powerhousedao/analytics-engine-knex@0.4.0':
+  '@powerhousedao/analytics-engine-knex@0.5.0(@powerhousedao/analytics-engine-core@0.4.0)':
     dependencies:
-      '@powerhousedao/analytics-engine-core': 0.3.0
+      '@powerhousedao/analytics-engine-core': 0.4.0
       '@types/luxon': 3.4.2
       '@types/node': 22.9.0
       '@types/pg': 8.11.10
