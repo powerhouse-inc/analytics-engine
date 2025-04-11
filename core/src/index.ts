@@ -27,4 +27,4 @@ export {
   AnalyticsSerializerTypes,
   AnalyticsPeriod,
 } from "./AnalyticsPeriod.js";
-export type { AnalyticsSubscriptionManager } from "./AnalyticsSubscriptionManager.js";
+export * from "./AnalyticsSubscriptionManager.js";
