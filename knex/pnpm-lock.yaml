@@ -9,8 +9,8 @@ importers:
   .:
     dependencies:
       '@powerhousedao/analytics-engine-core':
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: ^0.4.0
+        version: 0.4.0
       '@types/luxon':
         specifier: ^3.4.2
         version: 3.4.2
@@ -186,8 +186,8 @@ packages:
   '@jridgewell/sourcemap-codec@1.5.0':
     resolution: {integrity: sha512-gv3ZRaISU3fjPAgNsriBRqGWQL6quFx04YMPW/zD8XMLsU32mhCCbfbO6KZFLjvYpCZ8zyDEgqsgf+PwPaM7GQ==}
 
-  '@powerhousedao/analytics-engine-core@0.3.0':
-    resolution: {integrity: sha512-8Rl8U2P3u5Y+O8iXqEmN+Vjezal32SQ/ce05IgsZqOvtIpuiUmX44wdyufXw8qObxWFPdc7cyFXTHJ3yYUWlzw==}
+  '@powerhousedao/analytics-engine-core@0.4.0':
+    resolution: {integrity: sha512-PxbASaW64xe2fX0wCcYJTK8bZUt+aAGI7OPLcd9UE5rHZ26cQhV4ysPfXrBzlmHlPdmo/3ELAl7g4E4nO4t7Fw==}
 
   '@rollup/rollup-android-arm-eabi@4.24.4':
     resolution: {integrity: sha512-jfUJrFct/hTA0XDM5p/htWKoNNTbDLY0KRwEt6pyOA6k2fmk0WVwl65PdUdJZgzGEHWx+49LilkcSaumQRyNQw==}
@@ -849,7 +849,7 @@ snapshots:
 
   '@jridgewell/sourcemap-codec@1.5.0': {}
 
-  '@powerhousedao/analytics-engine-core@0.3.0':
+  '@powerhousedao/analytics-engine-core@0.4.0':
     dependencies:
       date-fns: 3.6.0
 

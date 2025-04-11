@@ -1,4 +1,4 @@
-import knexFactory, { Knex } from "knex";
+import { Knex } from "knex";
 import { DateTime } from "luxon";
 import {
   AnalyticsPath,
@@ -7,15 +7,10 @@ import {
   AnalyticsSeriesQuery,
   AnalyticsDimension,
   IAnalyticsStore,
+  AnalyticsUpdateCallback,
+  AnalyticsSubscriptionManager,
 } from "@powerhousedao/analytics-engine-core";
-
-function toPascalCase(str: string) {
-  return str
-    .replace(/\w+/g, function (word) {
-      return word[0].toUpperCase() + word.slice(1);
-    })
-    .replace(/\s+/g, "");
-}
+import { toPascalCase } from "./util";
 
 type DimensionsMap = Record<string, Record<string, number[]>>;
 
@@ -53,6 +48,8 @@ export type KnexAnalyticsStoreOptions = {
 export class KnexAnalyticsStore implements IAnalyticsStore {
   protected readonly _executor: IKnexQueryExecutor;
   protected readonly _knex: Knex;
+  private readonly _subscriptionManager: AnalyticsSubscriptionManager =
+    new AnalyticsSubscriptionManager();
 
   public constructor({ executor, knex }: KnexAnalyticsStoreOptions) {
     this._executor = executor;
@@ -76,6 +73,8 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
     if (cleanUpDimensions) {
       result += await this.clearEmptyAnalyticsDimensions();
     }
+
+    this._subscriptionManager.notifySubscribers([source]);
 
     return result;
   }
@@ -188,6 +187,10 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
         metaDimension.description
       );
     }
+
+    // notify subscribers about updates
+    const sourcePaths = inputs.map((input) => input.source);
+    this._subscriptionManager.notifySubscribers(sourcePaths);
   }
 
   private _formatQueryRecords(
@@ -391,5 +394,12 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
 
     const currencies = await this._executor.execute(query);
     return currencies.map((c: any) => c.unit);
+  }
+
+  public subscribeToSource(
+    path: AnalyticsPath,
+    callback: AnalyticsUpdateCallback
+  ): () => void {
+    return this._subscriptionManager.subscribeToPath(path, callback);
   }
 }

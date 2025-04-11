@@ -1,4 +1,4 @@
-export { KnexAnalyticsStore } from "./KnexAnalyticsStore.js";
+export * from "./KnexAnalyticsStore.js";
 export { KnexQueryExecutor } from "./KnexQueryExecutor.js";
 export type {
   IKnexQueryExecutor,

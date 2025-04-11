@@ -16,3 +16,11 @@ export const defaultResultsLogger =
       console.log(`[${tag}][R:${index}]: Received ${typeof results}.\n`);
     }
   };
+
+export function toPascalCase(str: string) {
+  return str
+    .replace(/\w+/g, function (word) {
+      return word[0].toUpperCase() + word.slice(1);
+    })
+    .replace(/\s+/g, "");
+}
