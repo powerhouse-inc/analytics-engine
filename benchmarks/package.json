@@ -14,10 +14,10 @@
     "test-hash-keys": "pnpm build && node ./dist/hash-keys.js"
   },
   "dependencies": {
-    "@powerhousedao/analytics-engine-browser": "^0.4.0",
-    "@powerhousedao/analytics-engine-core": "^0.3.0",
-    "@powerhousedao/analytics-engine-knex": "^0.4.0",
-    "@powerhousedao/analytics-engine-pg": "^0.4.0",
+    "@powerhousedao/analytics-engine-browser": "^0.5.0",
+    "@powerhousedao/analytics-engine-core": "^0.4.0",
+    "@powerhousedao/analytics-engine-knex": "^0.5.0",
+    "@powerhousedao/analytics-engine-pg": "^0.5.0",
     "crc": "^4.3.2",
     "crc-32": "^1.2.2",
     "knex": "^3.1.0",
