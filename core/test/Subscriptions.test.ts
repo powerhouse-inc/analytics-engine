@@ -21,18 +21,20 @@ it("it should allow subscribing to a source with an explicit match", () => {
   expect(called).toBe(1);
 });
 
-it("it should remove trailing slashes from the source path", () => {
+it("it should ignore trailing slashes in both subscription and notification paths", () => {
   const subscriptions = new AnalyticsSubscriptionManager();
 
-  let called = 0;
+  // Test that a subscription to /a/ matches /a
+  let aCalled = 0;
   subscriptions.subscribeToPath(AnalyticsPath.fromString("/a/"), (source) => {
-    called++;
+    aCalled++;
   });
 
   subscriptions.notifySubscribers([AnalyticsPath.fromString("/a")]);
 
-  expect(called).toBe(1);
+  expect(aCalled).toBe(1);
 
+  // Test that a subscription to /b matches /b/
   let bCalled = 0;
   subscriptions.subscribeToPath(AnalyticsPath.fromString("/b"), (source) => {
     bCalled++;
@@ -63,4 +65,63 @@ it("unsubscribing should remove the subscription", () => {
   subscriptions.notifySubscribers([AnalyticsPath.fromString("/a")]);
 
   expect(called).toBe(1);
+});
+
+it("unsubscribing should remove only the relevant subscription", () => {
+  const subscriptions = new AnalyticsSubscriptionManager();
+
+  let firstCalled = 0;
+  let secondCalled = 0;
+
+  const firstUnsub = subscriptions.subscribeToPath(
+    AnalyticsPath.fromString("/a"),
+    () => {
+      firstCalled++;
+    }
+  );
+
+  subscriptions.subscribeToPath(AnalyticsPath.fromString("/a"), () => {
+    secondCalled++;
+  });
+
+  firstUnsub();
+
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/a")]);
+
+  expect(firstCalled).toBe(0);
+  expect(secondCalled).toBe(1);
+});
+
+it("notifying a child path should notify parent paths", () => {
+  const subscriptions = new AnalyticsSubscriptionManager();
+
+  let called = 0;
+  subscriptions.subscribeToPath(AnalyticsPath.fromString("/a/b"), () => {
+    called++;
+  });
+
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/a/b/c/d")]);
+
+  expect(called).toBe(1);
+
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/a/b/c")]);
+
+  expect(called).toBe(2);
+
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/a/b")]);
+
+  expect(called).toBe(3);
+});
+
+it("notifying a parent path should not notify child paths", () => {
+  const subscriptions = new AnalyticsSubscriptionManager();
+
+  let called = 0;
+  subscriptions.subscribeToPath(AnalyticsPath.fromString("/a/b/c"), () => {
+    called++;
+  });
+
+  subscriptions.notifySubscribers([AnalyticsPath.fromString("/a/b")]);
+
+  expect(called).toBe(0);
 });
