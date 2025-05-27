@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "tsc-watch",
     "build": "rm -rf dist/ && tsc",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "date-fns": "^3.6.0"

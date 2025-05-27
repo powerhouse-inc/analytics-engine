@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "tsc-watch",
     "build": "rm -rf dist/ && tsc",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "@types/luxon": "^3.4.2",
@@ -26,7 +26,7 @@
     "pg": "^8.12.0"
   },
   "peerDependencies": {
-    "@powerhousedao/analytics-engine-core": "^0.4.0"
+    "@powerhousedao/analytics-engine-core": "workspace:*"
   },
   "devDependencies": {
     "tsc-watch": "^6.2.0",

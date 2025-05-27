@@ -16,6 +16,19 @@ For all modules, we use the `pnpm` package manager, `tsc-watch` as a filewatcher
 
 All modules extend the [`tsconfig.json`](./tsconfig.json) found the root directory of the repo.
 
+This repository is configured as a [PNPM workspace](https://pnpm.io/workspaces),
+so you can install dependencies for every module from the root directory with:
+
+```bash
+pnpm install
+```
+
+All test suites can be executed at once using:
+
+```bash
+pnpm test
+```
+
 #### A note about dependencies
 
 When working on multiple packages locally, it's generally advisable to link them to each other. In the corresponding `package.json` files, add a `pnpm.overrides` block:

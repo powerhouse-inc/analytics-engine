@@ -1,0 +1,8 @@
+packages:
+  - 'core'
+  - 'knex'
+  - 'pg'
+  - 'browser'
+  - 'graphql'
+  - 'benchmarks'
+  - 'compat'

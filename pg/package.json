@@ -14,13 +14,14 @@
   "scripts": {
     "dev": "tsc-watch",
     "build": "rm -rf dist/ && tsc",
-    "test": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest"
+    "test": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest run"
   },
   "dependencies": {
     "date-fns": "^3.6.0",
     "knex": "^3.1.0",
     "luxon": "^3.5.0",
-    "pg": "^8.13.0"
+    "pg": "^8.13.0",
+    "@powerhousedao/analytics-engine-knex": "workspace:*"
   },
   "devDependencies": {
     "@types/luxon": "^3.4.2",
@@ -31,7 +32,6 @@
     "vitest": "^2.0.5"
   },
   "peerDependencies": {
-    "@powerhousedao/analytics-engine-core": "0.4.0",
-    "@powerhousedao/analytics-engine-knex": "0.5.0"
+    "@powerhousedao/analytics-engine-core": "workspace:*"
   }
 }

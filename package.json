@@ -1,0 +1,17 @@
+{
+  "name": "analytics-engine",
+  "private": true,
+  "workspaces": [
+    "core",
+    "knex",
+    "pg",
+    "browser",
+    "graphql",
+    "benchmarks",
+    "compat"
+  ],
+  "scripts": {
+    "test": "pnpm -r test",
+    "build": "pnpm -r build"
+  }
+}

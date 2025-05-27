@@ -14,7 +14,7 @@
   "scripts": {
     "dev": "tsc-watch",
     "build": "rm -rf dist/ && tsc",
-    "test": "vitest"
+    "test": "vitest run"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.2.12",
@@ -34,7 +34,7 @@
     "vitest": "^2.1.1"
   },
   "peerDependencies": {
-    "@powerhousedao/analytics-engine-core": "0.4.0",
-    "@powerhousedao/analytics-engine-knex": "0.5.0"
+    "@powerhousedao/analytics-engine-core": "workspace:*",
+    "@powerhousedao/analytics-engine-knex": "workspace:*"
   }
 }
