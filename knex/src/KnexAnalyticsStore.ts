@@ -95,11 +95,14 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
   public async getMatchingSeries(
     query: AnalyticsSeriesQuery
   ): Promise<AnalyticsSeries[]> {
+    const units = query.currency
+      ? query.currency.firstSegment().filters
+      : null;
     const analyticsView = this._buildViewQuery(
       "AV",
       Object.keys(query.select),
       query.metrics.map((m) => m),
-      query.currency.firstSegment().filters,
+      units,
       query.end
     );
 
@@ -244,7 +247,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
       baseQuery.select(this._buildDimensionQuery(dimension));
     }
 
-    if (units && units[0] !== "") {
+    if (units && units.length > 0 && units[0] !== "") {
       baseQuery.whereIn("unit", units);
     }
 

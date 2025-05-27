@@ -177,7 +177,5 @@ const getGranularity = (
 };
 
 const getCurrency = (currency: string | undefined) => {
-  return currency
-    ? AnalyticsPath.fromString(currency)
-    : AnalyticsPath.fromString("");
+  return currency ? AnalyticsPath.fromString(currency) : undefined;
 };

@@ -111,3 +111,22 @@ it("should query records", async () => {
     "atlas/legacy/core-units/SES-001",
   ]);
 });
+
+it("should query records without currency filter", async () => {
+  const results = await store.getMatchingSeries({
+    start: null,
+    end: null,
+    metrics: ["Actuals", "Budget", "FTEs"],
+    select: {
+      budget: [AnalyticsPath.fromString("atlas/legacy/core-units/SES-001")],
+      category: [
+        AnalyticsPath.fromString("atlas/headcount"),
+        AnalyticsPath.fromString("atlas/non-headcount"),
+      ],
+      project: [TEST_SOURCE],
+    },
+  });
+
+  expect(results.length).toBe(2);
+  expect(results.map((r) => r.unit).sort()).toEqual(["DAI", "MKR"]);
+});
