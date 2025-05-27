@@ -11,17 +11,17 @@ importers:
   benchmarks:
     dependencies:
       '@powerhousedao/analytics-engine-browser':
-        specifier: workspace:*
-        version: link:../browser
+        specifier: 0.6.0
+        version: 0.6.0(@powerhousedao/analytics-engine-core@0.5.0)(@powerhousedao/analytics-engine-knex@0.6.0(@powerhousedao/analytics-engine-core@0.5.0))(pg@8.16.0)
       '@powerhousedao/analytics-engine-core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 0.5.0
+        version: 0.5.0
       '@powerhousedao/analytics-engine-knex':
-        specifier: workspace:*
-        version: link:../knex
+        specifier: 0.6.0
+        version: 0.6.0(@powerhousedao/analytics-engine-core@0.5.0)
       '@powerhousedao/analytics-engine-pg':
-        specifier: workspace:*
-        version: link:../pg
+        specifier: 0.6.0
+        version: 0.6.0(@powerhousedao/analytics-engine-core@0.5.0)(@powerhousedao/analytics-engine-knex@0.6.0(@powerhousedao/analytics-engine-core@0.5.0))
       crc:
         specifier: ^4.3.2
         version: 4.3.2
@@ -60,11 +60,11 @@ importers:
         specifier: ^0.2.12
         version: 0.2.17
       '@powerhousedao/analytics-engine-core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 0.5.0
+        version: 0.5.0
       '@powerhousedao/analytics-engine-knex':
-        specifier: workspace:*
-        version: link:../knex
+        specifier: 0.6.0
+        version: 0.6.0(@powerhousedao/analytics-engine-core@0.5.0)
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
@@ -168,8 +168,8 @@ importers:
   graphql:
     dependencies:
       '@powerhousedao/analytics-engine-core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 0.5.0
+        version: 0.5.0
       luxon:
         specifier: ^3.5.0
         version: 3.6.1
@@ -190,8 +190,8 @@ importers:
   knex:
     dependencies:
       '@powerhousedao/analytics-engine-core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 0.5.0
+        version: 0.5.0
       '@types/luxon':
         specifier: ^3.4.2
         version: 3.6.2
@@ -227,11 +227,11 @@ importers:
   pg:
     dependencies:
       '@powerhousedao/analytics-engine-core':
-        specifier: workspace:*
-        version: link:../core
+        specifier: 0.5.0
+        version: 0.5.0
       '@powerhousedao/analytics-engine-knex':
-        specifier: workspace:*
-        version: link:../knex
+        specifier: 0.6.0
+        version: 0.6.0(@powerhousedao/analytics-engine-core@0.5.0)
       date-fns:
         specifier: ^3.6.0
         version: 3.6.0
@@ -477,6 +477,26 @@ packages:
 
   '@polka/url@1.0.0-next.29':
     resolution: {integrity: sha512-wwQAWhWSuHaag8c4q/KN/vCoeOJYshAIvMQwD4GpSb3OiZklFfvAgmj0VCBBImRpuF/aFgIRzllXlVX93Jevww==}
+
+  '@powerhousedao/analytics-engine-browser@0.6.0':
+    resolution: {integrity: sha512-5udsfPoi0g7Wt689BR1bU/R2aRIDfDixPQrlcYi46BDv5MfFGpriqffbROeE0NExXRWnwu3CbUmi32DuqyZDeQ==}
+    peerDependencies:
+      '@powerhousedao/analytics-engine-core': 0.5.0
+      '@powerhousedao/analytics-engine-knex': 0.5.1
+
+  '@powerhousedao/analytics-engine-core@0.5.0':
+    resolution: {integrity: sha512-4TCFpaDSB7VJLv0NFVOmNiFYy+DhdN1Mxi0c5ff70vPCKeRI00O2Mnb35/FqM6F1PT/WTkIlJ7LqzipzDnCFfQ==}
+
+  '@powerhousedao/analytics-engine-knex@0.6.0':
+    resolution: {integrity: sha512-o8oDzCUb4mi830036inMekQKwuYNVsy+yazYcz7i9jFyVjHkG3fIeS6WnWXXc5eHzfFOki1t5tn42plTAG+HTQ==}
+    peerDependencies:
+      '@powerhousedao/analytics-engine-core': 0.5.0
+
+  '@powerhousedao/analytics-engine-pg@0.6.0':
+    resolution: {integrity: sha512-3Uv73dimmrIyDQwlXHwbT91VEwggOf/xKDuTR6Snom6Uo6aADK0qW+tmoj3lUb2ZpfD2gr6apY9meLvAjmrGAA==}
+    peerDependencies:
+      '@powerhousedao/analytics-engine-core': 0.5.0
+      '@powerhousedao/analytics-engine-knex': 0.5.1
 
   '@rollup/rollup-android-arm-eabi@4.41.1':
     resolution: {integrity: sha512-NELNvyEWZ6R9QMkiytB4/L4zSEaBC03KIXEghptLGLZWJ6VPrL63ooZQCOnlx36aQPGhzuOMwDerC1Eb2VmrLw==}
@@ -1619,6 +1639,66 @@ snapshots:
   '@open-draft/until@2.1.0': {}
 
   '@polka/url@1.0.0-next.29': {}
+
+  '@powerhousedao/analytics-engine-browser@0.6.0(@powerhousedao/analytics-engine-core@0.5.0)(@powerhousedao/analytics-engine-knex@0.6.0(@powerhousedao/analytics-engine-core@0.5.0))(pg@8.16.0)':
+    dependencies:
+      '@electric-sql/pglite': 0.2.17
+      '@powerhousedao/analytics-engine-core': 0.5.0
+      '@powerhousedao/analytics-engine-knex': 0.6.0(@powerhousedao/analytics-engine-core@0.5.0)
+      date-fns: 3.6.0
+      events: 3.3.0
+      knex: 3.1.0(pg@8.16.0)
+      luxon: 3.6.1
+      util: 0.12.5
+    transitivePeerDependencies:
+      - better-sqlite3
+      - mysql
+      - mysql2
+      - pg
+      - pg-native
+      - sqlite3
+      - supports-color
+      - tedious
+
+  '@powerhousedao/analytics-engine-core@0.5.0':
+    dependencies:
+      date-fns: 3.6.0
+
+  '@powerhousedao/analytics-engine-knex@0.6.0(@powerhousedao/analytics-engine-core@0.5.0)':
+    dependencies:
+      '@powerhousedao/analytics-engine-core': 0.5.0
+      '@types/luxon': 3.6.2
+      '@types/node': 22.15.21
+      '@types/pg': 8.15.2
+      date-fns: 3.6.0
+      knex: 3.1.0(pg@8.16.0)
+      luxon: 3.6.1
+      pg: 8.16.0
+    transitivePeerDependencies:
+      - better-sqlite3
+      - mysql
+      - mysql2
+      - pg-native
+      - sqlite3
+      - supports-color
+      - tedious
+
+  '@powerhousedao/analytics-engine-pg@0.6.0(@powerhousedao/analytics-engine-core@0.5.0)(@powerhousedao/analytics-engine-knex@0.6.0(@powerhousedao/analytics-engine-core@0.5.0))':
+    dependencies:
+      '@powerhousedao/analytics-engine-core': 0.5.0
+      '@powerhousedao/analytics-engine-knex': 0.6.0(@powerhousedao/analytics-engine-core@0.5.0)
+      date-fns: 3.6.0
+      knex: 3.1.0(pg@8.16.0)
+      luxon: 3.6.1
+      pg: 8.16.0
+    transitivePeerDependencies:
+      - better-sqlite3
+      - mysql
+      - mysql2
+      - pg-native
+      - sqlite3
+      - supports-color
+      - tedious
 
   '@rollup/rollup-android-arm-eabi@4.41.1':
     optional: true

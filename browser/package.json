@@ -34,7 +34,7 @@
     "vitest": "^2.1.1"
   },
   "peerDependencies": {
-    "@powerhousedao/analytics-engine-core": "workspace:*",
-    "@powerhousedao/analytics-engine-knex": "workspace:*"
+    "@powerhousedao/analytics-engine-core": "0.5.0",
+    "@powerhousedao/analytics-engine-knex": "0.6.0"
   }
 }
