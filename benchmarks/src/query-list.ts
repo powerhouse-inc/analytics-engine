@@ -27,7 +27,7 @@ function loadQueries() {
     start: DateTime.fromISO(query.start),
     end: query.end ? DateTime.fromISO(query.end) : null,
     metrics: query.metrics,
-    currency: reviver(null, query.currency),
+    currency: query.currency ? reviver(null, query.currency) : undefined,
     granularity: query.granularity as AnalyticsGranularity,
     lod: query.lod,
     select: Object.keys(query.select).reduce(

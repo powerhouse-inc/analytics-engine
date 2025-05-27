@@ -41,7 +41,7 @@ function loadQueries() {
         end: query.end ? DateTime.fromISO(query.end) : null,
         metrics: query.metrics,
         granularity: query.granularity as AnalyticsGranularity,
-        currency: query.currency?._v || "DAI",
+        currency: query.currency?._v,
         dimensions,
       },
     };

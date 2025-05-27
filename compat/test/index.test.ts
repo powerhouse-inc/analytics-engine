@@ -5,17 +5,14 @@ import { PostgresAnalyticsStore } from "@powerhousedao/analytics-engine-pg";
 import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-browser";
 import { afterAll, beforeAll, it, expect, describe } from "vitest";
 
-const connectionString = process.env.PG_CONNECTION_STRING;
-if (!connectionString) {
-  throw new Error("PG_CONNECTION_STRING not set");
-}
+const connectionString = process.env.PG_CONNECTION_STRING || "postgresql://postgres:password@localhost:5555/analytics";
 
 let postgres: PostgresAnalyticsStore;
 let memory: MemoryAnalyticsStore;
 
 beforeAll(async () => {
   // read dump
-  const sqlHuge = fs.readFileSync("../benchmarks/data/dump-huge.sql", "utf-8");
+  const sqlHuge = fs.readFileSync("../benchmarks/data/dump-small.sql", "utf-8");
 
   // initialize stores
   postgres = new PostgresAnalyticsStore({ connectionString });

@@ -33,7 +33,7 @@ for (const { analyticsQuery, hitCount, moduleName, queryName } of queries) {
       query: {
         start: json.start,
         end: json.end,
-        currency: json.currency,
+        currency: json.currency ?? undefined,
         metrics: json.metrics,
         select: json.select,
         granularity: json.granularity as AnalyticsGranularity,
