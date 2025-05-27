@@ -116,7 +116,7 @@ export class AnalyticsQueryEngine {
   ): Promise<GroupedPeriodResults> {
     const baseQuery: AnalyticsQuery = {
       ...query,
-      currency: mcc.targetCurrency,
+      currency: mcc.targetCurrency ?? query.currency,
     };
     let result = await this.execute(baseQuery);
 
@@ -157,7 +157,7 @@ export class AnalyticsQueryEngine {
     inputsA: GroupedPeriodResults,
     inputsB: GroupedPeriodResults,
     operator: CompoundOperator,
-    resultCurrency: AnalyticsPath
+    resultCurrency?: AnalyticsPath
   ) {
     if (
       [CompoundOperator.ScalarMultiply, CompoundOperator.ScalarDivide].includes(
@@ -174,7 +174,7 @@ export class AnalyticsQueryEngine {
     operand: GroupedPeriodResults, // expected input is the daily mkr price change in 2022 monthly granularity in DAI
     operator: CompoundOperator, // expected to me multiply and later addition
     useOperandSum: boolean,
-    resultCurrency: AnalyticsPath // expected to be DAI
+    resultCurrency?: AnalyticsPath // expected to be DAI
   ): Promise<GroupedPeriodResults> {
     if (
       [CompoundOperator.VectorAdd, CompoundOperator.VectorSubtract].includes(
@@ -204,7 +204,7 @@ export class AnalyticsQueryEngine {
           const newRow = {
             dimensions: row.dimensions,
             metric: row.metric,
-            unit: resultCurrency.toString(),
+            unit: resultCurrency ? resultCurrency.toString() : row.unit,
             value: this._calculateOutputValue(
               row.value,
               operator,
@@ -244,9 +244,9 @@ export class AnalyticsQueryEngine {
     const seriesQuery: AnalyticsSeriesQuery = {
       start: query.start,
       end: query.end,
-      currency: query.currency,
       select: query.select,
       metrics: query.metrics,
+      currency: query.currency,
     };
 
     return await this._analyticsStore.getMatchingSeries(seriesQuery);

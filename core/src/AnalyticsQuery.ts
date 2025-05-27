@@ -5,7 +5,7 @@ export type AnalyticsSeriesQuery = {
   start: DateTime | null;
   end: DateTime | null;
   metrics: string[];
-  currency: AnalyticsPath;
+  currency?: AnalyticsPath;
   select: Record<string, AnalyticsPath[]>;
 };
 
@@ -55,17 +55,17 @@ export type CompoundAnalyticsExpression = {
   inputs: CompoundAnalyticsInputs;
   operator: CompoundOperator;
   operand: AnalyticsOperand;
-  resultCurrency: AnalyticsPath;
+  resultCurrency?: AnalyticsPath;
 };
 
 export type CompoundAnalyticsInputs = {
   metrics: string[];
-  currency: AnalyticsPath;
+  currency?: AnalyticsPath;
 };
 
 export type AnalyticsOperand = {
   metric: string;
-  currency: AnalyticsPath;
+  currency?: AnalyticsPath;
   useSum: boolean;
 };
 
@@ -77,13 +77,13 @@ export enum CompoundOperator {
 }
 
 export type MultiCurrencyConversion = {
-  targetCurrency: AnalyticsPath;
+  targetCurrency?: AnalyticsPath;
   conversions: ConversionMetric[];
 };
 
 export type ConversionMetric = {
   metric: string;
-  currency: AnalyticsPath;
+  currency?: AnalyticsPath;
 };
 
 export enum AnalyticsGranularity {
