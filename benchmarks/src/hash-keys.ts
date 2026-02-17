@@ -4,7 +4,7 @@ import { crc32 } from "crc";
 import { createHash } from "crypto";
 
 const queries = JSON.parse(readFileSync("./data/query-list.json", "utf-8")).map(
-  (q: object) => JSON.stringify(q)
+  (q: object) => JSON.stringify(q),
 );
 const bench = new Bench({ warmup: true });
 

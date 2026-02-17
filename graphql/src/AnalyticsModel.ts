@@ -29,7 +29,7 @@ export class AnalyticsModel {
 
   constructor(
     public readonly engine: AnalyticsQueryEngine,
-    queryLogger?: (query: AnalyticsQuery) => void
+    queryLogger?: (query: AnalyticsQuery) => void,
   ) {
     this.queryLogger = queryLogger || (() => {});
   }
@@ -143,7 +143,7 @@ export class AnalyticsModel {
 }
 
 const getGranularity = (
-  granularity: string | undefined
+  granularity: string | undefined,
 ): AnalyticsGranularity => {
   switch (granularity) {
     case "hourly": {

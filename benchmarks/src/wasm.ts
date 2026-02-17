@@ -24,7 +24,7 @@ bench
       await initStore.init();
       initStore.destroy();
     },
-    logs("Init")
+    logs("Init"),
   )
   .add(
     "Insert (100 records)",
@@ -39,7 +39,7 @@ bench
       afterEach: () => {
         store.destroy();
       },
-    })
+    }),
   )
   .add(
     "Insert (200k records)",
@@ -54,7 +54,7 @@ bench
       afterEach: () => {
         store.destroy();
       },
-    })
+    }),
   )
   .add(
     "Select Distinct",
@@ -70,7 +70,7 @@ bench
       afterAll: () => {
         store.destroy();
       },
-    })
+    }),
   );
 
 await bench.run();

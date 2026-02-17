@@ -119,7 +119,7 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
     const executor = new PGLiteQueryExecutor(
       profiler,
       queryLogger,
-      resultsLogger
+      resultsLogger,
     );
 
     super({

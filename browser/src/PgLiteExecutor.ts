@@ -37,7 +37,7 @@ export class PGLiteQueryExecutor implements IKnexQueryExecutor {
   constructor(
     private readonly _profiler: IAnalyticsProfiler,
     private readonly _queryLogger?: SqlQueryLogger,
-    private readonly _resultsLogger?: SqlResultsLogger
+    private readonly _resultsLogger?: SqlResultsLogger,
   ) {
     //
   }

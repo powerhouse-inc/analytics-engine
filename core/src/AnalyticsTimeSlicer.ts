@@ -21,7 +21,7 @@ interface AnalyticsPeriodSeries {
 }
 
 export const getPeriodSeriesArray = (
-  range: AnalyticsRange
+  range: AnalyticsRange,
 ): AnalyticsPeriod[] => {
   const result: AnalyticsPeriod[] = [];
   const series = getPeriodSeries(range);
@@ -36,7 +36,7 @@ export const getPeriodSeriesArray = (
 };
 
 export const getPeriodSeries = (
-  range: AnalyticsRange
+  range: AnalyticsRange,
 ): AnalyticsPeriodSeries => {
   return {
     ...range,
@@ -92,7 +92,7 @@ const _createFactoryFn = (range: AnalyticsRange) => {
 
 const _nextTotalPeriod = (
   nextStart: DateTime,
-  seriesEnd: DateTime
+  seriesEnd: DateTime,
 ): AnalyticsPeriod | null => {
   if (seriesEnd <= nextStart) {
     return null;
@@ -107,7 +107,7 @@ const _nextTotalPeriod = (
 
 export const _nextAnnualPeriod = (
   nextStart: DateTime,
-  seriesEnd: DateTime
+  seriesEnd: DateTime,
 ): AnalyticsPeriod | null => {
   if (seriesEnd <= nextStart) {
     return null;
@@ -117,7 +117,7 @@ export const _nextAnnualPeriod = (
   const oneYearLater = DateTime.utc(
     inputUtc.year,
     inputUtc.month,
-    inputUtc.day
+    inputUtc.day,
   ).plus({ years: 1 });
 
   return {
@@ -129,7 +129,7 @@ export const _nextAnnualPeriod = (
 
 export const _nextSemiAnnualPeriod = (
   nextStart: DateTime,
-  seriesEnd: DateTime
+  seriesEnd: DateTime,
 ): AnalyticsPeriod | null => {
   if (seriesEnd <= nextStart) {
     return null;
@@ -158,7 +158,7 @@ export const _nextSemiAnnualPeriod = (
 
 export const _nextQuarterlyPeriod = (
   nextStart: DateTime,
-  seriesEnd: DateTime
+  seriesEnd: DateTime,
 ): AnalyticsPeriod | null => {
   if (seriesEnd <= nextStart) {
     return null;
@@ -190,7 +190,7 @@ export const _nextQuarterlyPeriod = (
 };
 export const _nextMonthlyPeriod = (
   nextStart: DateTime,
-  seriesEnd: DateTime
+  seriesEnd: DateTime,
 ): AnalyticsPeriod | null => {
   if (seriesEnd <= nextStart) {
     return null;
@@ -201,7 +201,7 @@ export const _nextMonthlyPeriod = (
   let endDate = DateTime.utc(
     nextStartUtc.year,
     nextStartUtc.month,
-    nextStartUtc.day
+    nextStartUtc.day,
   )
     .plus({ months: 1 })
     .startOf("month");
@@ -223,7 +223,7 @@ export const _nextMonthlyPeriod = (
 
 export const _nextWeeklyPeriod = (
   nextStart: DateTime,
-  seriesEnd: DateTime
+  seriesEnd: DateTime,
 ): AnalyticsPeriod | null => {
   if (seriesEnd <= nextStart) {
     return null;
@@ -234,7 +234,7 @@ export const _nextWeeklyPeriod = (
   const nextWeekStartUTC = DateTime.utc(
     nextStartUtc.year,
     nextStartUtc.month,
-    nextStartUtc.day
+    nextStartUtc.day,
   )
     .plus({ weeks: 1 })
     .startOf("week");
@@ -258,7 +258,7 @@ export const _nextWeeklyPeriod = (
 
 export const _nextDailyPeriod = (
   nextStart: DateTime,
-  seriesEnd: DateTime
+  seriesEnd: DateTime,
 ): AnalyticsPeriod | null => {
   if (seriesEnd <= nextStart) {
     return null;
@@ -280,7 +280,7 @@ export const _nextDailyPeriod = (
 
 export const _nextHourlyPeriod = (
   nextStart: DateTime,
-  seriesEnd: DateTime
+  seriesEnd: DateTime,
 ): AnalyticsPeriod | null => {
   if (seriesEnd <= nextStart) {
     return null;

@@ -39,21 +39,21 @@ export class AnalyticsDiscretizer {
     dimensions: string[],
     start: DateTime | null,
     end: DateTime | null,
-    granularity: AnalyticsGranularity
+    granularity: AnalyticsGranularity,
   ): GroupedPeriodResults {
     const index = this._buildIndex(series, dimensions);
     const periods = getPeriodSeriesArray(
-      this._calculateRange(start, end, granularity, series)
+      this._calculateRange(start, end, granularity, series),
     );
     const disretizedResults = this._discretizeNode(
       index,
       {},
       dimensions,
-      periods
+      periods,
     );
     const groupedResults = this._groupResultsByPeriod(
       periods,
-      disretizedResults
+      disretizedResults,
     );
 
     return groupedResults;
@@ -63,7 +63,7 @@ export class AnalyticsDiscretizer {
     start: DateTime | null,
     end: DateTime | null,
     granularity: AnalyticsGranularity,
-    results: AnalyticsSeries<any>[]
+    results: AnalyticsSeries<any>[],
   ) {
     let calculatedStart: DateTime | null = start || null;
     let calculatedEnd: DateTime | null = end || null;
@@ -94,7 +94,7 @@ export class AnalyticsDiscretizer {
 
   public static _groupResultsByPeriod(
     periods: AnalyticsPeriod[],
-    dimensionedResults: DimensionedSeries[]
+    dimensionedResults: DimensionedSeries[],
   ): GroupedPeriodResults {
     const result: Record<string, GroupedPeriodResult> = {};
 
@@ -161,7 +161,7 @@ export class AnalyticsDiscretizer {
     node: DiscretizerIndexNode,
     dimensionValues: Record<string, string>,
     remainingDimensions: string[],
-    periods: AnalyticsPeriod[]
+    periods: AnalyticsPeriod[],
   ): DimensionedSeries[] {
     const result: DimensionedSeries[] = [];
 
@@ -175,8 +175,8 @@ export class AnalyticsDiscretizer {
             node[subdimensionValue] as DiscretizerIndexNode,
             newDimensionValues,
             remainingDimensions.slice(1),
-            periods
-          )
+            periods,
+          ),
         );
       });
     } else {
@@ -186,8 +186,8 @@ export class AnalyticsDiscretizer {
             node[metric] as DiscretizerIndexLeaf,
             periods,
             metric,
-            dimensionValues
-          )
+            dimensionValues,
+          ),
         );
       });
     }
@@ -199,7 +199,7 @@ export class AnalyticsDiscretizer {
     leaf: DiscretizerIndexLeaf,
     periods: AnalyticsPeriod[],
     metric: string,
-    dimensionValues: Record<string, string>
+    dimensionValues: Record<string, string>,
   ): DimensionedSeries[] {
     const result: DimensionedSeries[] = [];
     Object.keys(leaf).forEach((unit) => {
@@ -225,7 +225,7 @@ export class AnalyticsDiscretizer {
 
   public static _discretizeSeries(
     series: AnalyticsSeries<string>[],
-    periods: AnalyticsPeriod[]
+    periods: AnalyticsPeriod[],
   ): Series {
     const result: Series = {};
 
@@ -255,7 +255,7 @@ export class AnalyticsDiscretizer {
 
   public static _getValue(
     series: AnalyticsSeries<string>,
-    when: DateTime
+    when: DateTime,
   ): number {
     switch (series.fn) {
       case "Single":
@@ -271,14 +271,14 @@ export class AnalyticsDiscretizer {
 
   public static _getSingleValue(
     series: AnalyticsSeries<string>,
-    when: DateTime
+    when: DateTime,
   ): number {
     return when >= series.start ? series.value : 0.0;
   }
 
   public static _getVestValue(
     series: AnalyticsSeries<string>,
-    when: DateTime
+    when: DateTime,
   ): number {
     const now = when;
     const start = series.start;
@@ -301,7 +301,7 @@ export class AnalyticsDiscretizer {
 
   public static _buildIndex(
     series: AnalyticsSeries<string>[],
-    dimensions: string[]
+    dimensions: string[],
   ): DiscretizerIndexNode {
     const result: DiscretizerIndexNode | any = {};
     const map: DiscretizerIndexLeaf = {};
@@ -330,7 +330,7 @@ export class AnalyticsDiscretizer {
   }
 
   public static _buildMetricsIndex(
-    series: AnalyticsSeries<string>[]
+    series: AnalyticsSeries<string>[],
   ): DiscretizerIndexNode {
     const result: DiscretizerIndexNode = {};
 
@@ -349,7 +349,7 @@ export class AnalyticsDiscretizer {
   }
 
   public static _buildUnitIndex(
-    series: AnalyticsSeries<string>[]
+    series: AnalyticsSeries<string>[],
   ): DiscretizerIndexLeaf {
     const result: DiscretizerIndexLeaf = {};
 

@@ -15,7 +15,10 @@ import {
 class ExecutionResults {
   public readonly durationMs: number;
 
-  constructor(public readonly name: string, durationMs: number) {
+  constructor(
+    public readonly name: string,
+    durationMs: number,
+  ) {
     this.durationMs = durationMs;
   }
 }
@@ -33,9 +36,9 @@ function loadQueries() {
     select: Object.keys(query.select).reduce(
       (acc, key) =>
         (acc[key] = query.select[key].map((value: any) =>
-          reviver(null, value)
+          reviver(null, value),
         )),
-      {} as Record<string, AnalyticsPath[]>
+      {} as Record<string, AnalyticsPath[]>,
     ),
   }));
 }
@@ -71,7 +74,7 @@ function deepEquals(a: any, b: any) {
 
     if (a.length !== b.length) {
       throw new Error(
-        `Mismatch: ${a} length ${a.length} !== ${b} length ${b.length}`
+        `Mismatch: ${a} length ${a.length} !== ${b} length ${b.length}`,
       );
     }
 
@@ -102,7 +105,7 @@ const isPgDisabled = process.env.PG_DISABLED === "true";
 const connString = process.env.PG_CONNECTION_STRING;
 if (!isPgDisabled && !connString) {
   throw new Error(
-    "PG_CONNECTION_STRING not set. Either set it or run with PG_DISABLED=true"
+    "PG_CONNECTION_STRING not set. Either set it or run with PG_DISABLED=true",
   );
 }
 
@@ -116,12 +119,12 @@ const queries = loadQueries();
 const memoryResults: ExecutionResults[] = [];
 const pgResults: ExecutionResults[] = [];
 const memoryProfiler = new AnalyticsProfiler("memory", (name, durationNano) =>
-  memoryResults.push(new ExecutionResults(name, durationNano))
+  memoryResults.push(new ExecutionResults(name, durationNano)),
 );
 const pgProfiler = isPgDisabled
   ? undefined
   : new AnalyticsProfiler("pg", (name, durationNano) =>
-      pgResults.push(new ExecutionResults(name, durationNano))
+      pgResults.push(new ExecutionResults(name, durationNano)),
     );
 
 // stores
@@ -192,7 +195,7 @@ const rawTable = (results: AggregateResults[]) =>
         ...acc,
         [`mem.${key}`]: value.toFixed(5),
       }),
-      {}
+      {},
     ),
 
     ...Object.entries(pg).reduce(
@@ -200,7 +203,7 @@ const rawTable = (results: AggregateResults[]) =>
         ...acc,
         [`pg.${key}`]: value.toFixed(5),
       }),
-      {}
+      {},
     ),
   }));
 
@@ -217,7 +220,7 @@ const compareTable = (results: AggregateResults[]) =>
         [`${key} diff`]: (memory[key] - pg[key]).toFixed(5),
         [`${key} x`]: `${(memory[key] / pg[key]).toFixed(2)}x`,
       }),
-      {}
+      {},
     );
   });
 

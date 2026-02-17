@@ -5,7 +5,9 @@ import { PostgresAnalyticsStore } from "@powerhousedao/analytics-engine-pg";
 import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-browser";
 import { afterAll, beforeAll, it, expect, describe } from "vitest";
 
-const connectionString = process.env.PG_CONNECTION_STRING || "postgresql://postgres:password@localhost:5555/analytics";
+const connectionString =
+  process.env.PG_CONNECTION_STRING ||
+  "postgresql://postgres:password@localhost:5555/analytics";
 
 let postgres: PostgresAnalyticsStore;
 let memory: MemoryAnalyticsStore;

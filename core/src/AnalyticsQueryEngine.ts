@@ -23,13 +23,13 @@ export class AnalyticsQueryEngine {
 
   public constructor(
     private readonly _analyticsStore: IAnalyticsStore,
-    profiler?: IAnalyticsProfiler
+    profiler?: IAnalyticsProfiler,
   ) {
     this._profiler = profiler ?? new PassthroughAnalyticsProfiler();
   }
 
   public async executeCompound(
-    query: CompoundAnalyticsQuery
+    query: CompoundAnalyticsQuery,
   ): Promise<GroupedPeriodResults> {
     let result: GroupedPeriodResults;
 
@@ -58,7 +58,7 @@ export class AnalyticsQueryEngine {
 
     if (
       [CompoundOperator.VectorAdd, CompoundOperator.VectorSubtract].includes(
-        query.expression.operator
+        query.expression.operator,
       )
     ) {
       result = await this._profiler.record(
@@ -68,8 +68,8 @@ export class AnalyticsQueryEngine {
             inputExecute,
             operandExecute,
             query.expression.operator,
-            query.expression.resultCurrency
-          )
+            query.expression.resultCurrency,
+          ),
       );
     } else {
       result = await this._profiler.record(
@@ -80,8 +80,8 @@ export class AnalyticsQueryEngine {
             operandExecute,
             query.expression.operator,
             query.expression.operand.useSum,
-            query.expression.resultCurrency
-          )
+            query.expression.resultCurrency,
+          ),
       );
     }
 
@@ -92,7 +92,7 @@ export class AnalyticsQueryEngine {
     const seriesResults = await this._executeSeriesQuery(query);
 
     const normalizedSeriesResults = this._profiler.recordSync("ApplyLODs", () =>
-      this._applyLods(seriesResults, query.lod)
+      this._applyLods(seriesResults, query.lod),
     );
 
     const dimensions = Object.keys(query.select);
@@ -104,15 +104,15 @@ export class AnalyticsQueryEngine {
             dimensions,
             query.start,
             query.end,
-            query.granularity
-          )
+            query.granularity,
+          ),
     );
     return discretizedResult;
   }
 
   public async executeMultiCurrency(
     query: AnalyticsQuery,
-    mcc: MultiCurrencyConversion
+    mcc: MultiCurrencyConversion,
   ): Promise<GroupedPeriodResults> {
     const baseQuery: AnalyticsQuery = {
       ...query,
@@ -147,7 +147,7 @@ export class AnalyticsQueryEngine {
         result,
         executedCompound,
         CompoundOperator.VectorAdd,
-        mcc.targetCurrency
+        mcc.targetCurrency,
       );
     }
     return result;
@@ -157,11 +157,11 @@ export class AnalyticsQueryEngine {
     inputsA: GroupedPeriodResults,
     inputsB: GroupedPeriodResults,
     operator: CompoundOperator,
-    resultCurrency?: AnalyticsPath
+    resultCurrency?: AnalyticsPath,
   ) {
     if (
       [CompoundOperator.ScalarMultiply, CompoundOperator.ScalarDivide].includes(
-        operator
+        operator,
       )
     ) {
       throw new Error("Invalid operator for vector operation");
@@ -174,11 +174,11 @@ export class AnalyticsQueryEngine {
     operand: GroupedPeriodResults, // expected input is the daily mkr price change in 2022 monthly granularity in DAI
     operator: CompoundOperator, // expected to me multiply and later addition
     useOperandSum: boolean,
-    resultCurrency?: AnalyticsPath // expected to be DAI
+    resultCurrency?: AnalyticsPath, // expected to be DAI
   ): Promise<GroupedPeriodResults> {
     if (
       [CompoundOperator.VectorAdd, CompoundOperator.VectorSubtract].includes(
-        operator
+        operator,
       )
     ) {
       throw new Error("Invalid operator for scalar operation");
@@ -208,7 +208,7 @@ export class AnalyticsQueryEngine {
             value: this._calculateOutputValue(
               row.value,
               operator,
-              operandMap[inputPeriod.period]
+              operandMap[inputPeriod.period],
             ),
             sum: -1,
           };
@@ -224,7 +224,7 @@ export class AnalyticsQueryEngine {
   private _calculateOutputValue(
     input: number,
     operator: CompoundOperator,
-    operand: number
+    operand: number,
   ): number {
     switch (operator) {
       case CompoundOperator.VectorAdd:
@@ -239,7 +239,7 @@ export class AnalyticsQueryEngine {
   }
 
   private async _executeSeriesQuery(
-    query: AnalyticsQuery
+    query: AnalyticsQuery,
   ): Promise<AnalyticsSeries[]> {
     const seriesQuery: AnalyticsSeriesQuery = {
       start: query.start,
@@ -254,7 +254,7 @@ export class AnalyticsQueryEngine {
 
   private _applyLods(
     series: AnalyticsSeries[],
-    lods: Record<string, number | null>
+    lods: Record<string, number | null>,
   ): AnalyticsSeries<string>[] {
     return series.map((result) => ({
       ...result,
@@ -264,7 +264,7 @@ export class AnalyticsQueryEngine {
 
   private _applyDimensionsLods(
     dimensionMap: Record<string, AnalyticsPath> | any,
-    lods: Record<string, number | null>
+    lods: Record<string, number | null>,
   ) {
     const result: Record<string, string> | any = {};
     for (const [dimension, lod] of Object.entries(lods)) {

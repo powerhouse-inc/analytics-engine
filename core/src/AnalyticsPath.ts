@@ -9,7 +9,7 @@ export class AnalyticsPath {
 
   public static fromString(path: string): AnalyticsPath {
     const segments = parseSeparatedList(path, "/").map((segment) =>
-      AnalyticsPathSegment.fromString(segment)
+      AnalyticsPathSegment.fromString(segment),
     );
 
     return new AnalyticsPath(segments);
@@ -17,7 +17,7 @@ export class AnalyticsPath {
 
   public static fromStringArray(segments: string[]): AnalyticsPath {
     return new AnalyticsPath(
-      segments.map((segment) => AnalyticsPathSegment.fromString(segment))
+      segments.map((segment) => AnalyticsPathSegment.fromString(segment)),
     );
   }
 
@@ -93,7 +93,7 @@ export class AnalyticsPathSegment {
       filtersArg = null;
     } else {
       filtersArg = parseSeparatedList(elements[0], ",").map((f) =>
-        AnalyticsPathSegment.unescape(f)
+        AnalyticsPathSegment.unescape(f),
       );
     }
 
@@ -104,7 +104,7 @@ export class AnalyticsPathSegment {
       groupsArg = null;
     } else {
       groupsArg = parseSeparatedList(elements[1], ",").map((g) =>
-        AnalyticsPathSegment.unescape(g)
+        AnalyticsPathSegment.unescape(g),
       );
     }
 

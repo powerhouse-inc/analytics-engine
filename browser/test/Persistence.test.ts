@@ -8,7 +8,7 @@ import { BrowserAnalyticsStore } from "../src/BrowserAnalyticsStore.js";
 import { afterAll, beforeAll, it, expect, describe } from "vitest";
 
 const TEST_SOURCE = AnalyticsPath.fromString(
-  "test/analytics/AnalyticsStore.spec"
+  "test/analytics/AnalyticsStore.spec",
 );
 
 const dbName = "analytics.db";
@@ -44,7 +44,7 @@ describe("IDB VFS", () => {
         dimensions: {
           budget: AnalyticsPath.fromString("atlas/legacy/core-units/SES-001"),
           category: AnalyticsPath.fromString(
-            "atlas/headcount/CompensationAndBenefits/FrontEndEngineering"
+            "atlas/headcount/CompensationAndBenefits/FrontEndEngineering",
           ),
           project: TEST_SOURCE,
         },
@@ -63,7 +63,7 @@ describe("IDB VFS", () => {
         dimensions: {
           budget: AnalyticsPath.fromString("atlas/legacy/core-units/SES-001"),
           category: AnalyticsPath.fromString(
-            "atlas/headcount/CompensationAndBenefits/SmartContractEngineering"
+            "atlas/headcount/CompensationAndBenefits/SmartContractEngineering",
           ),
           project: TEST_SOURCE,
         },
@@ -115,8 +115,8 @@ describe("IDB VFS", () => {
 
     expect(
       results.map((r) =>
-        (r.dimensions.budget as AnalyticsDimension).path.toString()
-      )
+        (r.dimensions.budget as AnalyticsDimension).path.toString(),
+      ),
     ).toEqual([
       "atlas/legacy/core-units/SES-001",
       "atlas/legacy/core-units/SES-001",
@@ -128,7 +128,7 @@ describe("IDB VFS", () => {
     async () => {
       // load sql dump
       const res = await fetch(
-        `http://localhost:${window.location.port}/dump-small.sql`
+        `http://localhost:${window.location.port}/dump-small.sql`,
       );
       const sql = await res.text();
 
@@ -147,7 +147,7 @@ describe("IDB VFS", () => {
       performance.mark("end");
 
       const results = await store.raw(
-        `select count(*) as count from "AnalyticsDimension"`
+        `select count(*) as count from "AnalyticsDimension"`,
       );
 
       const count = results[0].count;
@@ -155,6 +155,6 @@ describe("IDB VFS", () => {
 
       console.log(`Loaded ${count} records in ${duration.duration}ms.`);
     },
-    100 * 1000
+    100 * 1000,
   );
 });

@@ -47,13 +47,13 @@ export class AnalyticsPeriod {
       } else if (period[5] === "Q") {
         result = new AnalyticsPeriod(
           Number.parseInt(period.slice(0, 4)),
-          Number.parseInt(period[6])
+          Number.parseInt(period[6]),
         );
       } else {
         result = new AnalyticsPeriod(
           Number.parseInt(period.slice(0, 4)),
           undefined,
-          Number.parseInt(period.slice(5))
+          Number.parseInt(period.slice(5)),
         );
       }
     } else {
@@ -65,14 +65,14 @@ export class AnalyticsPeriod {
 
   public static fillRange(
     p1: AnalyticsPeriod | string,
-    p2: AnalyticsPeriod | string
+    p2: AnalyticsPeriod | string,
   ): AnalyticsPeriod[] {
     const obj1 = typeof p1 === "string" ? AnalyticsPeriod.fromString(p1) : p1,
       obj2 = typeof p2 === "string" ? AnalyticsPeriod.fromString(p2) : p2;
 
     if (obj1.type !== obj2.type) {
       throw new Error(
-        `Cannot fill range of different type periods ${obj1.toString()} and ${obj2.toString()}.`
+        `Cannot fill range of different type periods ${obj1.toString()} and ${obj2.toString()}.`,
       );
     }
 
@@ -229,13 +229,13 @@ export class AnalyticsPeriod {
     } else if (this._type === AnalyticsPeriodType.Quarter) {
       const [y, q] = AnalyticsPeriod.normalizeQuarters(
         this._year,
-        (this._quarter as number) + periods
+        (this._quarter as number) + periods,
       );
       result = new AnalyticsPeriod(y, q);
     } else {
       const [y, _, m] = AnalyticsPeriod.normalizeMonths(
         this._year,
-        (this._month as number) + periods
+        (this._month as number) + periods,
       );
       result = new AnalyticsPeriod(y, undefined, m);
     }
@@ -269,7 +269,7 @@ export class AnalyticsPeriod {
       this._initAsQuarter(Math.floor((month - 1) / 3) + 1);
     } else if (this.quarter !== Math.floor((month - 1) / 3) + 1) {
       throw new Error(
-        `Period month ${month} outside of quarter ${this.quarter}`
+        `Period month ${month} outside of quarter ${this.quarter}`,
       );
     }
 

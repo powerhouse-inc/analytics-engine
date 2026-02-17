@@ -62,7 +62,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
 
   public async clearSeriesBySource(
     source: AnalyticsPath,
-    cleanUpDimensions: boolean = false
+    cleanUpDimensions: boolean = false,
   ): Promise<number> {
     const query = this._knex("AnalyticsSeries")
       .whereLike("source", source.toString("/%"))
@@ -85,7 +85,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
         q
           .select("*")
           .from("AnalyticsSeries_AnalyticsDimension AS ASAD")
-          .where("ASAD.dimensionId", this._knex.ref("AD.id"))
+          .where("ASAD.dimensionId", this._knex.ref("AD.id")),
       )
       .delete();
 
@@ -93,21 +93,19 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
   }
 
   public async getMatchingSeries(
-    query: AnalyticsSeriesQuery
+    query: AnalyticsSeriesQuery,
   ): Promise<AnalyticsSeries[]> {
-    const units = query.currency
-      ? query.currency.firstSegment().filters
-      : null;
+    const units = query.currency ? query.currency.firstSegment().filters : null;
     const analyticsView = this._buildViewQuery(
       "AV",
       Object.keys(query.select),
       query.metrics.map((m) => m),
       units,
-      query.end
+      query.end,
     );
 
     const baseQuery = this._knex<AnalyticsSeriesRecord>(
-      this._knex.raw(analyticsView)
+      this._knex.raw(analyticsView),
     ).select("AV.*");
 
     // Add dimension filter(s)
@@ -123,7 +121,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
       } else if (paths.length > 1) {
         baseQuery.andWhere((q) => {
           paths.forEach((p) =>
-            q.orWhereLike(`dim_${dimension}`, p.toString("/%"))
+            q.orWhereLike(`dim_${dimension}`, p.toString("/%")),
           );
           return q;
         });
@@ -155,7 +153,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
           fn: input.fn || "Single",
           params: input.params || null,
         },
-        "id"
+        "id",
       );
 
       const record = await this._executor.execute(query);
@@ -187,7 +185,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
         metaDimension.path,
         metaDimension.icon,
         metaDimension.label,
-        metaDimension.description
+        metaDimension.description,
       );
     }
 
@@ -198,7 +196,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
 
   private _formatQueryRecords(
     records: AnalyticsSeriesRecord[],
-    dimensions: string[]
+    dimensions: string[],
   ): AnalyticsSeries[] {
     const formatted = records.map((r: AnalyticsSeriesRecord) => {
       const result = {
@@ -218,12 +216,12 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
         (d) =>
           (result.dimensions[d] = {
             path: AnalyticsPath.fromString(
-              r[`dim_${d}`] ? r[`dim_${d}`].slice(0, -1) : "?"
+              r[`dim_${d}`] ? r[`dim_${d}`].slice(0, -1) : "?",
             ),
             icon: r[`dim_icon`] ? r[`dim_icon`] : "",
             label: r[`dim_label`] ? r[`dim_label`] : "",
             description: r[`dim_description`] ? r[`dim_description`] : "",
-          })
+          }),
       );
       return result;
     });
@@ -237,7 +235,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
     dimensions: string[],
     metrics: string[],
     units: string[] | null,
-    until: DateTime | null
+    until: DateTime | null,
   ) {
     const baseQuery = this._knex("AnalyticsSeries as AS_inner")
       .select("*")
@@ -271,7 +269,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
 
   private async _linkDimensions(
     dimension: string,
-    pathMap: Record<string, number[]>
+    pathMap: Record<string, number[]>,
   ) {
     const query = this._knex("AnalyticsDimension")
       .select("path", "id")
@@ -302,7 +300,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
   private async _createDimensionPath(dimension: string, path: string) {
     const query = this._knex("AnalyticsDimension").insert(
       { dimension, path },
-      "id"
+      "id",
     );
 
     const result = await this._executor.execute(query);
@@ -313,7 +311,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
     path: string,
     icon: string | null | undefined,
     label: string | null | undefined,
-    description: string | null | undefined
+    description: string | null | undefined,
   ) {
     if (!icon && !label && !description) {
       return;
@@ -401,7 +399,7 @@ export class KnexAnalyticsStore implements IAnalyticsStore {
 
   public subscribeToSource(
     path: AnalyticsPath,
-    callback: AnalyticsUpdateCallback
+    callback: AnalyticsUpdateCallback,
   ): () => void {
     return this._subscriptionManager.subscribeToPath(path, callback);
   }

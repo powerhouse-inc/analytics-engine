@@ -40,7 +40,7 @@ export class PostgresAnalyticsStore extends KnexAnalyticsStore {
     if (!knex) {
       if (!connectionString) {
         throw new Error(
-          "Either knex or connectionString parameters are required"
+          "Either knex or connectionString parameters are required",
         );
       }
 

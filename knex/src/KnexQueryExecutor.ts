@@ -8,7 +8,7 @@ export class KnexQueryExecutor implements IKnexQueryExecutor {
   constructor(
     private readonly _queryLogger?: (index: number, query: string) => void,
     private readonly _resultsLogger?: (index: number, results: any) => void,
-    private readonly _profiler?: IAnalyticsProfiler
+    private readonly _profiler?: IAnalyticsProfiler,
   ) {
     if (this._profiler) {
       this._profiler.push("Knex");

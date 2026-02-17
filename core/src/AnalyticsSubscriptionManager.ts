@@ -34,7 +34,7 @@ export class AnalyticsSubscriptionManager {
    */
   public subscribeToPath(
     path: AnalyticsPath,
-    callback: AnalyticsUpdateCallback
+    callback: AnalyticsUpdateCallback,
   ): () => void {
     const pathString = this.normalizePath(path.toString("/"));
 
@@ -140,7 +140,7 @@ export class AnalyticsSubscriptionManager {
    */
   private pathMatchesWildcardPattern(
     updatePath: string,
-    subscriptionPath: string
+    subscriptionPath: string,
   ): boolean {
     // Handle the wildcard segment case
     if (subscriptionPath.includes("*")) {

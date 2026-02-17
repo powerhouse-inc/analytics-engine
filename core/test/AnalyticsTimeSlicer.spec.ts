@@ -43,7 +43,7 @@ describe("_nextAnnualPeriod", () => {
         month: 4,
         day: 1,
       },
-      { zone: "America/New_York" }
+      { zone: "America/New_York" },
     );
     const seriesEnd = nextStart.plus({ days: 1 });
     const period = _nextAnnualPeriod(nextStart, seriesEnd);
@@ -205,7 +205,7 @@ describe("_nextQuarterlyPeriod", () => {
     // it has to clamp.
     const nextStart = DateTime.fromObject(
       { year: 2021, month: 10, day: 1 },
-      { zone: "Europe/Berlin" }
+      { zone: "Europe/Berlin" },
     );
     const seriesEnd = DateTime.fromObject(
       {
@@ -217,7 +217,7 @@ describe("_nextQuarterlyPeriod", () => {
         second: 59,
         millisecond: 999,
       },
-      { zone: "Europe/Berlin" }
+      { zone: "Europe/Berlin" },
     );
     const period = _nextQuarterlyPeriod(nextStart, seriesEnd);
 
@@ -232,7 +232,7 @@ describe("_nextQuarterlyPeriod", () => {
     // it does NOT clamp, but returns the UTC end of year.
     const nextStart = DateTime.fromObject(
       { year: 2021, month: 10, day: 1 },
-      { zone: "US/Eastern" }
+      { zone: "US/Eastern" },
     );
     const seriesEnd = DateTime.fromObject(
       {
@@ -244,7 +244,7 @@ describe("_nextQuarterlyPeriod", () => {
         second: 59,
         millisecond: 999,
       },
-      { zone: "US/Eastern" }
+      { zone: "US/Eastern" },
     );
     const period = _nextQuarterlyPeriod(nextStart, seriesEnd);
 
