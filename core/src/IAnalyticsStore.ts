@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import { AnalyticsPath } from "./AnalyticsPath.js";
-import { AnalyticsSeries, AnalyticsSeriesQuery } from "./AnalyticsQuery.js";
+import type { AnalyticsSeries, AnalyticsSeriesQuery } from "./AnalyticsQuery.js";
 
 export type AnalyticsSeriesInput = {
   start: DateTime;

@@ -14,11 +14,6 @@ export default defineConfig({
     },
     setupFiles: "./test/vitest.setup.ts",
     passWithNoTests: true,
-    poolOptions: {
-      forks: {
-        singleFork: true,
-      },
-    },
   },
   optimizeDeps: {
     exclude: ["@sqlite.org/sqlite-wasm"],

@@ -1,16 +1,9 @@
 import * as fs from "fs";
-import { parseArgs, ParseArgsConfig } from "util";
+import { parseArgs } from "util";
 import { DateTime } from "luxon";
 import {
-  AnalyticsGranularity,
-  AnalyticsPath,
-  AnalyticsProfiler,
-  AnalyticsQueryEngine,
+  AnalyticsGranularity
 } from "@powerhousedao/analytics-engine-core";
-import {
-  PostgresAnalyticsStore,
-  reviver,
-} from "@powerhousedao/analytics-engine-pg";
 
 class ExecutionResults {
   public readonly durationMs: number;

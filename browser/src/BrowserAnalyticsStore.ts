@@ -1,6 +1,6 @@
 import {
   MemoryAnalyticsStore,
-  MemoryAnalyticsStoreOptions,
+  type MemoryAnalyticsStoreOptions,
 } from "./MemoryAnalyticsStore.js";
 import { IdbFs, PGlite } from "@electric-sql/pglite";
 

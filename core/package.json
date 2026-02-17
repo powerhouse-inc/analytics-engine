@@ -2,8 +2,8 @@
   "name": "@powerhousedao/analytics-engine-core",
   "version": "0.5.0",
   "license": "AGPL-3.0-only",
-  "main": "dist/index.js",
-  "types": "dist/index.d.ts",
+  "exports": "./dist/src/index.js",
+  "types": "dist/src/index.d.ts",
   "type": "module",
   "publishConfig": {
     "access": "public"
@@ -12,19 +12,15 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsc-watch",
-    "build": "rm -rf dist/ && tsc",
-    "test": "vitest run"
+    "dev": "pnpm -w tsc -b -w",
+    "test": "vitest --run"
   },
   "dependencies": {
-    "date-fns": "^3.6.0"
+    "date-fns": "catalog:",
+    "luxon": "catalog:"
   },
   "devDependencies": {
-    "@types/luxon": "^3.4.2",
-    "@types/node": "^22.4.2",
-    "luxon": "^3.5.0",
-    "tsc-watch": "^6.2.0",
-    "typescript": "^5.6.3",
-    "vitest": "^2.0.5"
+    "@types/luxon": "catalog:",
+    "vitest": "catalog:"
   }
 }

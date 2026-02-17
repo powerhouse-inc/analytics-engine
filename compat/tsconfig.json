@@ -1,20 +1,23 @@
 {
+  "extends": "../tsconfig.options.json",
   "compilerOptions": {
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "strict": true,
-    "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "Bundler",
-    "module": "ESNext",
-    "types": ["node"],
-    "rootDir": "./",
-    "outDir": "./dist",
+    "outDir": "./dist"
   },
-  "include": ["./test/**/*", "./src/**/*"],
+  "include": [
+    "**/*"
+  ],
+  "references": [
+    {
+      "path": "../browser"
+    },
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../knex"
+    },
+    {
+      "path": "../pg"
+    }
+  ]
 }

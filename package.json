@@ -1,17 +1,21 @@
 {
   "name": "analytics-engine",
   "private": true,
-  "workspaces": [
-    "core",
-    "knex",
-    "pg",
-    "browser",
-    "graphql",
-    "benchmarks",
-    "compat"
-  ],
   "scripts": {
     "test": "pnpm -r test --filter='!compat'",
-    "build": "pnpm -r build"
+    "build": "pnpm tsc -b",
+    "lint": "eslint",
+    "check-ts-references": "bun run ./check-ts-references.ts"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:",
+    "eslint": "^10.0.0",
+    "glob": "catalog:",
+    "globals": "^17.3.0",
+    "jiti": "^2.6.1",
+    "typescript": "catalog:",
+    "typescript-eslint": "^8.56.0"
   }
 }

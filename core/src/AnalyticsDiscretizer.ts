@@ -1,11 +1,11 @@
 import {
-  AnalyticsDimension,
+  type AnalyticsDimension,
   AnalyticsGranularity,
-  AnalyticsSeries,
+  type AnalyticsSeries,
 } from "./AnalyticsQuery.js";
 import {
-  AnalyticsPeriod,
-  AnalyticsRange,
+  type AnalyticsPeriod,
+  type AnalyticsRange,
   getPeriodSeriesArray,
 } from "./AnalyticsTimeSlicer.js";
 import { DateTime, Interval } from "luxon";

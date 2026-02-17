@@ -2,12 +2,12 @@ import { Knex } from "knex";
 import { DateTime } from "luxon";
 import {
   AnalyticsPath,
-  AnalyticsSeries,
-  AnalyticsSeriesInput,
-  AnalyticsSeriesQuery,
-  AnalyticsDimension,
-  IAnalyticsStore,
-  AnalyticsUpdateCallback,
+  type AnalyticsSeries,
+  type AnalyticsSeriesInput,
+  type AnalyticsSeriesQuery,
+  type AnalyticsDimension,
+  type IAnalyticsStore,
+  type AnalyticsUpdateCallback,
   AnalyticsSubscriptionManager,
 } from "@powerhousedao/analytics-engine-core";
 import { toPascalCase } from "./util.js";

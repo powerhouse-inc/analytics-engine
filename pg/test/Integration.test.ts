@@ -4,15 +4,13 @@ import {
   AnalyticsPath,
   AnalyticsQueryEngine,
   AnalyticsGranularity,
-  AnalyticsQuery,
-  GroupedPeriodResults,
-  PassthroughAnalyticsProfiler,
+  type AnalyticsQuery,
+  type GroupedPeriodResults
 } from "@powerhousedao/analytics-engine-core";
-import { PostgresAnalyticsStore } from "../src/PostgresAnalyticsStore";
+import { PostgresAnalyticsStore } from "../src/PostgresAnalyticsStore.js";
 import {
   defaultQueryLogger,
-  defaultResultsLogger,
-  KnexQueryExecutor,
+  defaultResultsLogger
 } from "@powerhousedao/analytics-engine-knex";
 
 const connectionString = process.env.PG_CONNECTION_STRING;

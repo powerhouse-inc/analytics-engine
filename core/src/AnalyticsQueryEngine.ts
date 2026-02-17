@@ -1,22 +1,22 @@
 import {
   AnalyticsDiscretizer,
-  GroupedPeriodResults,
-  GroupedPeriodResult,
+  type GroupedPeriodResults,
+  type GroupedPeriodResult,
 } from "./AnalyticsDiscretizer.js";
 import { AnalyticsPath } from "./AnalyticsPath.js";
 import {
-  IAnalyticsProfiler,
+  type IAnalyticsProfiler,
   PassthroughAnalyticsProfiler,
 } from "./AnalyticsProfiler.js";
 import {
-  AnalyticsQuery,
-  AnalyticsSeries,
-  AnalyticsSeriesQuery,
-  CompoundAnalyticsQuery,
+  type AnalyticsQuery,
+  type AnalyticsSeries,
+  type AnalyticsSeriesQuery,
+  type CompoundAnalyticsQuery,
+  type MultiCurrencyConversion,
   CompoundOperator,
-  MultiCurrencyConversion,
 } from "./AnalyticsQuery.js";
-import { IAnalyticsStore } from "./IAnalyticsStore.js";
+import { type IAnalyticsStore } from "./IAnalyticsStore.js";
 
 export class AnalyticsQueryEngine {
   private readonly _profiler: IAnalyticsProfiler;

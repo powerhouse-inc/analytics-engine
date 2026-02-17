@@ -1,7 +1,17 @@
 {
-  "extends": "../tsconfig.json",
+  "extends": "../tsconfig.options.json",
   "compilerOptions": {
     "outDir": "./dist"
   },
-  "include": ["./src"]
+  "include": [
+    "**/*"
+  ],
+  "references": [
+    {
+      "path": "../core"
+    },
+    {
+      "path": "../knex"
+    }
+  ]
 }

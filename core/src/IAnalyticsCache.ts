@@ -1,5 +1,5 @@
-import { GroupedPeriodResults } from "./AnalyticsDiscretizer";
-import { AnalyticsQuery } from "./AnalyticsQuery";
+import type { GroupedPeriodResults } from "./AnalyticsDiscretizer.js";
+import type { AnalyticsQuery } from "./AnalyticsQuery.js";
 
 export interface IAnalyticsCache {
   get(query: AnalyticsQuery): Promise<GroupedPeriodResults | null>;

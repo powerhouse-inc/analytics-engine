@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import {
-  AnalyticsDimension,
+  type AnalyticsDimension,
   AnalyticsPath,
 } from "@powerhousedao/analytics-engine-core";
 import { BrowserAnalyticsStore } from "../src/BrowserAnalyticsStore.js";

@@ -1,12 +1,12 @@
 import {
-  IAnalyticsProfiler,
+  type IAnalyticsProfiler,
   PassthroughAnalyticsProfiler,
 } from "@powerhousedao/analytics-engine-core";
 import {
   KnexAnalyticsStore,
   KnexQueryExecutor,
-  SqlQueryLogger,
-  SqlResultsLogger,
+  type SqlQueryLogger,
+  type SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
 import knexFactory, { Knex } from "knex";
 import pkg from "pg";

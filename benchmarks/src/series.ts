@@ -38,7 +38,7 @@ const query = {
   },
 };
 
-let bench = new Bench();
+let bench = new Bench({ warmup: true });
 
 if (!isPgDisabled) {
   bench = bench.add(
@@ -58,7 +58,6 @@ bench.add(
   logs("Memory")
 );
 
-await bench.warmup();
 await bench.run();
 
 console.table(bench.table());

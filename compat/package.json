@@ -2,23 +2,23 @@
   "name": "compat",
   "type": "module",
   "license": "AGPL-3.0-only",
+  "files": ["dist"],
   "scripts": {
-    "build": "tsc",
-    "test": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest run"
+    "test": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest --run"
   },
   "dependencies": {
     "@powerhousedao/analytics-engine-browser": "workspace:*",
     "@powerhousedao/analytics-engine-core": "workspace:*",
     "@powerhousedao/analytics-engine-knex": "workspace:*",
     "@powerhousedao/analytics-engine-pg": "workspace:*",
-    "knex": "^3.1.0",
-    "luxon": "^3.5.0",
-    "pg": "^8.13.0"
+    "knex": "catalog:",
+    "luxon": "catalog:",
+    "pg": "catalog:"
   },
   "devDependencies": {
-    "@tsconfig/node-lts": "^20.1.3",
-    "@types/luxon": "^3.4.2",
-    "@types/node": "^22.7.4",
-    "vitest": "^2.1.2"
+    "@tsconfig/node-lts": "catalog:",
+    "@types/luxon": "catalog:",
+    "@types/node": "catalog:",
+    "vitest": "catalog:"
   }
 }

@@ -1,6 +1,6 @@
 import fs from "fs";
 import { MemoryAnalyticsStore } from "@powerhousedao/analytics-engine-browser";
-import { Bench, Task } from "tinybench";
+import { Bench } from "tinybench";
 import { logs } from "./util.js";
 
 // first, load the data
@@ -11,6 +11,7 @@ let store: MemoryAnalyticsStore;
 
 const bench = new Bench({
   time: 500,
+  warmup: true,
 });
 
 console.log("Initializing benchmarks...");
@@ -72,7 +73,6 @@ bench
     })
   );
 
-await bench.warmup();
 await bench.run();
 
 console.table(bench.table());

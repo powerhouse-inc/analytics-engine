@@ -1,5 +1,5 @@
 import { AnalyticsPath } from "./AnalyticsPath.js";
-import { AnalyticsUpdateCallback } from "./IAnalyticsStore.js";
+import type { AnalyticsUpdateCallback } from "./IAnalyticsStore.js";
 
 export class NotificationError extends Error {
   public readonly innerErrors: Error[];
@@ -131,7 +131,7 @@ export class AnalyticsSubscriptionManager {
   private normalizePath(path: string): string {
     // Handle potential double slashes by first splitting on slashes and rejoining
     const parts = path.split("/").filter((p) => p.length > 0);
-    let normalized = "/" + parts.join("/");
+    const normalized = "/" + parts.join("/");
     return normalized;
   }
 

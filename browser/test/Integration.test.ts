@@ -4,10 +4,10 @@ import {
   AnalyticsPath,
   AnalyticsQueryEngine,
   AnalyticsGranularity,
-  AnalyticsQuery,
-  GroupedPeriodResults,
+  type AnalyticsQuery,
+  type GroupedPeriodResults,
 } from "@powerhousedao/analytics-engine-core";
-import { MemoryAnalyticsStore } from "../src/MemoryAnalyticsStore";
+import { MemoryAnalyticsStore } from "../src/MemoryAnalyticsStore.js";
 
 let store: MemoryAnalyticsStore;
 let engine: AnalyticsQueryEngine;
