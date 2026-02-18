@@ -6,7 +6,8 @@
   },
   "type": "module",
   "scripts": {
-    "version-deps": "pnpm -r exec npm version --no-git-tag-version --dry-run",
+    "version-packages": "pnpm -r exec pnpm version --no-git-tag-version",
+    "publish-packages": "pnpm -r publish",
     "test-ci": "pnpm -r --no-bail test",
     "db-up": "docker compose -f ./pg/docker-compose.test.yml up -d database",
     "db-down": "docker compose -f ./pg/docker-compose.test.yml down -v",
