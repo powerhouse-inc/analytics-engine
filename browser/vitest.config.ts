@@ -8,6 +8,7 @@ export default defineConfig({
       provider: playwright(),
       enabled: true,
       instances: [{ browser: "firefox" }],
+      headless: true,
     },
     testTimeout: 5000,
     setupFiles: "./test/vitest.setup.ts",

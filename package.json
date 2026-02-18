@@ -7,6 +7,8 @@
   "type": "module",
   "scripts": {
     "test-ci": "pnpm -r --no-bail test",
+    "db-up": "docker compose -f ./pg/docker-compose.test.yml up -d database",
+    "db-down": "docker compose -f ./pg/docker-compose.test.yml down -v",
     "build": "pnpm tsc -b",
     "dev": "pnpm tsc -b -w",
     "lint": "eslint",
