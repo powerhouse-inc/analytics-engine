@@ -22,6 +22,7 @@
     "@eslint/js": "10.0.1",
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
+    "cmd-ts": "0.15.0",
     "dpdm": "4.0.1",
     "eslint": "10.0.0",
     "eslint-config-prettier": "10.1.8",
