@@ -84,7 +84,7 @@ importers:
         specifier: 'catalog:'
         version: 25.2.3
       dpdm:
-        specifier: ^4.0.1
+        specifier: 4.0.1
         version: 4.0.1
       eslint:
         specifier: 10.0.0
