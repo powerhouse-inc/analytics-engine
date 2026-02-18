@@ -74,6 +74,4 @@ jobs:
         run: pnpm version-packages -- --release-type="${{ inputs.release_type }}"
 
       - name: Run publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
         run: pnpm publish-packages -- --dry-run="${{ inputs.dry_run }}"
