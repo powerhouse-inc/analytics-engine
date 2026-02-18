@@ -4,7 +4,6 @@ export function runCommandWithBun(
 ) {
   return Bun.spawnSync({
     cmd,
-    stdio: ["inherit", "inherit", "inherit"],
     env: {
       ...process.env,
       ...env,

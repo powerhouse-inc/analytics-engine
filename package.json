@@ -6,8 +6,7 @@
   },
   "type": "module",
   "scripts": {
-    "test-version-packages": "bun run scripts/version-packages.ts",
-    "version-packages": "pnpm -r exec pnpm version --no-git-tag-version",
+    "test-publish-packages": "bun run ./scripts/publish-packages.ts",
     "publish-packages": "pnpm -r publish",
     "test-ci": "pnpm -r --no-bail test",
     "db-up": "docker compose -f ./pg/docker-compose.test.yml up -d database",

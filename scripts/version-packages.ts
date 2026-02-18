@@ -1,6 +1,7 @@
 import { binary, command, oneOf, option, run } from "cmd-ts";
 import { runCommandWithBun } from "./run-with-bun.js";
-const versionPackages = command({
+
+const versionPackagesCommand = command({
   name: "version-packages",
   description: "Update package versions in the monorepo",
   args: {
@@ -24,9 +25,12 @@ const versionPackages = command({
       "--no-git-tags",
     ];
     const result = runCommandWithBun(cmd);
-    console.log(result.exitCode);
+    if (result.exitCode !== 0) {
+      throw new Error(result.stderr.toString());
+    }
+    const newVersion = result.stdout.toString().split("\n")[0];
+    return newVersion;
   },
 });
 
-const program = binary(versionPackages);
-await run(program, process.argv);
+export const versionPackages = binary(versionPackagesCommand);
