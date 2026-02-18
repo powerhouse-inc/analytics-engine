@@ -29,8 +29,55 @@ const versionPackagesCommand = command({
       throw new Error(result.stderr.toString());
     }
     const newVersion = result.stdout.toString().split("\n")[0];
-    return newVersion;
+
+    if (!newVersion) {
+      console.error("Versioning packages failed");
+      process.exit(1);
+    }
+
+    console.log("Staging new versions with git...");
+    const stageChangesResult = runCommandWithBun([
+      "git",
+      "add",
+      ":(glob)**/package.json",
+    ]);
+
+    if (stageChangesResult.exitCode !== 0) {
+      console.error("Failed to stage changes with git");
+      console.error(stageChangesResult.stderr);
+      process.exit(1);
+    }
+
+    console.log("Committing changesg with git...");
+
+    const commitChangesResult = runCommandWithBun([
+      "git",
+      "commit",
+      "--message",
+      `chore(release): publish ${newVersion}`,
+    ]);
+
+    if (commitChangesResult.exitCode !== 0) {
+      console.error("Failed to commit changes with git");
+      console.error(commitChangesResult.stderr);
+      process.exit(1);
+    }
+
+    const pushChangesResult = runCommandWithBun([
+      "git",
+      "push",
+      "origin",
+      "HEAD",
+    ]);
+
+    if (pushChangesResult.exitCode !== 0) {
+      console.error("Failed to push changes with git");
+      console.error(pushChangesResult.stderr);
+      process.exit(1);
+    }
   },
 });
 
-export const versionPackages = binary(versionPackagesCommand);
+const versionPackages = binary(versionPackagesCommand);
+
+await run(versionPackages, process.argv);
