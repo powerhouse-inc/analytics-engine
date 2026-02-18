@@ -127,7 +127,7 @@ importers:
         version: link:../knex
       '@powerhousedao/analytics-engine-pg':
         specifier: workspace:*
-        version: link:../pg
+        version: link:../scripts
       crc:
         specifier: 'catalog:'
         version: 4.3.2
@@ -213,7 +213,7 @@ importers:
         version: link:../knex
       '@powerhousedao/analytics-engine-pg':
         specifier: workspace:*
-        version: link:../pg
+        version: link:../scripts
       knex:
         specifier: 'catalog:'
         version: 3.1.0(pg@8.18.0)
@@ -330,6 +330,12 @@ importers:
       vitest:
         specifier: 'catalog:'
         version: 4.0.18(@types/node@25.2.3)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(msw@2.8.4(@types/node@25.2.3)(typescript@5.9.3))
+
+  scripts:
+    devDependencies:
+      cmd-ts:
+        specifier: 0.15.0
+        version: 0.15.0
 
 packages:
 
@@ -981,6 +987,9 @@ packages:
     resolution: {integrity: sha512-k7ndgKhwoQveBL+/1tqGJYNz097I7WOvwbmmU2AR5+magtbjPWQTS1C5vzGkBC8Ym8UWRzfKUzUUqFLypY4Q+w==}
     engines: {node: '>=20'}
 
+  cmd-ts@0.15.0:
+    resolution: {integrity: sha512-ASyAx+P6DNzNEZ6OYmvjjaLAQeI3L+4lm5rX2Jg8tondXdj06o9JTxi9mfC92KoVbrVFKhZ+j2TfBF8fcura6g==}
+
   color-convert@2.0.1:
     resolution: {integrity: sha512-RRECPsj7iu/xb5oKYcsFHSppFNnsj/52OVTRKb4zP5onXwVF3zVmmToNcOfGC+CRDpfK/U584fMg38ZHCaElKQ==}
     engines: {node: '>=7.0.0'}
@@ -1044,6 +1053,9 @@ packages:
   define-data-property@1.1.4:
     resolution: {integrity: sha512-rBMvIzlpA8v6E+SJZoo++HAYqsLrkg7MSfIinMPFhmkorw7X+dOXVJQs+QT69zGkzMyfDnIMN2Wid1+NbL3T+A==}
     engines: {node: '>= 0.4'}
+
+  didyoumean@1.2.2:
+    resolution: {integrity: sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw==}
 
   dpdm@4.0.1:
     resolution: {integrity: sha512-9NutC+V6A/4GHgqsqRTMQNDlhipK3lyPWBJ8zIVT8lTncy71d1BzR7sbCO0Dv2zTZ4XSxvbEfMyd0NDDLU0+fw==}
@@ -2581,6 +2593,15 @@ snapshots:
       strip-ansi: 7.1.2
       wrap-ansi: 9.0.2
 
+  cmd-ts@0.15.0:
+    dependencies:
+      chalk: 5.6.2
+      debug: 4.4.3
+      didyoumean: 1.2.2
+      strip-ansi: 7.1.2
+    transitivePeerDependencies:
+      - supports-color
+
   color-convert@2.0.1:
     dependencies:
       color-name: 1.1.4
@@ -2623,6 +2644,8 @@ snapshots:
       es-define-property: 1.0.1
       es-errors: 1.3.0
       gopd: 1.2.0
+
+  didyoumean@1.2.2: {}
 
   dpdm@4.0.1:
     dependencies:

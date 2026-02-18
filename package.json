@@ -6,6 +6,7 @@
   },
   "type": "module",
   "scripts": {
+    "test-version-packages": "bun run scripts/version-packages.ts",
     "version-packages": "pnpm -r exec pnpm version --no-git-tag-version",
     "publish-packages": "pnpm -r publish",
     "test-ci": "pnpm -r --no-bail test",

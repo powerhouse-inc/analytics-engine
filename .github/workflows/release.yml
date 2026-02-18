@@ -3,18 +3,14 @@ name: Release
 on:
   workflow_dispatch:
     inputs:
-      release_mode:
+      release_type:
         type: choice
         description: "Specify what type of release to perform."
         options:
-          - prerelease
           - patch
           - minor
           - major
-          - prepatch
-          - preminor
-          - premajor
-        default: prerelease
+        default: patch
       dry_run:
         type: boolean
         default: false
@@ -38,5 +34,5 @@ jobs:
     steps:
       - name: Log inputs
         run: |
-          echo "release_mode=${{ inputs.release_mode }}"
+          echo "release_type=${{ inputs.release_type }}"
           echo "dry_run=${{ inputs.dry_run }}"
