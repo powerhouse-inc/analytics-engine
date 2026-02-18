@@ -1,6 +1,9 @@
 import { DateTime } from "luxon";
 import { AnalyticsPath } from "./AnalyticsPath.js";
-import { AnalyticsSeries, AnalyticsSeriesQuery } from "./AnalyticsQuery.js";
+import type {
+  AnalyticsSeries,
+  AnalyticsSeriesQuery,
+} from "./AnalyticsQuery.js";
 
 export type AnalyticsSeriesInput = {
   start: DateTime;
@@ -20,11 +23,11 @@ export type AnalyticsUpdateCallback = (source: AnalyticsPath) => void;
 export interface IAnalyticsStore {
   clearSeriesBySource: (
     source: AnalyticsPath,
-    cleanUpDimensions?: boolean
+    cleanUpDimensions?: boolean,
   ) => Promise<number>;
   clearEmptyAnalyticsDimensions: () => Promise<number>;
   getMatchingSeries: (
-    query: AnalyticsSeriesQuery
+    query: AnalyticsSeriesQuery,
   ) => Promise<AnalyticsSeries[]>;
   addSeriesValue: (input: AnalyticsSeriesInput) => Promise<void>;
   addSeriesValues: (inputs: AnalyticsSeriesInput[]) => Promise<void>;
@@ -32,6 +35,6 @@ export interface IAnalyticsStore {
 
   subscribeToSource: (
     source: AnalyticsPath,
-    callback: AnalyticsUpdateCallback
+    callback: AnalyticsUpdateCallback,
   ) => () => void;
 }

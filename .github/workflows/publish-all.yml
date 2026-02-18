@@ -2,8 +2,6 @@ name: Publish All Packages
 
 on:
   workflow_dispatch:
-  push:
-    branches: ["main"]
 
 jobs:
   core:

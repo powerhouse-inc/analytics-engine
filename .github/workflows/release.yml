@@ -1,0 +1,79 @@
+name: Release
+
+on:
+  workflow_dispatch:
+    inputs:
+      release_type:
+        type: choice
+        description: "Specify what type of release to perform."
+        options:
+          - patch
+          - minor
+          - major
+        default: patch
+      dry_run:
+        type: boolean
+        default: false
+      verbose:
+        type: boolean
+        default: false
+
+permissions:
+  contents: write
+  packages: write
+  id-token: write
+
+jobs:
+  release:
+    name: Release packages in monorepo
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      NPM_CONFIG_PROVENANCE: true
+
+    steps:
+      - name: Log inputs
+        run: |
+          echo "release_type=${{ inputs.release_type }}"
+          echo "dry_run=${{ inputs.dry_run }}"
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          registry-url: https://registry.npmjs.org
+
+      - name: Setup pnpm with cache
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+          run_install: false
+
+      - name: Setup bun global install
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install with frozen lockfile
+        run: pnpm install-ci
+
+      - name: Build project
+        run: pnpm build
+
+      - name: Set git config
+        run: |
+          git config user.name "Github Actions Bot"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+      - name: Run versioning
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm version-packages -- "${{ inputs.release_type }}"
+
+      - name: Run publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
+        run: pnpm publish-packages -- "${{ inputs.dry_run }}"

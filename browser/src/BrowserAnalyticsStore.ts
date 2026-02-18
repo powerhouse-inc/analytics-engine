@@ -1,6 +1,6 @@
 import {
   MemoryAnalyticsStore,
-  MemoryAnalyticsStoreOptions,
+  type MemoryAnalyticsStoreOptions,
 } from "./MemoryAnalyticsStore.js";
 import { IdbFs, PGlite } from "@electric-sql/pglite";
 
@@ -10,7 +10,7 @@ export type BrowserAnalyticsStoreOptions = MemoryAnalyticsStoreOptions & {
 
 export class BrowserAnalyticsStore extends MemoryAnalyticsStore {
   constructor(
-    options: BrowserAnalyticsStoreOptions = { databaseName: "analytics" }
+    options: BrowserAnalyticsStoreOptions = { databaseName: "analytics" },
   ) {
     if (!options.pgLiteFactory) {
       options.pgLiteFactory = async () =>

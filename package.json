@@ -1,17 +1,38 @@
 {
   "name": "analytics-engine",
   "private": true,
-  "workspaces": [
-    "core",
-    "knex",
-    "pg",
-    "browser",
-    "graphql",
-    "benchmarks",
-    "compat"
-  ],
+  "publishConfig": {
+    "access": "restricted"
+  },
+  "type": "module",
   "scripts": {
-    "test": "pnpm -r test --filter='!compat'",
-    "build": "pnpm -r build"
+    "version-packages": "bun run ./scripts/version-packages.ts",
+    "publish-packages": "pnpm -r publish",
+    "test-ci": "pnpm -r --no-bail test",
+    "install-ci": "pnpm install --frozen-lockfile",
+    "db-up": "docker compose -f ./pg/docker-compose.test.yml up -d database",
+    "db-down": "docker compose -f ./pg/docker-compose.test.yml down -v",
+    "build": "pnpm tsc -b",
+    "dev": "pnpm tsc -b -w",
+    "lint": "eslint",
+    "check-ts-references": "bun run ./check-ts-references.ts",
+    "check-circular-imports": "dpdm -T ./**/* --no-tree --no-warning --exit-code circular:1",
+    "purge": "bunx git clean -fdX"
+  },
+  "devDependencies": {
+    "@eslint/js": "10.0.1",
+    "@types/bun": "catalog:",
+    "@types/node": "catalog:",
+    "cmd-ts": "0.15.0",
+    "dpdm": "4.0.1",
+    "eslint": "10.0.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.5",
+    "glob": "catalog:",
+    "globals": "17.3.0",
+    "jiti": "2.6.1",
+    "prettier": "3.8.1",
+    "typescript": "catalog:",
+    "typescript-eslint": "8.56.0"
   }
 }

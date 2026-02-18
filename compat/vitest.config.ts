@@ -15,11 +15,8 @@ export default defineConfig({
       },
     },
     passWithNoTests: true,
-    poolOptions: {
-      forks: {
-        singleFork: true,
-      },
-    },
+    maxWorkers: 1,
+    isolate: false,
   },
   optimizeDeps: {
     exclude: ["@sqlite.org/sqlite-wasm"],

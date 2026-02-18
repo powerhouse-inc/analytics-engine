@@ -1,21 +1,15 @@
 import * as fs from "fs";
-import { parseArgs, ParseArgsConfig } from "util";
+import { parseArgs } from "util";
 import { DateTime } from "luxon";
-import {
-  AnalyticsGranularity,
-  AnalyticsPath,
-  AnalyticsProfiler,
-  AnalyticsQueryEngine,
-} from "@powerhousedao/analytics-engine-core";
-import {
-  PostgresAnalyticsStore,
-  reviver,
-} from "@powerhousedao/analytics-engine-pg";
+import { AnalyticsGranularity } from "@powerhousedao/analytics-engine-core";
 
 class ExecutionResults {
   public readonly durationMs: number;
 
-  constructor(public readonly name: string, durationMs: number) {
+  constructor(
+    public readonly name: string,
+    durationMs: number,
+  ) {
     this.durationMs = durationMs;
   }
 }
@@ -79,7 +73,7 @@ function deepEquals(a: any, b: any) {
 
     if (a.length !== b.length) {
       throw new Error(
-        `Mismatch: ${a} length ${a.length} !== ${b} length ${b.length}`
+        `Mismatch: ${a} length ${a.length} !== ${b} length ${b.length}`,
       );
     }
 

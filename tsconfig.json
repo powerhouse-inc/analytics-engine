@@ -1,17 +1,27 @@
 {
-  "compilerOptions": {
-    "esModuleInterop": true,
-    "skipLibCheck": true,
-    "target": "es2022",
-    "allowJs": true,
-    "resolveJsonModule": true,
-    "moduleDetection": "force",
-    "isolatedModules": true,
-    "strict": true,
-    "sourceMap": true,
-    "declaration": true,
-    "moduleResolution": "Bundler",
-    "module": "ESNext",
-    "lib": ["es2022"]
-  }
+  "extends": "./tsconfig.options.json",
+  "references": [
+   {
+    "path": "./core"
+   },
+   {
+    "path": "./knex"
+   },
+   {
+    "path": "./pg"
+   },
+   {
+    "path": "./browser"
+   },
+   {
+    "path": "./graphql"
+   },
+   {
+    "path": "./benchmarks"
+   },
+   {
+    "path": "./compat"
+   },
+  ],
+  "files": []
 }

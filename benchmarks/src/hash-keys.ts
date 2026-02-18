@@ -4,9 +4,9 @@ import { crc32 } from "crc";
 import { createHash } from "crypto";
 
 const queries = JSON.parse(readFileSync("./data/query-list.json", "utf-8")).map(
-  (q: object) => JSON.stringify(q)
+  (q: object) => JSON.stringify(q),
 );
-const bench = new Bench();
+const bench = new Bench({ warmup: true });
 
 const hashCrc = (val: string) => crc32(val).toString(16);
 const hashBlake = (val: string) =>
@@ -38,7 +38,6 @@ bench
     }
   });
 
-await bench.warmup();
 await bench.run();
 
 console.table(bench.table());

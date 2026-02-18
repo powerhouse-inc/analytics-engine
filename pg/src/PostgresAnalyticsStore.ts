@@ -1,14 +1,15 @@
 import {
-  IAnalyticsProfiler,
+  type IAnalyticsProfiler,
   PassthroughAnalyticsProfiler,
 } from "@powerhousedao/analytics-engine-core";
 import {
   KnexAnalyticsStore,
   KnexQueryExecutor,
-  SqlQueryLogger,
-  SqlResultsLogger,
+  type SqlQueryLogger,
+  type SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
-import knexFactory, { Knex } from "knex";
+import knexFactory from "knex";
+import type { Knex } from "knex";
 import pkg from "pg";
 import { reviver } from "./AnalyticsSerializer.js";
 
@@ -40,7 +41,7 @@ export class PostgresAnalyticsStore extends KnexAnalyticsStore {
     if (!knex) {
       if (!connectionString) {
         throw new Error(
-          "Either knex or connectionString parameters are required"
+          "Either knex or connectionString parameters are required",
         );
       }
 

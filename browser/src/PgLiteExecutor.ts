@@ -1,11 +1,11 @@
-import { PGlite, types } from "@electric-sql/pglite";
-import { IAnalyticsProfiler } from "@powerhousedao/analytics-engine-core";
-import {
+import { PGlite } from "@electric-sql/pglite";
+import { type IAnalyticsProfiler } from "@powerhousedao/analytics-engine-core";
+import type {
   IKnexQueryExecutor,
   SqlQueryLogger,
   SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
-import { Knex } from "knex";
+import type { Knex } from "knex";
 
 export const parseRawResults = (rawResults: any[]) => {
   const allValues = [];
@@ -37,7 +37,7 @@ export class PGLiteQueryExecutor implements IKnexQueryExecutor {
   constructor(
     private readonly _profiler: IAnalyticsProfiler,
     private readonly _queryLogger?: SqlQueryLogger,
-    private readonly _resultsLogger?: SqlResultsLogger
+    private readonly _resultsLogger?: SqlResultsLogger,
   ) {
     //
   }

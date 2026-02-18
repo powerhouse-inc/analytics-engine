@@ -1,14 +1,14 @@
 import {
-  IAnalyticsProfiler,
+  type IAnalyticsProfiler,
   PassthroughAnalyticsProfiler,
 } from "@powerhousedao/analytics-engine-core";
 import {
   KnexAnalyticsStore,
-  SqlQueryLogger,
-  SqlResultsLogger,
+  type SqlQueryLogger,
+  type SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
-import fs from "fs";
-import knexFactory, { Knex } from "knex";
+import knexFactory from "knex";
+import type { Knex } from "knex";
 import { parseRawResults, PGLiteQueryExecutor } from "./PgLiteExecutor.js";
 import { PGlite } from "@electric-sql/pglite";
 
@@ -120,7 +120,7 @@ export class MemoryAnalyticsStore extends KnexAnalyticsStore {
     const executor = new PGLiteQueryExecutor(
       profiler,
       queryLogger,
-      resultsLogger
+      resultsLogger,
     );
 
     super({

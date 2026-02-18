@@ -1,9 +1,9 @@
 import { it, expect } from "vitest";
-import { AnalyticsPath } from "../src/AnalyticsPath";
+import { AnalyticsPath } from "../src/AnalyticsPath.js";
 import {
   AnalyticsSubscriptionManager,
   NotificationError,
-} from "../src/AnalyticsSubscriptionManager";
+} from "../src/AnalyticsSubscriptionManager.js";
 
 it("it should allow subscribing to a source with an explicit match", () => {
   const subscriptions = new AnalyticsSubscriptionManager();
@@ -13,7 +13,7 @@ it("it should allow subscribing to a source with an explicit match", () => {
     AnalyticsPath.fromString("/a"),
     (source) => {
       called++;
-    }
+    },
   );
 
   expect(unsubscribe).toBeDefined();
@@ -98,7 +98,7 @@ it("unsubscribing should remove the subscription", () => {
     AnalyticsPath.fromString("/a"),
     () => {
       called++;
-    }
+    },
   );
 
   subscriptions.notifySubscribers([AnalyticsPath.fromString("/a")]);
@@ -122,7 +122,7 @@ it("unsubscribing should remove only the relevant subscription", () => {
     AnalyticsPath.fromString("/a"),
     () => {
       firstCalled++;
-    }
+    },
   );
 
   subscriptions.subscribeToPath(AnalyticsPath.fromString("/a"), () => {
@@ -205,7 +205,7 @@ it("subscriptions support wildcards", () => {
     AnalyticsPath.fromString("/x/y/*"),
     (source) => {
       endWildcardCalls++;
-    }
+    },
   );
 
   subscriptions.notifySubscribers([AnalyticsPath.fromString("/x/y/z")]);

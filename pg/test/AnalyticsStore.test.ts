@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import {
-  AnalyticsDimension,
+  type AnalyticsDimension,
   AnalyticsPath,
 } from "@powerhousedao/analytics-engine-core";
 import { PostgresAnalyticsStore } from "../src/PostgresAnalyticsStore.js";
@@ -20,7 +20,7 @@ let store: PostgresAnalyticsStore;
 // Set to false during testing to see the resulting records in db
 const CLEAN_UP_DB = process.env.CLEAN_UP_DB !== "false";
 const TEST_SOURCE = AnalyticsPath.fromString(
-  "test/analytics/AnalyticsStore.spec"
+  "test/analytics/AnalyticsStore.spec",
 );
 
 beforeAll(async () => {
@@ -42,7 +42,7 @@ beforeAll(async () => {
       dimensions: {
         budget: AnalyticsPath.fromString("atlas/legacy/core-units/SES-001"),
         category: AnalyticsPath.fromString(
-          "atlas/headcount/CompensationAndBenefits/FrontEndEngineering"
+          "atlas/headcount/CompensationAndBenefits/FrontEndEngineering",
         ),
         project: TEST_SOURCE,
       },
@@ -61,7 +61,7 @@ beforeAll(async () => {
       dimensions: {
         budget: AnalyticsPath.fromString("atlas/legacy/core-units/SES-001"),
         category: AnalyticsPath.fromString(
-          "atlas/headcount/CompensationAndBenefits/SmartContractEngineering"
+          "atlas/headcount/CompensationAndBenefits/SmartContractEngineering",
         ),
         project: TEST_SOURCE,
       },
@@ -120,8 +120,8 @@ it("should query records", async () => {
 
   expect(
     results.map((r) =>
-      (r.dimensions.budget as AnalyticsDimension).path.toString()
-    )
+      (r.dimensions.budget as AnalyticsDimension).path.toString(),
+    ),
   ).toEqual([
     "atlas/legacy/core-units/SES-001",
     "atlas/legacy/core-units/SES-001",

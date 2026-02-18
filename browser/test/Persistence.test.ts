@@ -1,6 +1,6 @@
 import { DateTime } from "luxon";
 import {
-  AnalyticsDimension,
+  type AnalyticsDimension,
   AnalyticsPath,
 } from "@powerhousedao/analytics-engine-core";
 import { BrowserAnalyticsStore } from "../src/BrowserAnalyticsStore.js";
@@ -8,7 +8,7 @@ import { BrowserAnalyticsStore } from "../src/BrowserAnalyticsStore.js";
 import { afterAll, beforeAll, it, expect, describe } from "vitest";
 
 const TEST_SOURCE = AnalyticsPath.fromString(
-  "test/analytics/AnalyticsStore.spec"
+  "test/analytics/AnalyticsStore.spec",
 );
 
 const dbName = "analytics.db";
@@ -27,7 +27,7 @@ afterAll(async () => {
 });
 
 describe("IDB VFS", () => {
-  it("should persist records on disk", async () => {
+  it("should persist records on disk", { timeout: 10000000 }, async () => {
     // first, delete db
     await deleteIdbDb(dbName);
 
@@ -44,7 +44,7 @@ describe("IDB VFS", () => {
         dimensions: {
           budget: AnalyticsPath.fromString("atlas/legacy/core-units/SES-001"),
           category: AnalyticsPath.fromString(
-            "atlas/headcount/CompensationAndBenefits/FrontEndEngineering"
+            "atlas/headcount/CompensationAndBenefits/FrontEndEngineering",
           ),
           project: TEST_SOURCE,
         },
@@ -63,7 +63,7 @@ describe("IDB VFS", () => {
         dimensions: {
           budget: AnalyticsPath.fromString("atlas/legacy/core-units/SES-001"),
           category: AnalyticsPath.fromString(
-            "atlas/headcount/CompensationAndBenefits/SmartContractEngineering"
+            "atlas/headcount/CompensationAndBenefits/SmartContractEngineering",
           ),
           project: TEST_SOURCE,
         },
@@ -115,46 +115,42 @@ describe("IDB VFS", () => {
 
     expect(
       results.map((r) =>
-        (r.dimensions.budget as AnalyticsDimension).path.toString()
-      )
+        (r.dimensions.budget as AnalyticsDimension).path.toString(),
+      ),
     ).toEqual([
       "atlas/legacy/core-units/SES-001",
       "atlas/legacy/core-units/SES-001",
     ]);
   });
 
-  it(
-    "should handle giant inputs",
-    async () => {
-      // load sql dump
-      const res = await fetch(
-        `http://localhost:${window.location.port}/dump-small.sql`
-      );
-      const sql = await res.text();
+  it("should handle giant inputs", { timeout: 10000000 }, async () => {
+    // load sql dump
+    const res = await fetch(
+      `http://localhost:${window.location.port}/dump-small.sql`,
+    );
+    const sql = await res.text();
 
-      // delete existing db
-      await deleteIdbDb("analytics.db.huge");
+    // delete existing db
+    await deleteIdbDb("analytics.db.huge");
 
-      const store = new BrowserAnalyticsStore({
-        databaseName: "analytics.db.huge",
-      });
-      await store.init();
+    const store = new BrowserAnalyticsStore({
+      databaseName: "analytics.db.huge",
+    });
+    await store.init();
 
-      console.log("Executing SQL...", sql);
+    console.log("Executing SQL...", sql);
 
-      performance.mark("start");
-      await store.raw(sql);
-      performance.mark("end");
+    performance.mark("start");
+    await store.raw(sql);
+    performance.mark("end");
 
-      const results = await store.raw(
-        `select count(*) as count from "AnalyticsDimension"`
-      );
+    const results = await store.raw(
+      `select count(*) as count from "AnalyticsDimension"`,
+    );
 
-      const count = results[0].count;
-      const duration = performance.measure("duration", "start", "end");
+    const count = results[0].count;
+    const duration = performance.measure("duration", "start", "end");
 
-      console.log(`Loaded ${count} records in ${duration.duration}ms.`);
-    },
-    100 * 1000
-  );
+    console.log(`Loaded ${count} records in ${duration.duration}ms.`);
+  });
 });

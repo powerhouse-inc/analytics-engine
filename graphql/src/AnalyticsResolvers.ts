@@ -52,7 +52,7 @@ export const AnalyticsResolvers: any = {
     multiCurrencySeries: async (
       _: any,
       { filter }: any,
-      { dataSources }: any
+      { dataSources }: any,
     ) => {
       const queryEngine: AnalyticsModel = dataSources.db.Analytics;
       const results = await queryEngine.multiCurrencyQuery(filter);

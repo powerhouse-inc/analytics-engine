@@ -10,7 +10,7 @@ const isPgDisabled = process.env.PG_DISABLED === "true";
 const connectionString = process.env.PG_CONNECTION_STRING;
 if (!isPgDisabled && !connectionString) {
   throw new Error(
-    "PG_CONNECTION_STRING not set. Either set it or run with PG_DISABLED=true"
+    "PG_CONNECTION_STRING not set. Either set it or run with PG_DISABLED=true",
   );
 }
 
@@ -38,7 +38,7 @@ const query = {
   },
 };
 
-let bench = new Bench();
+let bench = new Bench({ warmup: true });
 
 if (!isPgDisabled) {
   bench = bench.add(
@@ -46,7 +46,7 @@ if (!isPgDisabled) {
     async () => {
       await postgres!.getMatchingSeries(query);
     },
-    logs("PG")
+    logs("PG"),
   );
 }
 
@@ -55,10 +55,9 @@ bench.add(
   async () => {
     await memory.getMatchingSeries(query);
   },
-  logs("Memory")
+  logs("Memory"),
 );
 
-await bench.warmup();
 await bench.run();
 
 console.table(bench.table());

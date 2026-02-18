@@ -4,15 +4,13 @@ import {
   AnalyticsPath,
   AnalyticsQueryEngine,
   AnalyticsGranularity,
-  AnalyticsQuery,
-  GroupedPeriodResults,
-  PassthroughAnalyticsProfiler,
+  type AnalyticsQuery,
+  type GroupedPeriodResults,
 } from "@powerhousedao/analytics-engine-core";
-import { PostgresAnalyticsStore } from "../src/PostgresAnalyticsStore";
+import { PostgresAnalyticsStore } from "../src/PostgresAnalyticsStore.js";
 import {
   defaultQueryLogger,
   defaultResultsLogger,
-  KnexQueryExecutor,
 } from "@powerhousedao/analytics-engine-knex";
 
 const connectionString = process.env.PG_CONNECTION_STRING;
@@ -30,7 +28,7 @@ const TEST_SOURCE = AnalyticsPath.fromString("test/analytics/Integration.spec");
 const getResultsForGranularity = async (
   granularity: AnalyticsGranularity,
   start: DateTime,
-  end: DateTime
+  end: DateTime,
 ): Promise<GroupedPeriodResults> => {
   const query: AnalyticsQuery = {
     start,
@@ -76,7 +74,7 @@ beforeAll(async () => {
       dimensions: {
         budget: AnalyticsPath.fromString("atlas/legacy/core-units/PE-001"),
         category: AnalyticsPath.fromString(
-          "atlas/headcount/CompensationAndBenefits/FrontEndEngineering"
+          "atlas/headcount/CompensationAndBenefits/FrontEndEngineering",
         ),
         project: TEST_SOURCE,
       },
@@ -90,7 +88,7 @@ beforeAll(async () => {
       dimensions: {
         budget: AnalyticsPath.fromString("atlas/legacy/core-units/PE-001"),
         category: AnalyticsPath.fromString(
-          "atlas/headcount/CompensationAndBenefits/FrontEndEngineering"
+          "atlas/headcount/CompensationAndBenefits/FrontEndEngineering",
         ),
         project: TEST_SOURCE,
       },
@@ -104,7 +102,7 @@ beforeAll(async () => {
       dimensions: {
         budget: AnalyticsPath.fromString("atlas/legacy/core-units/PE-001"),
         category: AnalyticsPath.fromString(
-          "atlas/headcount/CompensationAndBenefits/SmartContractEngineering"
+          "atlas/headcount/CompensationAndBenefits/SmartContractEngineering",
         ),
         project: TEST_SOURCE,
       },
@@ -120,7 +118,7 @@ beforeAll(async () => {
       dimensions: {
         budget: AnalyticsPath.fromString("atlas/legacy/core-units/PE-001"),
         category: AnalyticsPath.fromString(
-          "atlas/headcount/CompensationAndBenefits/SmartContractEngineering"
+          "atlas/headcount/CompensationAndBenefits/SmartContractEngineering",
         ),
         project: TEST_SOURCE,
       },
@@ -139,7 +137,7 @@ beforeAll(async () => {
       dimensions: {
         budget: AnalyticsPath.fromString("atlas/legacy/core-units/PE-001"),
         category: AnalyticsPath.fromString(
-          "atlas/headcount/CompensationAndBenefits/SmartContractEngineering"
+          "atlas/headcount/CompensationAndBenefits/SmartContractEngineering",
         ),
         project: TEST_SOURCE,
       },
@@ -217,7 +215,7 @@ describe("totals of different granularities", () => {
     const result = await getResultsForGranularity(
       AnalyticsGranularity.Total,
       start,
-      end
+      end,
     );
 
     expect(result.length).toBe(1);
@@ -230,7 +228,7 @@ describe("totals of different granularities", () => {
     const result = await getResultsForGranularity(
       AnalyticsGranularity.Annual,
       DateTime.utc(2021, 1, 1),
-      end
+      end,
     );
 
     expect(result.length).toBe(3);
@@ -316,7 +314,7 @@ describe("dss vesting", () => {
         budget: [AnalyticsPath.fromString("atlas/legacy/core-units/PE-001")],
         category: [
           AnalyticsPath.fromString(
-            "atlas/headcount/CompensationAndBenefits/SmartContractEngineering"
+            "atlas/headcount/CompensationAndBenefits/SmartContractEngineering",
           ),
         ],
         project: [TEST_SOURCE],
@@ -354,7 +352,7 @@ describe("dss vesting", () => {
         budget: [AnalyticsPath.fromString("atlas/legacy/core-units/PE-001")],
         category: [
           AnalyticsPath.fromString(
-            "atlas/headcount/CompensationAndBenefits/SmartContractEngineering"
+            "atlas/headcount/CompensationAndBenefits/SmartContractEngineering",
           ),
         ],
         project: [TEST_SOURCE],

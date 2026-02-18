@@ -1,8 +1,0 @@
-{
-  "[typescript]": {
-    "editor.tabSize": 2,
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true
-  },
-  "vitest.disableWorkspaceWarning": true
-}

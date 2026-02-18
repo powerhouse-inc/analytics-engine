@@ -6,10 +6,7 @@ export default defineConfig({
     testTimeout: 5000,
     setupFiles: "./test/vitest.setup.ts",
     passWithNoTests: true,
-    poolOptions: {
-      forks: {
-        singleFork: true,
-      },
-    },
+    maxWorkers: 1,
+    isolate: false,
   },
 });
