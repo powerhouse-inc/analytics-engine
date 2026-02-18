@@ -1,5 +1,5 @@
 import { type IAnalyticsProfiler } from "@powerhousedao/analytics-engine-core";
-import { Knex } from "knex";
+import type { Knex } from "knex";
 import { type IKnexQueryExecutor } from "./KnexAnalyticsStore.js";
 
 export class KnexQueryExecutor implements IKnexQueryExecutor {

@@ -1,4 +1,4 @@
-import { Knex } from "knex";
+import type { Knex } from "knex";
 import { DateTime } from "luxon";
 import {
   AnalyticsPath,

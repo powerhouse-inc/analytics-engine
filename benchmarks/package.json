@@ -5,14 +5,13 @@
   "type": "module",
   "files": ["dist"],
   "scripts": {
-    "build:tsc": "pnpm -w tsc -b",
-    "processCache": "pnpm build:tsc && node ./dist/processor.js",
-    "ci": "node ./dist/wasm.js && node ./dist/hash-keys.js && PG_DISABLED=true node ./dist/query-list.js && PG_DISABLED=true node ./dist/series.js",
+    "processCache": "node ./dist/src/processor.js",
+    "ci": "node ./dist/src/wasm.js && node ./dist/src/hash-keys.js && PG_DISABLED=true node ./dist/src/query-list.js && PG_DISABLED=true node ./dist/src/series.js",
     "benchmark": "pnpm test-wasm && pnpm test-query-list && pnpm test-series && pnpm test-hash-keys",
-    "test-wasm": "pnpm build:tsc && node ./dist/wasm.js",
-    "test-query-list": "pnpm build:tsc && PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/query-list.js",
-    "test-series": "pnpm build:tsc && PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/series.js",
-    "test-hash-keys": "pnpm build:tsc && node ./dist/hash-keys.js"
+    "test-wasm": "node ./dist/src/wasm.js",
+    "test-query-list": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/src/query-list.js",
+    "test-series": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics node ./dist/src/series.js",
+    "test-hash-keys": "node ./dist/src/hash-keys.js"
   },
   "dependencies": {
     "@powerhousedao/analytics-engine-browser": "workspace:*",

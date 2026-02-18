@@ -5,7 +5,7 @@ import type {
   SqlQueryLogger,
   SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
-import { Knex } from "knex";
+import type { Knex } from "knex";
 
 export const parseRawResults = (rawResults: any[]) => {
   const allValues = [];

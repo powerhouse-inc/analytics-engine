@@ -7,7 +7,8 @@ import {
   type SqlQueryLogger,
   type SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
-import knexFactory, { Knex } from "knex";
+import knexFactory from "knex";
+import type { Knex } from "knex";
 import { parseRawResults, PGLiteQueryExecutor } from "./PgLiteExecutor.js";
 import { PGlite } from "@electric-sql/pglite";
 

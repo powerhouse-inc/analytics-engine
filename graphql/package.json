@@ -10,7 +10,7 @@
   ],
   "scripts": {
     "dev": "pnpm -w tsc -b -w",
-    "test": "vitest --run"
+    "test": "vitest --run ./**/*.test.ts"
   },
   "dependencies": {
     "luxon": "catalog:",

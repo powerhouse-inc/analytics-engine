@@ -8,7 +8,8 @@ import {
   type SqlQueryLogger,
   type SqlResultsLogger,
 } from "@powerhousedao/analytics-engine-knex";
-import knexFactory, { Knex } from "knex";
+import knexFactory from "knex";
+import type { Knex } from "knex";
 import pkg from "pg";
 import { reviver } from "./AnalyticsSerializer.js";
 
