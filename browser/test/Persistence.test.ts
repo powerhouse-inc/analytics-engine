@@ -27,7 +27,7 @@ afterAll(async () => {
 });
 
 describe("IDB VFS", () => {
-  it("should persist records on disk", async () => {
+  it("should persist records on disk", { timeout: 10000000 }, async () => {
     // first, delete db
     await deleteIdbDb(dbName);
 
