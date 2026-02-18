@@ -15,6 +15,8 @@ export default defineConfig({
       },
     },
     passWithNoTests: true,
+    maxWorkers: 1,
+    isolate: false,
   },
   optimizeDeps: {
     exclude: ["@sqlite.org/sqlite-wasm"],

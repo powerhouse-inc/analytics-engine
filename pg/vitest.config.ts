@@ -14,6 +14,8 @@ export default defineConfig({
     },
     setupFiles: "./test/vitest.setup.ts",
     passWithNoTests: true,
+    maxWorkers: 1,
+    isolate: false,
   },
   optimizeDeps: {
     exclude: ["@sqlite.org/sqlite-wasm"],
