@@ -12,7 +12,7 @@
     "dist"
   ],
   "scripts": {
-    "dev": "pnpm tsc -b -w",
+    "dev": "pnpm -w tsc -b -w",
     "test": "vitest --run"
   },
   "dependencies": {

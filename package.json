@@ -2,23 +2,24 @@
   "name": "analytics-engine",
   "private": true,
   "scripts": {
-    "test": "pnpm -r test --filter='!compat'",
+    "test:ci": "pnpm -r --no-bail test",
     "build": "pnpm tsc -b",
+    "dev": "pnpm tsc -b -w",
     "lint": "eslint",
     "check-ts-references": "bun run ./check-ts-references.ts"
   },
   "devDependencies": {
-    "@eslint/js": "^10.0.1",
+    "@eslint/js": "10.0.1",
     "@types/bun": "catalog:",
     "@types/node": "catalog:",
-    "eslint": "^10.0.0",
-    "eslint-config-prettier": "^10.1.8",
-    "eslint-plugin-prettier": "^5.5.5",
+    "eslint": "10.0.0",
+    "eslint-config-prettier": "10.1.8",
+    "eslint-plugin-prettier": "5.5.5",
     "glob": "catalog:",
-    "globals": "^17.3.0",
-    "jiti": "^2.6.1",
-    "prettier": "^3.8.1",
+    "globals": "17.3.0",
+    "jiti": "2.6.1",
+    "prettier": "3.8.1",
     "typescript": "catalog:",
-    "typescript-eslint": "^8.56.0"
+    "typescript-eslint": "8.56.0"
   }
 }
