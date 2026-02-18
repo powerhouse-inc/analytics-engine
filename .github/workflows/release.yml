@@ -71,9 +71,9 @@ jobs:
       - name: Run versioning
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm version-packages -- "${{ inputs.release_type }}"
+        run: pnpm version-packages -- --release-type="${{ inputs.release_type }}"
 
       - name: Run publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_ACCESS_TOKEN }}
-        run: pnpm publish-packages -- "${{ inputs.dry_run }}"
+        run: pnpm publish-packages -- --dry-run="${{ inputs.dry_run }}"
