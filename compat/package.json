@@ -1,5 +1,9 @@
 {
   "name": "compat",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
   "type": "module",
   "license": "AGPL-3.0-only",
   "files": ["dist"],

@@ -1,6 +1,9 @@
 {
   "name": "benchmarks",
-  "version": "0.1.0",
+  "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
   "license": "AGPL-3.0-only",
   "type": "module",
   "files": ["dist"],

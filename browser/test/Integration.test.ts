@@ -158,7 +158,7 @@ afterAll(async () => {
   store.destroy();
 });
 
-it.skip("should query records", async () => {
+it("should query records", async () => {
   const query: AnalyticsQuery = {
     start: DateTime.utc(2022, 9, 1),
     end: null,
@@ -190,7 +190,7 @@ it.skip("should query records", async () => {
   ]);
 });
 
-describe.skip("totals of different granularities", () => {
+describe("totals of different granularities", () => {
   const start = DateTime.utc(2022, 1, 1);
   const end = DateTime.utc(2023, 6, 1);
 
@@ -284,7 +284,7 @@ describe.skip("totals of different granularities", () => {
   */
 });
 
-describe.skip("dss vesting", () => {
+describe("dss vesting", () => {
   it("should return values linear proportional to the time passed", async () => {
     const start = DateTime.utc(2023, 1, 1);
     const end = DateTime.utc(2024, 1, 1);

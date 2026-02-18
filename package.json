@@ -1,6 +1,9 @@
 {
   "name": "analytics-engine",
   "private": true,
+  "publishConfig": {
+    "access": "restricted"
+  },
   "type": "module",
   "scripts": {
     "test-ci": "pnpm -r --no-bail test",
