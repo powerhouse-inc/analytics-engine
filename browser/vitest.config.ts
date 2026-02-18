@@ -7,17 +7,9 @@ export default defineConfig({
     browser: {
       provider: playwright(),
       enabled: true,
+      instances: [{ browser: "firefox" }],
     },
     testTimeout: 5000,
-    server: {
-      deps: {
-        inline: [
-          "@powerhousedao/analytics-engine-core",
-          "@powerhousedao/analytics-engine-knex",
-          "events",
-        ],
-      },
-    },
     setupFiles: "./test/vitest.setup.ts",
     passWithNoTests: true,
   },

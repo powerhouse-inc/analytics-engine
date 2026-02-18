@@ -1,0 +1,123 @@
+name: Check Commit
+
+concurrency:
+  group: check-commit-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+on:
+  workflow_dispatch:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+    types: [opened, reopened, synchronize]
+
+permissions:
+  contents: read
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    env:
+      CI: true
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Get changed files
+        id: diff
+        uses: ./.github/actions/changed-files
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: latest
+
+      - name: Setup Node
+        uses: actions/setup-node@v6
+        with:
+          node-version: 24
+          cache: 'pnpm'
+
+      - name: Setup bun global install
+        uses: oven-sh/setup-bun@v2
+
+      - name: Install deps (frozen lockfile)
+        run: pnpm install-ci
+
+      - name: Install release tool dependencies
+        run: bun install
+        working-directory: releases
+
+      - name: Check tsconfig references
+        run: pnpm check-ts-references
+
+      - name: Check wrong tsc usage
+        run: pnpm check-wrong-tsc-usage
+
+      - name: Build typescript project
+        run: pnpm build-tsc
+
+      - name: Run misc build scripts
+        run: pnpm build-misc
+
+      - name: Run install again after generating binaries
+        run: pnpm install-ci
+
+      - name: Run eslint
+        if: ${{ steps.diff.outputs.files != '' }}
+        run: NODE_OPTIONS=--max-old-space-size=8192 pnpm eslint --config eslint.config.js --quiet ${{ steps.diff.outputs.files }}
+
+      - name: Skip lint (no changed files)
+        if: ${{ steps.diff.outputs.files == '' }}
+        run: echo "No changed files; skipping linting."
+
+      - name: Run tests
+        if: ${{ steps.diff.outputs.files != '' }}
+        run: pnpm test-ci ${{ steps.diff.outputs.files }}
+
+      - name: Skip test (no changed files)
+        if: ${{ steps.diff.outputs.files == '' }}
+        run: echo "No changed files; skipping tests."
+
+      - name: Run css build scripts
+        run: pnpm build-css
+
+      - name: Run vite build scripts
+        run: pnpm build-vite
+
+      - name: Run build clis
+        run: pnpm build-cli
+
+      - name: Run storybook build scripts
+        run: pnpm build-storybook
+
+      - name: Run circular imports check
+        run: pnpm check-circular-imports
+
+  notify-discord:
+    if: failure() && github.event_name != 'pull_request'
+    needs: [check]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Send Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_FAILURES }}
+          DISCORD_USER_MAPPING: ${{ secrets.DISCORD_USER_MAPPING }}
+        run: |
+          DISCORD_USER=$(echo "$DISCORD_USER_MAPPING" | jq -r --arg GH_USER "${{ github.actor }}" '.[$GH_USER] // ""')
+          MENTION_STRING=""
+          if [ ! -z "$DISCORD_USER" ]; then
+            MENTION_STRING="<@${DISCORD_USER}> "
+          fi
+
+          curl -H "Content-Type: application/json" -X POST "$DISCORD_WEBHOOK" -d '{
+            "embeds": [{
+              "title": "⚠️ Commit Check Failed",
+              "description": "**Author:** '"${MENTION_STRING}"'\n**Commit:** [`${{ github.event.head_commit.message }}`](${{ github.server_url }}/${{ github.repository }}/commit/${{ github.sha }}) \n**Failed job:** [`check`](${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }})",
+              "color": 16711680
+            }]
+          }'

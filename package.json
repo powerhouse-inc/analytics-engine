@@ -1,6 +1,7 @@
 {
   "name": "analytics-engine",
   "private": true,
+  "type": "module",
   "scripts": {
     "test:ci": "pnpm -r --no-bail test",
     "build": "pnpm tsc -b",
