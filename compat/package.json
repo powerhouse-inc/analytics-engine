@@ -1,12 +1,15 @@
 {
   "name": "compat",
   "private": true,
+  "version": "0.6.0",
   "publishConfig": {
     "access": "restricted"
   },
   "type": "module",
   "license": "AGPL-3.0-only",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test:pg": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest --run ./**/*.test.ts"
   },

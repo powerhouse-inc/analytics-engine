@@ -1,12 +1,15 @@
 {
   "name": "benchmarks",
   "private": true,
+  "version": "0.6.0",
   "publishConfig": {
     "access": "restricted"
   },
   "license": "AGPL-3.0-only",
   "type": "module",
-  "files": ["dist"],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "processCache": "node ./dist/src/processor.js",
     "ci": "node ./dist/src/wasm.js && node ./dist/src/hash-keys.js && PG_DISABLED=true node ./dist/src/query-list.js && PG_DISABLED=true node ./dist/src/series.js",
@@ -21,10 +24,10 @@
     "@powerhousedao/analytics-engine-core": "workspace:*",
     "@powerhousedao/analytics-engine-knex": "workspace:*",
     "@powerhousedao/analytics-engine-pg": "workspace:*",
-    "crc":"catalog:",
-    "crc-32":"catalog:",
-    "knex":"catalog:",
-    "luxon":"catalog:",
+    "crc": "catalog:",
+    "crc-32": "catalog:",
+    "knex": "catalog:",
+    "luxon": "catalog:",
     "pg": "catalog:",
     "tinybench": "catalog:"
   },
