@@ -53,6 +53,10 @@ jobs:
       - name: Run eslint
         run: pnpm lint
 
+      - name: Install playwright browsers
+        run: pnpm exec playwright install 
+        working-directory: browser
+
       - name: Run tests
         run: pnpm test-ci
 
