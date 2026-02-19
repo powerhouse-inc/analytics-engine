@@ -10,18 +10,26 @@
     "access": "public"
   },
   "type": "module",
-  "exports": "./dist/src/index.js",
-  "types": "dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./build/index.js"
+    }
+  },
   "files": [
-    "dist"
+    "./build/index.js",
+    "./build/index.js.map",
+    "./dist/index.d.ts"
   ],
   "scripts": {
+    "bundle": "bun run ./bundle.ts",
     "dev": "pnpm tsc -b -w",
     "test": "vitest --run ./**/*.test.ts"
   },
   "dependencies": {
     "@powerhousedao/analytics-engine-core": "workspace:*",
     "@powerhousedao/analytics-engine-knex": "workspace:*",
+    "vite-plugin-node-polyfills": "catalog:",
     "@electric-sql/pglite": "catalog:",
     "date-fns": "catalog:",
     "events": "catalog:",

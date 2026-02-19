@@ -12,7 +12,7 @@
     "install-ci": "pnpm install --frozen-lockfile",
     "db-up": "docker compose -f ./pg/docker-compose.test.yml up -d database",
     "db-down": "docker compose -f ./pg/docker-compose.test.yml down -v",
-    "build": "pnpm tsc -b",
+    "build": "pnpm tsc -b && pnpm -r bundle",
     "dev": "pnpm tsc -b -w",
     "lint": "eslint",
     "check-ts-references": "bun run ./check-ts-references.ts",

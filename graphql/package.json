@@ -9,15 +9,22 @@
   "publishConfig": {
     "access": "public"
   },
-  "exports": "./dist/src/index.js",
-  "types": "dist/src/index.d.ts",
   "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./build/index.js"
+    }
+  },
   "files": [
-    "dist"
+    "./build/index.js",
+    "./build/index.js.map",
+    "./dist/index.d.ts"
   ],
   "scripts": {
     "dev": "pnpm tsc -b -w",
-    "test": "vitest --run ./**/*.test.ts"
+    "test": "vitest --run ./**/*.test.ts",
+    "bundle": "bun run ./bundle.ts"
   },
   "dependencies": {
     "luxon": "catalog:",

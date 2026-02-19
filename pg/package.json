@@ -10,20 +10,34 @@
     "access": "public"
   },
   "type": "module",
-  "exports": "./dist/src/index.js",
-  "types": "./dist/src/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/src/index.d.ts",
+      "default": "./build/index.js"
+    }
+  },
   "files": [
-    "dist"
+    "./build/index.js",
+    "./build/index.js.map",
+    "./dist/index.d.ts"
   ],
   "scripts": {
     "dev": "pnpm tsc -b -w",
-    "test:pg": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest --run ./**/*.test.ts"
+    "test:pg": "PG_CONNECTION_STRING=postgresql://postgres:password@localhost:5555/analytics vitest --run ./**/*.test.ts",
+    "bundle": "bun run ./bundle.ts"
   },
   "dependencies": {
     "date-fns": "catalog:",
     "knex": "catalog:",
     "luxon": "catalog:",
     "pg": "catalog:",
+    "better-sqlite3": "catalog:",
+    "sqlite3": "catalog:",
+    "mysql": "catalog:",
+    "mysql2": "catalog:",
+    "tedious": "catalog:",
+    "pg-query-stream": "catalog:",
+    "oracledb": "catalog:",
     "@powerhousedao/analytics-engine-core": "workspace:*",
     "@powerhousedao/analytics-engine-knex": "workspace:*"
   },
