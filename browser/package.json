@@ -13,13 +13,11 @@
   "exports": {
     ".": {
       "types": "./dist/src/index.d.ts",
-      "default": "./build/index.js"
+      "default": "./dist/src/index.js"
     }
   },
   "files": [
-    "./build/index.js",
-    "./build/index.js.map",
-    "./dist/index.d.ts"
+    "dist/src"
   ],
   "scripts": {
     "bundle": "bun run ./bundle.ts",
