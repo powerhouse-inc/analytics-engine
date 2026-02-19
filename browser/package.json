@@ -27,7 +27,6 @@
   "dependencies": {
     "@powerhousedao/analytics-engine-core": "workspace:*",
     "@powerhousedao/analytics-engine-knex": "workspace:*",
-    "vite-plugin-node-polyfills": "catalog:",
     "@electric-sql/pglite": "catalog:",
     "date-fns": "catalog:",
     "events": "catalog:",
@@ -40,6 +39,7 @@
     "@vitest/browser-playwright": "catalog:",
     "@types/luxon": "catalog:",
     "playwright": "catalog:",
-    "vitest": "catalog:"
+    "vitest": "catalog:",
+    "vite-plugin-node-polyfills": "catalog:"
   }
 }

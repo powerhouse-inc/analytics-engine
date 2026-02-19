@@ -210,9 +210,6 @@ importers:
       util:
         specifier: 'catalog:'
         version: 0.12.5
-      vite-plugin-node-polyfills:
-        specifier: 'catalog:'
-        version: 0.25.0(rollup@4.57.1)(vite@7.3.1(@types/node@25.2.3)(jiti@2.6.1))
     devDependencies:
       '@types/luxon':
         specifier: 'catalog:'
@@ -226,6 +223,9 @@ importers:
       playwright:
         specifier: 'catalog:'
         version: 1.58.2
+      vite-plugin-node-polyfills:
+        specifier: 'catalog:'
+        version: 0.25.0(rollup@4.57.1)(vite@7.3.1(@types/node@25.2.3)(jiti@2.6.1))
       vitest:
         specifier: 'catalog:'
         version: 4.0.18(@types/node@25.2.3)(@vitest/browser-playwright@4.0.18)(jiti@2.6.1)(msw@2.8.4(@types/node@25.2.3)(typescript@5.9.3))
