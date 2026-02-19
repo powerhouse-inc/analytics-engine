@@ -72,7 +72,7 @@ jobs:
       - name: Run versioning
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm version-packages -- --release-type="${{ inputs.release_type }}" --skip_versioning="${{ inputs.skip_versioning }}"
+        run: pnpm version-packages -- --release-type="${{ inputs.release_type }}" --skip-versioning="${{ inputs.skip_versioning }}"
 
       - name: Run publish
         run: pnpm publish-packages -- --dry-run="${{ inputs.dry_run }}"
