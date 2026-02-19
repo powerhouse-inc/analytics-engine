@@ -14,7 +14,7 @@ on:
       dry_run:
         type: boolean
         default: false
-      verbose:
+      skip_versioning:
         type: boolean
         default: false
 
@@ -36,6 +36,7 @@ jobs:
         run: |
           echo "release_type=${{ inputs.release_type }}"
           echo "dry_run=${{ inputs.dry_run }}"
+          echo "skip_versioning=${{ inputs.skip_versioning }}"
 
       - name: Checkout repository
         uses: actions/checkout@v6
@@ -71,7 +72,7 @@ jobs:
       - name: Run versioning
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: pnpm version-packages -- --release-type="${{ inputs.release_type }}"
+        run: pnpm version-packages -- --release-type="${{ inputs.release_type }}" --skip_versioning="${{ inputs.skip_versioning }}"
 
       - name: Run publish
         run: pnpm publish-packages -- --dry-run="${{ inputs.dry_run }}"

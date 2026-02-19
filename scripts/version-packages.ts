@@ -1,4 +1,4 @@
-import { binary, command, oneOf, option, run } from "cmd-ts";
+import { binary, command, flag, oneOf, option, run } from "cmd-ts";
 import { runCommandWithBun } from "./run-with-bun.js";
 
 const versionPackagesCommand = command({
@@ -11,10 +11,19 @@ const versionPackagesCommand = command({
       defaultValue: () => "patch" as const,
       defaultValueIsSerializable: true,
     }),
+    skipVersioning: flag({
+      long: "skip-versioning",
+    }),
   },
   handler: async (args) => {
     console.log({ args });
-    const { releaseType } = args;
+    const { releaseType, skipVersioning } = args;
+    if (skipVersioning === true) {
+      console.log(
+        "Skipping versioning, will publish with existing package versions.",
+      );
+      process.exit(0);
+    }
     const cmd = [
       "pnpm",
       "--recursive",
